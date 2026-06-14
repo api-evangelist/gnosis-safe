@@ -1,0 +1,43 @@
+{
+  "operationId": "tokens_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/tokens/{address}/",
+  "summary": "",
+  "description": "Returns detailed information on a given token supported in the Safe Transaction Service",
+  "tags": [
+    "tokens"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/TokenInfoResponse"
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Invalid ethereum address",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

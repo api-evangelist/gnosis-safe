@@ -1,0 +1,17 @@
+{
+  "operationId": "about_ethereum_tracing_rpc_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/about/ethereum-tracing-rpc/",
+  "summary": "",
+  "description": "Get information about the Ethereum Tracing RPC node used by the service (if any configured)",
+  "tags": [
+    "about"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "No response body",
+      "content": {}
+    }
+  }
+}

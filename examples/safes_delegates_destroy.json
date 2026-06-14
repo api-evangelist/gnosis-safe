@@ -1,0 +1,54 @@
+{
+  "operationId": "safes_delegates_destroy",
+  "method": "DELETE",
+  "path": "/tx-service/eth/api/v1/safes/{address}/delegates/{delegate_address}/",
+  "summary": "",
+  "description": "Delete a delegate for a Safe. Signature is built the same way that for adding a delegate.\nCheck `POST /delegates/`",
+  "tags": [
+    "delegates"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "delegate_address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "204": {
+      "description": "Deleted",
+      "content": {}
+    },
+    "400": {
+      "description": "Malformed data",
+      "content": {}
+    },
+    "404": {
+      "description": "Delegate not found",
+      "content": {}
+    },
+    "422": {
+      "description": "Invalid Ethereum address | Error processing data",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

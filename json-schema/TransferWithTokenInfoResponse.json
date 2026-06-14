@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/TransferWithTokenInfoResponse",
+  "title": "TransferWithTokenInfoResponse",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Sometimes ERC20/721 `Transfer` events look the same, if token info is available better use that information\nto check\n\n:param obj:\n:return: `TransferType` as a string",
+      "readOnly": true
+    },
+    "executionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "blockNumber": {
+      "type": "integer"
+    },
+    "transactionHash": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "value": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tokenId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tokenAddress": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "transferId": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Internally calculated parameter to uniquely identify a transfer \nToken transfers are calculated as `transferId = e+tx_hash+log_index` \nEther transfers are calculated as `transferId = i+tx_hash+trace_address`"
+    },
+    "tokenInfo": {
+      "$ref": "#/components/schemas/TokenInfoResponse"
+    },
+    "from": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "blockNumber",
+    "executionDate",
+    "from",
+    "to",
+    "tokenId",
+    "tokenInfo",
+    "transactionHash",
+    "transferId",
+    "type",
+    "value"
+  ]
+}

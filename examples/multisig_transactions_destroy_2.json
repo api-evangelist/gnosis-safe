@@ -1,0 +1,27 @@
+{
+  "operationId": "multisig_transactions_destroy_2",
+  "method": "DELETE",
+  "path": "/tx-service/eth/api/v2/multisig-transactions/{safe_tx_hash}/",
+  "summary": "",
+  "description": "Removes the queued but not executed multi-signature transaction associated with the given Safe transaction hash.\nOnly the proposer or the delegate who proposed the transaction can delete it.\nIf the transaction was proposed by a delegate, it must still be a valid delegate for the transaction proposer.\nAn EOA is required to sign the following EIP-712 data:\n\n```python\n {\n    \"types\": {\n        \"EIP712Domain\": [\n            {\"name\": \"name\", \"type\": \"string\"},\n            {\"name\": \"version\", \"type\": \"string\"},\n            {\"name\": \"chainId\", \"type\": \"uint256\"},\n            {\"name\": \"verifyingContract\", \"type\": \"address\"},\n        ],\n        \"DeleteRequest\": [\n            {\"name\": \"safeTxHash\", \"type\": \"bytes32\"},\n            {\"name\": \"totp\", \"type\": \"uint256\"},\n        ],\n    },\n    \"primaryType\": \"DeleteRequest\",\n    \"domain\": {\n        \"name\": \"Safe Transaction Service\",\n        \"version\": \"1.0\",\n        \"chainId\": chain_id,\n        \"verifyingContract\": safe_address,\n    },\n    \"message\": {\n        \"safeTxHash\": safe_tx_hash,\n        \"totp\": totp,\n    },\n}\n```\n\n`totp` parameter is calculated with `T0=0` and `Tx=3600`. `totp` is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "safe_tx_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "204": {
+      "description": "No response body",
+      "content": {}
+    }
+  }
+}

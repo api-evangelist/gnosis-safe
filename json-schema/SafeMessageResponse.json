@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeMessageResponse",
+  "title": "SafeMessageResponse",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "safe": {
+      "type": "string"
+    },
+    "messageHash": {
+      "type": "string"
+    },
+    "message": {},
+    "proposedBy": {
+      "type": "string"
+    },
+    "safeAppId": {
+      "type": "integer"
+    },
+    "confirmations": {
+      "type": "object",
+      "additionalProperties": {},
+      "description": "Filters confirmations queryset\n\n:param obj: SafeMessage instance\n:return: Serialized queryset",
+      "readOnly": true
+    },
+    "preparedSignature": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Prepared signature sorted\n\n:param obj: SafeMessage instance\n:return: Serialized queryset",
+      "readOnly": true
+    },
+    "origin": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "confirmations",
+    "created",
+    "message",
+    "messageHash",
+    "modified",
+    "origin",
+    "preparedSignature",
+    "proposedBy",
+    "safe",
+    "safeAppId"
+  ]
+}

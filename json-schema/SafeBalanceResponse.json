@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeBalanceResponse",
+  "title": "SafeBalanceResponse",
+  "type": "object",
+  "properties": {
+    "tokenAddress": {
+      "type": "string"
+    },
+    "token": {
+      "$ref": "#/components/schemas/Erc20Info"
+    },
+    "balance": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "balance",
+    "token",
+    "tokenAddress"
+  ]
+}

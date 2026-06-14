@@ -1,0 +1,55 @@
+{
+  "operationId": "safe_operations_confirmations_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/confirmations/",
+  "summary": "",
+  "description": "Get the list of confirmations for a multisig transaction",
+  "tags": [
+    "4337"
+  ],
+  "parameters": [
+    {
+      "name": "safe_operation_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedSafeOperationConfirmationResponseList"
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Invalid data",
+      "content": {}
+    }
+  }
+}

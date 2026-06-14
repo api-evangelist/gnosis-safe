@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeMultisigConfirmation",
+  "title": "SafeMultisigConfirmation",
+  "type": "object",
+  "properties": {
+    "signature": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "signature"
+  ]
+}

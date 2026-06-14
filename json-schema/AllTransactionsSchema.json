@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/AllTransactionsSchema",
+  "title": "AllTransactionsSchema",
+  "type": "object",
+  "description": "Just for the purpose of documenting, don't use it",
+  "properties": {
+    "txType1": {
+      "$ref": "#/components/schemas/SafeModuleTransactionWithTransfersResponse"
+    },
+    "txType2": {
+      "$ref": "#/components/schemas/SafeMultisigTransactionWithTransfersResponse"
+    },
+    "txType3": {
+      "$ref": "#/components/schemas/EthereumTxWithTransfersResponse"
+    }
+  },
+  "required": [
+    "txType1",
+    "txType2",
+    "txType3"
+  ]
+}

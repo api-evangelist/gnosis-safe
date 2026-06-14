@@ -1,0 +1,359 @@
+{
+  "operations": [
+    {
+      "operationId": "about_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/about/",
+      "summary": ""
+    },
+    {
+      "operationId": "about_deployments_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/about/deployments/",
+      "summary": ""
+    },
+    {
+      "operationId": "about_ethereum_rpc_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/about/ethereum-rpc/",
+      "summary": ""
+    },
+    {
+      "operationId": "about_ethereum_tracing_rpc_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/about/ethereum-tracing-rpc/",
+      "summary": ""
+    },
+    {
+      "operationId": "about_indexing_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/about/indexing/",
+      "summary": ""
+    },
+    {
+      "operationId": "about_singletons_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/about/singletons/",
+      "summary": ""
+    },
+    {
+      "operationId": "contracts_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/contracts/",
+      "summary": ""
+    },
+    {
+      "operationId": "contracts_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/contracts/{address}/",
+      "summary": ""
+    },
+    {
+      "operationId": "data_decoder_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/data-decoder/",
+      "summary": ""
+    },
+    {
+      "operationId": "delegates_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/delegates/",
+      "summary": ""
+    },
+    {
+      "operationId": "delegates_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/delegates/",
+      "summary": ""
+    },
+    {
+      "operationId": "delegates_destroy",
+      "method": "DELETE",
+      "path": "/tx-service/eth/api/v1/delegates/{delegate_address}/",
+      "summary": ""
+    },
+    {
+      "operationId": "messages_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/messages/{message_hash}/",
+      "summary": ""
+    },
+    {
+      "operationId": "messages_signatures_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/messages/{message_hash}/signatures/",
+      "summary": ""
+    },
+    {
+      "operationId": "module_transaction_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/module-transaction/{module_transaction_id}",
+      "summary": ""
+    },
+    {
+      "operationId": "modules_safes_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/modules/{address}/safes/",
+      "summary": ""
+    },
+    {
+      "operationId": "multisig_transactions_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/",
+      "summary": ""
+    },
+    {
+      "operationId": "multisig_transactions_destroy",
+      "method": "DELETE",
+      "path": "/tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/",
+      "summary": ""
+    },
+    {
+      "operationId": "multisig_transactions_confirmations_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/",
+      "summary": ""
+    },
+    {
+      "operationId": "multisig_transactions_confirmations_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/",
+      "summary": ""
+    },
+    {
+      "operationId": "owners_safes_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/owners/{address}/safes/",
+      "summary": ""
+    },
+    {
+      "operationId": "safe_operations_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/",
+      "summary": ""
+    },
+    {
+      "operationId": "safe_operations_confirmations_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/confirmations/",
+      "summary": ""
+    },
+    {
+      "operationId": "safe_operations_confirmations_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/confirmations/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_all_transactions_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/all-transactions/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_balances_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/balances/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_creation_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/creation/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_delegates_destroy",
+      "method": "DELETE",
+      "path": "/tx-service/eth/api/v1/safes/{address}/delegates/{delegate_address}/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_export_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/export/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_incoming_transfers_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/incoming-transfers/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_messages_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/messages/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_messages_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/safes/{address}/messages/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_module_transactions_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/module-transactions/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_multisig_transactions_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/multisig-transactions/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_multisig_transactions_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/safes/{address}/multisig-transactions/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_multisig_transactions_estimations_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/safes/{address}/multisig-transactions/estimations/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_safe_operations_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/safe-operations/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_safe_operations_create",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v1/safes/{address}/safe-operations/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_transfers_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/transfers/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_user_operations_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/safes/{address}/user-operations/",
+      "summary": ""
+    },
+    {
+      "operationId": "tokens_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/tokens/",
+      "summary": ""
+    },
+    {
+      "operationId": "tokens_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/tokens/{address}/",
+      "summary": ""
+    },
+    {
+      "operationId": "tokens_lists_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/tokens/lists/",
+      "summary": ""
+    },
+    {
+      "operationId": "transfer_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/transfer/{transfer_id}",
+      "summary": ""
+    },
+    {
+      "operationId": "user_operations_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v1/user-operations/{user_operation_hash}/",
+      "summary": ""
+    },
+    {
+      "operationId": "analytics_multisig_transactions_by_origin_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/analytics/multisig-transactions/by-origin/",
+      "summary": ""
+    },
+    {
+      "operationId": "delegates_list_2",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/delegates/",
+      "summary": ""
+    },
+    {
+      "operationId": "delegates_create_2",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v2/delegates/",
+      "summary": ""
+    },
+    {
+      "operationId": "delegates_destroy_2",
+      "method": "DELETE",
+      "path": "/tx-service/eth/api/v2/delegates/{delegate_address}/",
+      "summary": ""
+    },
+    {
+      "operationId": "modules_safes_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/modules/{address}/safes/",
+      "summary": ""
+    },
+    {
+      "operationId": "multisig_transactions_retrieve_2",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/multisig-transactions/{safe_tx_hash}/",
+      "summary": ""
+    },
+    {
+      "operationId": "multisig_transactions_destroy_2",
+      "method": "DELETE",
+      "path": "/tx-service/eth/api/v2/multisig-transactions/{safe_tx_hash}/",
+      "summary": ""
+    },
+    {
+      "operationId": "owners_safes_list",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/owners/{address}/safes/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_all_transactions_list_2",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/safes/{address}/all-transactions/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_balances_retrieve_2",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/safes/{address}/balances/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_collectibles_retrieve",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/safes/{address}/collectibles/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_multisig_transactions_list_2",
+      "method": "GET",
+      "path": "/tx-service/eth/api/v2/safes/{address}/multisig-transactions/",
+      "summary": ""
+    },
+    {
+      "operationId": "safes_multisig_transactions_create_2",
+      "method": "POST",
+      "path": "/tx-service/eth/api/v2/safes/{address}/multisig-transactions/",
+      "summary": ""
+    }
+  ],
+  "total": 59
+}

@@ -1,0 +1,41 @@
+{
+  "operationId": "transfer_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/transfer/{transfer_id}",
+  "summary": "",
+  "description": "Returns a token transfer associated with the given transfer ID",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "transfer_id",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/TransferWithTokenInfoResponse"
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Invalid transferId",
+      "content": {}
+    },
+    "404": {
+      "description": "Transfer does not exist",
+      "content": {}
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeOperationConfirmationResponse",
+  "title": "SafeOperationConfirmationResponse",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "signatureType": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "created",
+    "modified",
+    "owner",
+    "signature",
+    "signatureType"
+  ]
+}

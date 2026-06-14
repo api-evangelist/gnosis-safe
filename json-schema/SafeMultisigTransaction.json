@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeMultisigTransaction",
+  "title": "SafeMultisigTransaction",
+  "type": "object",
+  "properties": {
+    "safe": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "value": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "data": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "gasToken": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "safeTxGas": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "baseGas": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "gasPrice": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "refundReceiver": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nonce": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "contractTransactionHash": {
+      "type": "string"
+    },
+    "sender": {
+      "type": "string"
+    },
+    "signature": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "origin": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 200
+    }
+  },
+  "required": [
+    "baseGas",
+    "contractTransactionHash",
+    "gasPrice",
+    "nonce",
+    "operation",
+    "safe",
+    "safeTxGas",
+    "sender",
+    "to",
+    "value"
+  ]
+}

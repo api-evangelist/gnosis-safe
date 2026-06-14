@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/Contract",
+  "title": "Contract",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "logoUri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "contractAbi": {
+      "$ref": "#/components/schemas/ContractAbi"
+    },
+    "trustedForDelegateCall": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "address",
+    "contractAbi",
+    "displayName",
+    "logoUri",
+    "name",
+    "trustedForDelegateCall"
+  ]
+}

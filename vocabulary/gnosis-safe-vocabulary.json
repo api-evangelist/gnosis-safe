@@ -1,0 +1,332 @@
+{
+  "title": "Safe Transaction Service API Vocabulary",
+  "description": "Terms, schemas, and operations from the Safe Transaction Service API",
+  "baseURL": "https://api.safe.global/tx-service/eth/api/v1",
+  "terms": [
+    {
+      "term": "AllTransactionsSchema",
+      "description": "Just for the purpose of documenting, don't use it",
+      "source": "schema"
+    },
+    {
+      "term": "AllTransactionsSchemaSerializerV2",
+      "description": "Just for the purpose of documenting, don't use it",
+      "source": "schema"
+    },
+    {
+      "term": "CodeErrorResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "Contract",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "ContractAbi",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "DataDecoder",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "Delegate",
+      "description": ".. deprecated:: 4.38.0\n   Deprecated in favour of DelegateSerializerV2",
+      "source": "schema"
+    },
+    {
+      "term": "DelegateSerializerV2",
+      "description": "Mixin to validate delegate operations data",
+      "source": "schema"
+    },
+    {
+      "term": "Erc20Info",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "EthereumTxWithTransfersResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "IndexingStatus",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "MasterCopyResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "ModulesResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "OwnerResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedAllTransactionsSchemaList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedAllTransactionsSchemaSerializerV2List",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedContractList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeCollectibleResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeDelegateResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeExportTransactionList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeLastStatusList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeMessageResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeModuleTransactionResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeMultisigConfirmationResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeMultisigTransactionResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeMultisigTransactionResponseSerializerV2List",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeOperationConfirmationResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedSafeOperationWithUserOperationResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedTokenInfoResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedTokenListList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedTransferWithTokenInfoResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "PaginatedUserOperationWithSafeOperationResponseList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeBalanceResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeCollectibleResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeCreationInfoResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeDelegateResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeDeployment",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeDeploymentContract",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeExportTransaction",
+      "description": "Serializer for the export endpoint that returns transaction data optimized for CSV export",
+      "source": "schema"
+    },
+    {
+      "term": "SafeInfoResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeLastStatus",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMessage",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMessageResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMessageSignature",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeModuleTransactionResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeModuleTransactionWithTransfersResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigConfirmation",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigConfirmationResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigTransaction",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigTransactionEstimate",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigTransactionEstimateResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigTransactionResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigTransactionResponseSerializerV2",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigTransactionWithTransfersResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeMultisigTransactionWithTransfersResponseSerializerV2",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeOperation",
+      "description": "Mixin class to validate SafeOperation signatures. `_get_owners` can be overridden to define\nthe valid owners to sign",
+      "source": "schema"
+    },
+    {
+      "term": "SafeOperationConfirmation",
+      "description": "Validate new confirmations for an existing `SafeOperation`",
+      "source": "schema"
+    },
+    {
+      "term": "SafeOperationConfirmationResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeOperationResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "SafeOperationWithUserOperationResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "TokenInfoResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "TokenList",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "TransferWithTokenInfoResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "UserOperationResponse",
+      "description": "",
+      "source": "schema"
+    },
+    {
+      "term": "UserOperationWithSafeOperationResponse",
+      "description": "",
+      "source": "schema"
+    }
+  ]
+}

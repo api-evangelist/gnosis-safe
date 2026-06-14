@@ -1,0 +1,23 @@
+{
+  "operationId": "about_indexing_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/about/indexing/",
+  "summary": "",
+  "description": "Get current indexing status for ERC20/721 events",
+  "tags": [
+    "about"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/IndexingStatus"
+          }
+        }
+      }
+    }
+  }
+}

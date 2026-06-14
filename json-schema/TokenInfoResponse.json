@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/TokenInfoResponse",
+  "title": "TokenInfoResponse",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "address": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "decimals": {
+      "type": "integer"
+    },
+    "logoUri": {
+      "type": "string",
+      "readOnly": true
+    },
+    "trusted": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "address",
+    "decimals",
+    "logoUri",
+    "name",
+    "symbol",
+    "trusted",
+    "type"
+  ]
+}

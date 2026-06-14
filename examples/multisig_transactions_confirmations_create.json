@@ -1,0 +1,45 @@
+{
+  "operationId": "multisig_transactions_confirmations_create",
+  "method": "POST",
+  "path": "/tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/",
+  "summary": "",
+  "description": "Adds a new confirmation to the pending multi-signature transaction associated with the\ngiven Safe transaction hash. Multiple signatures can be submitted at once. This endpoint\ndoes not support the use of delegates to make transactions trusted.",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "safe_tx_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/SafeMultisigConfirmation"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "201": {
+      "description": "Created",
+      "content": {}
+    },
+    "400": {
+      "description": "Malformed data",
+      "content": {}
+    },
+    "422": {
+      "description": "Error processing data",
+      "content": {}
+    }
+  }
+}

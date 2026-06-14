@@ -1,0 +1,43 @@
+{
+  "operationId": "modules_safes_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/modules/{address}/safes/",
+  "summary": "",
+  "description": "Returns the list of Safes that have the provided module enabled",
+  "tags": [
+    "modules"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/ModulesResponse"
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Module address checksum not valid",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/DataDecoder",
+  "title": "DataDecoder",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "string"
+    },
+    "to": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

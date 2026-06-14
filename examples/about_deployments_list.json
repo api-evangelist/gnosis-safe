@@ -1,0 +1,49 @@
+{
+  "operationId": "about_deployments_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/about/deployments/",
+  "summary": "",
+  "description": "Returns a list of safe deployments by version",
+  "tags": [
+    "about"
+  ],
+  "parameters": [
+    {
+      "name": "version",
+      "in": "query",
+      "required": false,
+      "description": "Filter by Safe version",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "contract",
+      "in": "query",
+      "required": false,
+      "description": "Filter by Safe contract name",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SafeDeployment"
+            }
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Provided version does not exist",
+      "content": {}
+    }
+  }
+}

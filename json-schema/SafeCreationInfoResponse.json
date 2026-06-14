@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeCreationInfoResponse",
+  "title": "SafeCreationInfoResponse",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "creator": {
+      "type": "string"
+    },
+    "transactionHash": {
+      "type": "string"
+    },
+    "factoryAddress": {
+      "type": "string"
+    },
+    "masterCopy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "setupData": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "saltNonce": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dataDecoded": {
+      "type": "object",
+      "additionalProperties": {},
+      "readOnly": true
+    },
+    "userOperation": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/UserOperationWithSafeOperationResponse"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "created",
+    "creator",
+    "dataDecoded",
+    "factoryAddress",
+    "masterCopy",
+    "saltNonce",
+    "setupData",
+    "transactionHash",
+    "userOperation"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "operationId": "messages_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/messages/{message_hash}/",
+  "summary": "",
+  "description": "Returns detailed information on a message associated with a given message hash",
+  "tags": [
+    "messages"
+  ],
+  "parameters": [
+    {
+      "name": "message_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/SafeMessageResponse"
+          }
+        }
+      }
+    }
+  }
+}

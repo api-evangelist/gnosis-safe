@@ -1,0 +1,26 @@
+{
+  "operationId": "about_singletons_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/about/singletons/",
+  "summary": "",
+  "description": "Returns a list of Master Copies configured in the service",
+  "tags": [
+    "about"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MasterCopyResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}

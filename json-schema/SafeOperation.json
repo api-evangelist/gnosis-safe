@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeOperation",
+  "title": "SafeOperation",
+  "type": "object",
+  "description": "Mixin class to validate SafeOperation signatures. `_get_owners` can be overridden to define\nthe valid owners to sign",
+  "properties": {
+    "nonce": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "initCode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "callData": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "callGasLimit": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "verificationGasLimit": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "preVerificationGas": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "maxFeePerGas": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "maxPriorityFeePerGas": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "paymasterAndData": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "signature": {
+      "type": "string"
+    },
+    "entryPoint": {
+      "type": "string"
+    },
+    "validAfter": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "validUntil": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "moduleAddress": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "callData",
+    "callGasLimit",
+    "entryPoint",
+    "initCode",
+    "maxFeePerGas",
+    "maxPriorityFeePerGas",
+    "moduleAddress",
+    "nonce",
+    "paymasterAndData",
+    "preVerificationGas",
+    "signature",
+    "validAfter",
+    "validUntil",
+    "verificationGasLimit"
+  ]
+}

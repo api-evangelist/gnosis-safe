@@ -1,0 +1,61 @@
+{
+  "operationId": "owners_safes_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v2/owners/{address}/safes/",
+  "summary": "",
+  "description": "Returns a paginated list of Safe accounts that have the given address as their owner.",
+  "tags": [
+    "owners"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Paginated list of Safe accounts that have the given address as their owner",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedSafeLastStatusList"
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Owner address checksum not valid",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

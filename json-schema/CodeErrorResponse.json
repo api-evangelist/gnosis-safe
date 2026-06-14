@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/CodeErrorResponse",
+  "title": "CodeErrorResponse",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer"
+    },
+    "message": {
+      "type": "string"
+    },
+    "arguments": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "required": [
+    "arguments",
+    "code",
+    "message"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "operationId": "multisig_transactions_confirmations_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/",
+  "summary": "",
+  "description": "Returns the list of confirmations for the multi-signature transaction associated with\nthe given Safe transaction hash",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "safe_tx_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedSafeMultisigConfirmationResponseList"
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Invalid data",
+      "content": {}
+    }
+  }
+}

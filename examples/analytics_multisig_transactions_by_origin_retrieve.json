@@ -1,0 +1,17 @@
+{
+  "operationId": "analytics_multisig_transactions_by_origin_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v2/analytics/multisig-transactions/by-origin/",
+  "summary": "",
+  "description": "",
+  "tags": [
+    "analytics"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "No response body",
+      "content": {}
+    }
+  }
+}

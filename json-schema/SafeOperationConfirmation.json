@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeOperationConfirmation",
+  "title": "SafeOperationConfirmation",
+  "type": "object",
+  "description": "Validate new confirmations for an existing `SafeOperation`",
+  "properties": {
+    "signature": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "signature"
+  ]
+}

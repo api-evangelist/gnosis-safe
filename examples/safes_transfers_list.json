@@ -1,0 +1,218 @@
+{
+  "operationId": "safes_transfers_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safes/{address}/transfers/",
+  "summary": "",
+  "description": "Returns the list of token transfers for a given Safe address.\nOnly 1000 newest transfers will be returned.",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "_from",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "block_number",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "number"
+      }
+    },
+    {
+      "name": "block_number__gt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "number"
+      }
+    },
+    {
+      "name": "block_number__lt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "number"
+      }
+    },
+    {
+      "name": "execution_date__gte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "execution_date__lte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "execution_date__gt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "execution_date__lt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "to",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "token_address",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "transaction_hash",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "value",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "number"
+      }
+    },
+    {
+      "name": "value__gt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "number"
+      }
+    },
+    {
+      "name": "value__lt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "number"
+      }
+    },
+    {
+      "name": "erc20",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "boolean"
+      }
+    },
+    {
+      "name": "erc721",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "boolean"
+      }
+    },
+    {
+      "name": "ether",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "boolean"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedTransferWithTokenInfoResponseList"
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Safe address checksum not valid",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

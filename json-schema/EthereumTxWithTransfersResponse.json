@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/EthereumTxWithTransfersResponse",
+  "title": "EthereumTxWithTransfersResponse",
+  "type": "object",
+  "properties": {
+    "executionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "to": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "data": {
+      "type": "string"
+    },
+    "txHash": {
+      "type": "string"
+    },
+    "blockNumber": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "transfers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TransferWithTokenInfoResponse"
+      }
+    },
+    "txType": {
+      "type": "string",
+      "readOnly": true
+    },
+    "from": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "blockNumber",
+    "data",
+    "executionDate",
+    "from",
+    "to",
+    "transfers",
+    "txHash",
+    "txType"
+  ]
+}

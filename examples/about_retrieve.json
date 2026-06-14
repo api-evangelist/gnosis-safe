@@ -1,0 +1,17 @@
+{
+  "operationId": "about_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/about/",
+  "summary": "",
+  "description": "Returns information and configuration of the service",
+  "tags": [
+    "about"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "No response body",
+      "content": {}
+    }
+  }
+}

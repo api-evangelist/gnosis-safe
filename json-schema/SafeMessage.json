@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeMessage",
+  "title": "SafeMessage",
+  "type": "object",
+  "properties": {
+    "message": {},
+    "safeAppId": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "signature": {
+      "type": "string"
+    },
+    "origin": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 200
+    }
+  },
+  "required": [
+    "message",
+    "signature"
+  ]
+}

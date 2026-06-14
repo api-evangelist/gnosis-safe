@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/ContractAbi",
+  "title": "ContractAbi",
+  "type": "object",
+  "properties": {
+    "abi": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": {}
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "relevance": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "abi",
+    "description",
+    "relevance"
+  ]
+}

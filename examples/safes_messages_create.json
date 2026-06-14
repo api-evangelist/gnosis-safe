@@ -1,0 +1,37 @@
+{
+  "operationId": "safes_messages_create",
+  "method": "POST",
+  "path": "/tx-service/eth/api/v1/safes/{address}/messages/",
+  "summary": "",
+  "description": "Adds a new message for a given Safe account.\nMessage can be:\n- A ``string``, so ``EIP191`` will be used to get the hash.\n- An ``EIP712`` ``object``.\n\nHash will be calculated from the provided ``message``. Sending a raw ``hash`` will not be accepted,\nservice needs to derive it itself.\n\nNote: Safe must be v1.4.1 for EIP-1271 signatures to work.",
+  "tags": [
+    "messages"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/SafeMessage"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "201": {
+      "description": "Created",
+      "content": {}
+    }
+  }
+}

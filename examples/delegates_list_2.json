@@ -1,0 +1,85 @@
+{
+  "operationId": "delegates_list_2",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v2/delegates/",
+  "summary": "",
+  "description": "Returns a list with all the delegates",
+  "tags": [
+    "delegates"
+  ],
+  "parameters": [
+    {
+      "name": "safe",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    {
+      "name": "delegate",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "delegator",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "label",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedSafeDelegateResponseList"
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Invalid data",
+      "content": {}
+    }
+  }
+}

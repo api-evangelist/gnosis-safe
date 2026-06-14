@@ -1,0 +1,60 @@
+{
+  "operationId": "safes_messages_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safes/{address}/messages/",
+  "summary": "",
+  "description": "Returns the list of messages for a given Safe account",
+  "tags": [
+    "messages"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "ordering",
+      "in": "query",
+      "required": false,
+      "description": "Which field to use when ordering the results.",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedSafeMessageResponseList"
+          }
+        }
+      }
+    }
+  }
+}

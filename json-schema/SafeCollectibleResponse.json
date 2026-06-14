@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeCollectibleResponse",
+  "title": "SafeCollectibleResponse",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "tokenName": {
+      "type": "string"
+    },
+    "tokenSymbol": {
+      "type": "string"
+    },
+    "logoUri": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "imageUri": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {}
+    }
+  },
+  "required": [
+    "address",
+    "description",
+    "id",
+    "imageUri",
+    "logoUri",
+    "metadata",
+    "name",
+    "tokenName",
+    "tokenSymbol",
+    "uri"
+  ]
+}

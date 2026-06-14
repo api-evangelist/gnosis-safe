@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeLastStatus",
+  "title": "SafeLastStatus",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "threshold": {
+      "type": "integer"
+    },
+    "nonce": {
+      "type": "integer"
+    },
+    "masterCopy": {
+      "type": "string"
+    },
+    "fallbackHandler": {
+      "type": "string"
+    },
+    "guard": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "moduleGuard": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enabledModules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "address",
+    "enabledModules",
+    "fallbackHandler",
+    "guard",
+    "masterCopy",
+    "moduleGuard",
+    "nonce",
+    "owners",
+    "threshold"
+  ]
+}

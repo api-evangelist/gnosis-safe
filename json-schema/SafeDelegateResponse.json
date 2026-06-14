@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeDelegateResponse",
+  "title": "SafeDelegateResponse",
+  "type": "object",
+  "properties": {
+    "safe": {
+      "type": "string"
+    },
+    "delegate": {
+      "type": "string"
+    },
+    "delegator": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "expiryDate": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "delegate",
+    "delegator",
+    "expiryDate",
+    "label",
+    "safe"
+  ]
+}

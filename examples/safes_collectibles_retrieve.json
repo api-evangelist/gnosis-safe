@@ -1,0 +1,85 @@
+{
+  "operationId": "safes_collectibles_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v2/safes/{address}/collectibles/",
+  "summary": "",
+  "description": "Get paginated collectibles (ERC721 tokens) and information about them of a given Safe account.\nThe maximum limit allowed is 10.",
+  "tags": [
+    "safes"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "trusted",
+      "in": "query",
+      "required": false,
+      "description": "If `True` just trusted tokens will be returned",
+      "schema": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    {
+      "name": "exclude_spam",
+      "in": "query",
+      "required": false,
+      "description": "If `True` spam tokens will not be returned",
+      "schema": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedSafeCollectibleResponseList"
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Safe not found",
+      "content": {}
+    },
+    "422": {
+      "description": "Safe address checksum not valid",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

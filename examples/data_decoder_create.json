@@ -1,0 +1,47 @@
+{
+  "operationId": "data_decoder_create",
+  "method": "POST",
+  "path": "/tx-service/eth/api/v1/data-decoder/",
+  "summary": "",
+  "description": "Please migrate to the new [safe-decoder-service](https://docs.safe.global/core-api/safe-decoder-service-overview)",
+  "tags": [
+    "data-decoder"
+  ],
+  "parameters": [],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/DataDecoder"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "200": {
+      "description": "Decoded data",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/DataDecoder"
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Cannot find function selector to decode data",
+      "content": {}
+    },
+    "422": {
+      "description": "Invalid data",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

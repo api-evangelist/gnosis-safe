@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeMultisigConfirmationResponse",
+  "title": "SafeMultisigConfirmationResponse",
+  "type": "object",
+  "properties": {
+    "owner": {
+      "type": "string"
+    },
+    "submissionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "transactionHash": {
+      "type": "string",
+      "readOnly": true
+    },
+    "signature": {
+      "type": "string"
+    },
+    "signatureType": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "owner",
+    "signature",
+    "signatureType",
+    "submissionDate",
+    "transactionHash"
+  ]
+}

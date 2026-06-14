@@ -1,0 +1,45 @@
+{
+  "operationId": "safes_creation_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safes/{address}/creation/",
+  "summary": "",
+  "description": "Returns detailed information on the Safe creation transaction of a given Safe.\n\nNote: When event indexing is being used and multiple Safes are deployed in the same transaction\nthe result might not be accurate due to the indexer not knowing which events belong to which Safe\ndeployment.",
+  "tags": [
+    "safes"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/SafeCreationInfoResponse"
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Safe creation not found",
+      "content": {}
+    },
+    "422": {
+      "description": "Owner address checksum not valid",
+      "content": {}
+    },
+    "503": {
+      "description": "Problem connecting to Ethereum network",
+      "content": {}
+    }
+  }
+}

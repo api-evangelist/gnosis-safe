@@ -1,0 +1,17 @@
+{
+  "operationId": "about_ethereum_rpc_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/about/ethereum-rpc/",
+  "summary": "",
+  "description": "Get information about the Ethereum RPC node used by the service",
+  "tags": [
+    "about"
+  ],
+  "parameters": [],
+  "responses": {
+    "200": {
+      "description": "No response body",
+      "content": {}
+    }
+  }
+}

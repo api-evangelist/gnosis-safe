@@ -1,0 +1,47 @@
+{
+  "operationId": "module_transaction_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/module-transaction/{module_transaction_id}",
+  "summary": "",
+  "description": "Returns a transaction executed from a module given its associated module transaction ID",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "module_transaction_id",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/SafeModuleTransactionResponse"
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Invalid moduleTransactionId",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "ModuleTransaction does not exist",
+      "content": {}
+    }
+  }
+}

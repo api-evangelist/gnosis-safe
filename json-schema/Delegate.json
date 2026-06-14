@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/Delegate",
+  "title": "Delegate",
+  "type": "object",
+  "description": ".. deprecated:: 4.38.0\n   Deprecated in favour of DelegateSerializerV2",
+  "properties": {
+    "safe": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "delegate": {
+      "type": "string"
+    },
+    "delegator": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string",
+      "maxLength": 50
+    }
+  },
+  "required": [
+    "delegate",
+    "delegator",
+    "label",
+    "signature"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/UserOperationResponse",
+  "title": "UserOperationResponse",
+  "type": "object",
+  "properties": {
+    "ethereumTxHash": {
+      "type": "string"
+    },
+    "sender": {
+      "type": "string"
+    },
+    "userOperationHash": {
+      "type": "string"
+    },
+    "nonce": {
+      "type": "string"
+    },
+    "initCode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "callData": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "callGasLimit": {
+      "type": "string"
+    },
+    "verificationGasLimit": {
+      "type": "string"
+    },
+    "preVerificationGas": {
+      "type": "string"
+    },
+    "maxFeePerGas": {
+      "type": "string"
+    },
+    "maxPriorityFeePerGas": {
+      "type": "string"
+    },
+    "paymaster": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "paymasterData": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "signature": {
+      "type": "string"
+    },
+    "entryPoint": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "callData",
+    "callGasLimit",
+    "entryPoint",
+    "ethereumTxHash",
+    "initCode",
+    "maxFeePerGas",
+    "maxPriorityFeePerGas",
+    "nonce",
+    "paymaster",
+    "paymasterData",
+    "preVerificationGas",
+    "sender",
+    "signature",
+    "userOperationHash",
+    "verificationGasLimit"
+  ]
+}

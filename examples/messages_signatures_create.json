@@ -1,0 +1,37 @@
+{
+  "operationId": "messages_signatures_create",
+  "method": "POST",
+  "path": "/tx-service/eth/api/v1/messages/{message_hash}/signatures/",
+  "summary": "",
+  "description": "Adds the signature of a message given its message hash\n\nNote: Safe must be v1.4.1 for EIP-1271 signatures to work.",
+  "tags": [
+    "messages"
+  ],
+  "parameters": [
+    {
+      "name": "message_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/SafeMessageSignature"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "201": {
+      "description": "Created",
+      "content": {}
+    }
+  }
+}

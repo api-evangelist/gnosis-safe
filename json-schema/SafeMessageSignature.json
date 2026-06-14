@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeMessageSignature",
+  "title": "SafeMessageSignature",
+  "type": "object",
+  "properties": {
+    "signature": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "signature"
+  ]
+}

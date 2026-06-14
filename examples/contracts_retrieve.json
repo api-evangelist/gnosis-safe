@@ -1,0 +1,33 @@
+{
+  "operationId": "contracts_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/contracts/{address}/",
+  "summary": "",
+  "description": "Please migrate to the new [safe-decoder-service](https://docs.safe.global/core-api/safe-decoder-service-overview)",
+  "tags": [
+    "contracts"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/Contract"
+          }
+        }
+      }
+    }
+  }
+}

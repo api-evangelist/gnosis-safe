@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/DelegateSerializerV2",
+  "title": "DelegateSerializerV2",
+  "type": "object",
+  "description": "Mixin to validate delegate operations data",
+  "properties": {
+    "safe": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "delegate": {
+      "type": "string"
+    },
+    "delegator": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "expiryDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "delegate",
+    "delegator",
+    "label",
+    "signature"
+  ]
+}

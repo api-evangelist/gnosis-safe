@@ -1,0 +1,31 @@
+{
+  "operationId": "delegates_create_2",
+  "method": "POST",
+  "path": "/tx-service/eth/api/v2/delegates/",
+  "summary": "",
+  "description": "Adds a new Safe delegate with a custom label. Calls with same delegate but different label or\nsigner will update the label or delegator if a different one is provided.\nTo generate the signature, the following EIP712 data hash needs to be signed:\n\n```python\n {\n    \"types\": {\n        \"EIP712Domain\": [\n            {\"name\": \"name\", \"type\": \"string\"},\n            {\"name\": \"version\", \"type\": \"string\"},\n            {\"name\": \"chainId\", \"type\": \"uint256\"},\n        ],\n        \"Delegate\": [\n            {\"name\": \"delegateAddress\", \"type\": \"address\"},\n            {\"name\": \"totp\", \"type\": \"uint256\"},\n        ],\n    },\n    \"primaryType\": \"Delegate\",\n    \"domain\": {\n        \"name\": \"Safe Transaction Service\",\n        \"version\": \"1.0\",\n        \"chainId\": chain_id,\n    },\n    \"message\": {\n        \"delegateAddress\": delegate_address,\n        \"totp\": totp,\n    },\n}\n```\n\nFor the signature we use `TOTP` with `T0=0` and `Tx=3600`. `TOTP` is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals).",
+  "tags": [
+    "delegates"
+  ],
+  "parameters": [],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/DelegateSerializerV2"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "202": {
+      "description": "Accepted",
+      "content": {}
+    },
+    "400": {
+      "description": "Malformed data",
+      "content": {}
+    }
+  }
+}

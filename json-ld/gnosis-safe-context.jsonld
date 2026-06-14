@@ -1,0 +1,81 @@
+{
+  "@context": {
+    "@vocab": "https://api.safe.global/vocab#",
+    "safe": {
+      "@id": "safe:safe",
+      "@type": "@id"
+    },
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "openapi": "https://spec.openapis.org/oas/v3.1.0#",
+    "Safe": "safe:Safe",
+    "Transaction": "safe:Transaction",
+    "MultisigTransaction": "safe:MultisigTransaction",
+    "EthereumTransaction": "safe:EthereumTransaction",
+    "ModuleTransaction": "safe:ModuleTransaction",
+    "Transfer": "safe:Transfer",
+    "Delegate": "safe:Delegate",
+    "Message": "safe:Message",
+    "UserOperation": "safe:UserOperation",
+    "SafeInfo": "safe:SafeInfo",
+    "Confirmation": "safe:Confirmation",
+    "Token": "safe:Token",
+    "nonce": "safe:nonce",
+    "threshold": "safe:threshold",
+    "owners": {
+      "@id": "safe:owners",
+      "@container": "@set"
+    },
+    "to": {
+      "@id": "safe:to",
+      "@type": "@id"
+    },
+    "value": "safe:value",
+    "data": "safe:data",
+    "operation": "safe:operation",
+    "gasToken": "safe:gasToken",
+    "safeTxGas": "safe:safeTxGas",
+    "baseGas": "safe:baseGas",
+    "gasPrice": "safe:gasPrice",
+    "refundReceiver": "safe:refundReceiver",
+    "safeTxHash": "safe:safeTxHash",
+    "isExecuted": "safe:isExecuted",
+    "isSuccessful": "safe:isSuccessful",
+    "txHash": "safe:txHash",
+    "blockNumber": "safe:blockNumber",
+    "submissionDate": {
+      "@id": "safe:submissionDate",
+      "@type": "xsd:dateTime"
+    },
+    "executionDate": {
+      "@id": "safe:executionDate",
+      "@type": "xsd:dateTime"
+    },
+    "delegator": "safe:delegator",
+    "delegate": "safe:delegate",
+    "label": "safe:label",
+    "signatures": "safe:signatures",
+    "confirmations": {
+      "@id": "safe:confirmations",
+      "@container": "@set"
+    },
+    "messageHash": "safe:messageHash",
+    "message": "safe:message",
+    "chainId": "safe:chainId",
+    "userOperationHash": "safe:userOperationHash",
+    "sender": "safe:sender",
+    "entryPoint": "safe:entryPoint",
+    "paymasterAndData": "safe:paymasterAndData",
+    "nftAddress": "safe:nftAddress",
+    "tokenId": "safe:tokenId",
+    "tokenAddress": "safe:tokenAddress",
+    "decimals": "safe:decimals",
+    "symbol": "safe:symbol",
+    "name": "safe:name",
+    "logoUri": "safe:logoUri",
+    "masterCopy": "safe:masterCopy",
+    "fallbackHandler": "safe:fallbackHandler",
+    "guard": "safe:guard",
+    "version": "safe:version"
+  }
+}

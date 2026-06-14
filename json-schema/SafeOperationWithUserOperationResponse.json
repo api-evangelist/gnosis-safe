@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeOperationWithUserOperationResponse",
+  "title": "SafeOperationWithUserOperationResponse",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "safeOperationHash": {
+      "type": "string"
+    },
+    "validAfter": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "moduleAddress": {
+      "type": "string"
+    },
+    "confirmations": {
+      "type": "object",
+      "additionalProperties": {},
+      "description": "Filters confirmations queryset\n\n:param obj: SafeOperation instance\n:return: Serialized queryset",
+      "readOnly": true
+    },
+    "preparedSignature": {
+      "type": "string",
+      "readOnly": true
+    },
+    "userOperation": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/UserOperationResponse"
+        }
+      ],
+      "readOnly": true
+    }
+  },
+  "required": [
+    "confirmations",
+    "created",
+    "modified",
+    "moduleAddress",
+    "preparedSignature",
+    "safeOperationHash",
+    "userOperation",
+    "validAfter",
+    "validUntil"
+  ]
+}

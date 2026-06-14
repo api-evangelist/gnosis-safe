@@ -1,0 +1,33 @@
+{
+  "operationId": "multisig_transactions_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/",
+  "summary": "",
+  "description": "Returns a multi-signature transaction given its Safe transaction hash",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "safe_tx_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/SafeMultisigTransactionResponse"
+          }
+        }
+      }
+    }
+  }
+}

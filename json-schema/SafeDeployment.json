@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeDeployment",
+  "title": "SafeDeployment",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "contracts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SafeDeploymentContract"
+      }
+    }
+  },
+  "required": [
+    "contracts",
+    "version"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeDeploymentContract",
+  "title": "SafeDeploymentContract",
+  "type": "object",
+  "properties": {
+    "contractName": {
+      "type": "string"
+    },
+    "address": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "address",
+    "contractName"
+  ]
+}

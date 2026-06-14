@@ -1,0 +1,43 @@
+{
+  "operationId": "owners_safes_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/owners/{address}/safes/",
+  "summary": "",
+  "description": "Returns the list of Safe accounts that have the given address as their owner",
+  "tags": [
+    "owners"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/OwnerResponse"
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Owner address checksum not valid",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

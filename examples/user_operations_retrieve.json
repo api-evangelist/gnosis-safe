@@ -1,0 +1,33 @@
+{
+  "operationId": "user_operations_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/user-operations/{user_operation_hash}/",
+  "summary": "",
+  "description": "Returns a UserOperation given its user operation hash",
+  "tags": [
+    "4337"
+  ],
+  "parameters": [
+    {
+      "name": "user_operation_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/UserOperationWithSafeOperationResponse"
+          }
+        }
+      }
+    }
+  }
+}

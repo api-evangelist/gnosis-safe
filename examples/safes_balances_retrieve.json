@@ -1,0 +1,64 @@
+{
+  "operationId": "safes_balances_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safes/{address}/balances/",
+  "summary": "",
+  "description": "Get balance for Ether and ERC20 tokens of a given Safe account",
+  "tags": [
+    "safes"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "trusted",
+      "in": "query",
+      "required": false,
+      "description": "If `True` just trusted tokens will be returned",
+      "schema": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    {
+      "name": "exclude_spam",
+      "in": "query",
+      "required": false,
+      "description": "If `True` spam tokens will not be returned",
+      "schema": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SafeBalanceResponse"
+            }
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Safe not found",
+      "content": {}
+    },
+    "422": {
+      "description": "Safe address checksum not valid",
+      "content": {}
+    }
+  }
+}

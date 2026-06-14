@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/Erc20Info",
+  "title": "Erc20Info",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "decimals": {
+      "type": "integer"
+    },
+    "logoUri": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "decimals",
+    "logoUri",
+    "name",
+    "symbol"
+  ]
+}

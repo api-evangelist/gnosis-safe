@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeExportTransaction",
+  "title": "SafeExportTransaction",
+  "type": "object",
+  "description": "Serializer for the export endpoint that returns transaction data optimized for CSV export",
+  "properties": {
+    "safe": {
+      "type": "string"
+    },
+    "From": {
+      "type": "string",
+      "title": " from"
+    },
+    "to": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "assetType": {
+      "type": "string"
+    },
+    "assetAddress": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "assetSymbol": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "assetDecimals": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "proposerAddress": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proposedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "executorAddress": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "executedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "transactionHash": {
+      "type": "string"
+    },
+    "contractAddress": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nonce": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "From",
+    "amount",
+    "assetAddress",
+    "assetDecimals",
+    "assetSymbol",
+    "assetType",
+    "contractAddress",
+    "executedAt",
+    "executorAddress",
+    "nonce",
+    "note",
+    "proposedAt",
+    "proposerAddress",
+    "safe",
+    "to",
+    "transactionHash"
+  ]
+}

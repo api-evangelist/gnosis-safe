@@ -1,0 +1,45 @@
+{
+  "operationId": "safes_safe_operations_create",
+  "method": "POST",
+  "path": "/tx-service/eth/api/v1/safes/{address}/safe-operations/",
+  "summary": "",
+  "description": "Adds a new SafeOperation for a given Safe account",
+  "tags": [
+    "4337"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/SafeOperation"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "201": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "additionalProperties": {},
+            "description": "Unspecified response body"
+          }
+        }
+      }
+    }
+  }
+}

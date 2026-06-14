@@ -1,0 +1,74 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "safe": "https://api.safe.global/vocab#"
+  },
+  "@type": "WebAPI",
+  "@id": "https://api.safe.global/tx-service/eth/api/v1",
+  "name": "Safe Transaction Service API",
+  "description": "REST API that tracks Safe multisig transactions on EVM chains. Provides endpoints to propose and retrieve multisig transactions, collect and confirm signatures off-chain, query incoming and outgoing transfers, list module transactions, and decode transaction data.",
+  "url": "https://docs.safe.global/core-api/transaction-service-overview",
+  "provider": {
+    "@type": "Organization",
+    "name": "Safe (Gnosis Safe)",
+    "url": "https://safe.global",
+    "sameAs": [
+      "https://github.com/safe-global",
+      "https://twitter.com/safe"
+    ]
+  },
+  "termsOfService": "https://safe.global/terms",
+  "documentation": "https://docs.safe.global/",
+  "softwareVersion": "3.1.0",
+  "availableChannel": [
+    {
+      "@type": "ServiceChannel",
+      "name": "Ethereum Mainnet",
+      "serviceUrl": "https://api.safe.global/tx-service/eth/api/v1"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Arbitrum",
+      "serviceUrl": "https://api.safe.global/tx-service/arb1/api/v1"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Optimism",
+      "serviceUrl": "https://api.safe.global/tx-service/oeth/api/v1"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Polygon",
+      "serviceUrl": "https://api.safe.global/tx-service/matic/api/v1"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Base",
+      "serviceUrl": "https://api.safe.global/tx-service/base/api/v1"
+    },
+    {
+      "@type": "ServiceChannel",
+      "name": "Gnosis Chain",
+      "serviceUrl": "https://api.safe.global/tx-service/gno/api/v1"
+    }
+  ],
+  "safe:paths": 49,
+  "safe:operations": 59,
+  "safe:schemas": 65,
+  "safe:tags": [
+    "about",
+    "analytics",
+    "contracts",
+    "data-decoder",
+    "delegates",
+    "messages",
+    "modules",
+    "multisig-transactions",
+    "notifications",
+    "owners",
+    "safes",
+    "tokens",
+    "transfers",
+    "user-operations"
+  ]
+}

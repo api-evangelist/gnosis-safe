@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeMultisigTransactionWithTransfersResponseSerializerV2",
+  "title": "SafeMultisigTransactionWithTransfersResponseSerializerV2",
+  "type": "object",
+  "properties": {
+    "safe": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "data": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "gasToken": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "safeTxGas": {
+      "type": "string"
+    },
+    "baseGas": {
+      "type": "string"
+    },
+    "gasPrice": {
+      "type": "string"
+    },
+    "refundReceiver": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nonce": {
+      "type": "string"
+    },
+    "executionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "submissionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "blockNumber": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "transactionHash": {
+      "type": "string"
+    },
+    "safeTxHash": {
+      "type": "string"
+    },
+    "proposer": {
+      "type": "string"
+    },
+    "proposedByDelegate": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "executor": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "isExecuted": {
+      "type": "boolean"
+    },
+    "isSuccessful": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "ethGasPrice": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "maxFeePerGas": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "maxPriorityFeePerGas": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "gasUsed": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "fee": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "payment": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "origin": {
+      "type": "string",
+      "readOnly": true
+    },
+    "dataDecoded": {
+      "type": "string",
+      "deprecated": true,
+      "description": "This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.",
+      "readOnly": true
+    },
+    "confirmationsRequired": {
+      "type": "integer"
+    },
+    "confirmations": {
+      "type": "object",
+      "additionalProperties": {},
+      "description": "Validate and check integrity of confirmations queryset\n\n:param obj: MultisigConfirmation instance\n:return: Serialized queryset\n:raises InternalValidationError: If any inconsistency is detected",
+      "readOnly": true
+    },
+    "trusted": {
+      "type": "boolean"
+    },
+    "signatures": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "transfers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TransferWithTokenInfoResponse"
+      }
+    },
+    "txType": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "baseGas",
+    "blockNumber",
+    "confirmations",
+    "confirmationsRequired",
+    "dataDecoded",
+    "ethGasPrice",
+    "executionDate",
+    "executor",
+    "fee",
+    "gasPrice",
+    "gasUsed",
+    "isExecuted",
+    "isSuccessful",
+    "maxFeePerGas",
+    "maxPriorityFeePerGas",
+    "modified",
+    "nonce",
+    "operation",
+    "origin",
+    "payment",
+    "proposedByDelegate",
+    "proposer",
+    "safe",
+    "safeTxGas",
+    "safeTxHash",
+    "signatures",
+    "submissionDate",
+    "to",
+    "transactionHash",
+    "transfers",
+    "trusted",
+    "txType",
+    "value"
+  ]
+}

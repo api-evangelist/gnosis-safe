@@ -1,0 +1,85 @@
+{
+  "operationId": "safes_export_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safes/{address}/export/",
+  "summary": "",
+  "description": "Get transactions optimized for CSV export with transfer information.\nThe maximum limit allowed is 1000.",
+  "tags": [
+    "safes"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "execution_date__gte",
+      "in": "query",
+      "required": false,
+      "description": "Filter transactions executed after this date (ISO format)",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "execution_date__lte",
+      "in": "query",
+      "required": false,
+      "description": "Filter transactions executed before this date (ISO format)",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Maximum number of transactions to return (max 1000)",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "Number of transactions to skip",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedSafeExportTransactionList"
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Safe not found",
+      "content": {}
+    },
+    "422": {
+      "description": "Safe address checksum not valid",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

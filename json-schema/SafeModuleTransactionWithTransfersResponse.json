@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.safe.global/schemas/SafeModuleTransactionWithTransfersResponse",
+  "title": "SafeModuleTransactionWithTransfersResponse",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "executionDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "blockNumber": {
+      "type": "integer"
+    },
+    "isSuccessful": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "transactionHash": {
+      "type": "string"
+    },
+    "safe": {
+      "type": "string"
+    },
+    "module": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string",
+      "format": "decimal",
+      "pattern": "^-?\\d{0,78}(?:\\.\\d{0,0})?$"
+    },
+    "data": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "type": "integer",
+      "description": "* `0` - CALL\n* `1` - DELEGATE_CALL\n* `2` - CREATE",
+      "x-spec-enum-id": "73baf6048b75e41c",
+      "minimum": 0,
+      "maximum": 32767
+    },
+    "dataDecoded": {
+      "type": "string",
+      "deprecated": true,
+      "description": "This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.",
+      "readOnly": true
+    },
+    "moduleTransactionId": {
+      "type": "string",
+      "description": "Internally calculated parameter to uniquely identify a moduleTransaction \n`ModuleTransactionId = i+tx_hash+trace_address`"
+    },
+    "transfers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TransferWithTokenInfoResponse"
+      }
+    },
+    "txType": {
+      "type": "string",
+      "readOnly": true
+    }
+  },
+  "required": [
+    "blockNumber",
+    "created",
+    "data",
+    "dataDecoded",
+    "executionDate",
+    "isSuccessful",
+    "module",
+    "moduleTransactionId",
+    "operation",
+    "safe",
+    "to",
+    "transactionHash",
+    "transfers",
+    "txType",
+    "value"
+  ]
+}

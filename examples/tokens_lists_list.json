@@ -1,0 +1,42 @@
+{
+  "operationId": "tokens_lists_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/tokens/lists/",
+  "summary": "",
+  "description": "Returns the list of tokens supported in the Safe Transaction Service",
+  "tags": [
+    "tokens"
+  ],
+  "parameters": [
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedTokenListList"
+          }
+        }
+      }
+    }
+  }
+}

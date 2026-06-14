@@ -1,0 +1,60 @@
+{
+  "operationId": "contracts_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/contracts/",
+  "summary": "",
+  "description": "Please migrate to the new [safe-decoder-service](https://docs.safe.global/core-api/safe-decoder-service-overview)",
+  "tags": [
+    "contracts"
+  ],
+  "parameters": [
+    {
+      "name": "trusted_for_delegate_call",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "boolean"
+      }
+    },
+    {
+      "name": "ordering",
+      "in": "query",
+      "required": false,
+      "description": "Which field to use when ordering the results.",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedContractList"
+          }
+        }
+      }
+    }
+  }
+}

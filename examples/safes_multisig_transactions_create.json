@@ -1,0 +1,51 @@
+{
+  "operationId": "safes_multisig_transactions_create",
+  "method": "POST",
+  "path": "/tx-service/eth/api/v1/safes/{address}/multisig-transactions/",
+  "summary": "",
+  "description": "Creates a multi-signature transaction for a given Safe account with its confirmations and\nretrieves all the information related.",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/SafeMultisigTransaction"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "201": {
+      "description": "Created or signature updated",
+      "content": {}
+    },
+    "400": {
+      "description": "Invalid data",
+      "content": {}
+    },
+    "422": {
+      "description": "Invalid ethereum address | User is not an owner | Invalid safeTxHash |Invalid signature | Nonce already executed | Sender is not an owner",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}

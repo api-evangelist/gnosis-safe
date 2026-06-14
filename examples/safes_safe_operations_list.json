@@ -1,0 +1,260 @@
+{
+  "operationId": "safes_safe_operations_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safes/{address}/safe-operations/",
+  "summary": "",
+  "description": "Returns the list of SafeOperations for a given Safe account",
+  "tags": [
+    "4337"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "modified__lt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "modified__gt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "modified__lte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "modified__gte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "valid_after__lt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "valid_after__gt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "valid_after__lte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "valid_after__gte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "valid_until__lt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "valid_until__gt",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "valid_until__lte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "valid_until__gte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "module_address",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "executed",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "boolean"
+      }
+    },
+    {
+      "name": "has_confirmations",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "boolean"
+      }
+    },
+    {
+      "name": "execution_date__gte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "execution_date__lte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "submission_date__gte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "submission_date__lte",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": "string",
+        "format": "date-time"
+      }
+    },
+    {
+      "name": "transaction_hash",
+      "in": "query",
+      "required": false,
+      "description": "",
+      "schema": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "byte"
+      }
+    },
+    {
+      "name": "ordering",
+      "in": "query",
+      "required": false,
+      "description": "Which field to use when ordering the results.",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedSafeOperationWithUserOperationResponseList"
+          }
+        }
+      }
+    }
+  }
+}

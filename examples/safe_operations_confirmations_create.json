@@ -1,0 +1,45 @@
+{
+  "operationId": "safe_operations_confirmations_create",
+  "method": "POST",
+  "path": "/tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/confirmations/",
+  "summary": "",
+  "description": "Add a confirmation for a transaction. More than one signature can be used. This endpoint does not support\nthe use of delegates to make a transaction trusted.",
+  "tags": [
+    "4337"
+  ],
+  "parameters": [
+    {
+      "name": "safe_operation_hash",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "requestBody": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/SafeOperationConfirmation"
+        }
+      }
+    },
+    "required": true
+  },
+  "responses": {
+    "201": {
+      "description": "Created",
+      "content": {}
+    },
+    "400": {
+      "description": "Malformed data",
+      "content": {}
+    },
+    "422": {
+      "description": "Error processing data",
+      "content": {}
+    }
+  }
+}

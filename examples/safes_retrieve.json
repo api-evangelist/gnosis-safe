@@ -1,0 +1,41 @@
+{
+  "operationId": "safes_retrieve",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safes/{address}/",
+  "summary": "",
+  "description": "Returns detailed information of a given Safe account",
+  "tags": [
+    "safes"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/SafeInfoResponse"
+          }
+        }
+      }
+    },
+    "404": {
+      "description": "Safe not found",
+      "content": {}
+    },
+    "422": {
+      "description": "code = 1: Checksum address validation failed\ncode = 50: Cannot get Safe info",
+      "content": {}
+    }
+  }
+}

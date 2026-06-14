@@ -1,0 +1,80 @@
+{
+  "operationId": "safes_all_transactions_list",
+  "method": "GET",
+  "path": "/tx-service/eth/api/v1/safes/{address}/all-transactions/",
+  "summary": "",
+  "description": "Returns all the *executed* transactions for a given Safe address.\nThe list has different structures depending on the transaction type:\n- Multisig Transactions for a Safe. `tx_type=MULTISIG_TRANSACTION`.\n- Module Transactions for a Safe. `tx_type=MODULE_TRANSACTION`\n- Incoming Transfers of Ether/ERC20 Tokens/ERC721 Tokens. `tx_type=ETHEREUM_TRANSACTION`\nOrdering_fields: [\"timestamp\"] eg: `-timestamp` (default one) or `timestamp`\n\nNote: This endpoint has a bug that will be fixed in next versions of the endpoint. Pagination is done\nusing the `Transaction Hash`, and due to that the number of relevant transactions with the same\n`Transaction Hash` cannot be known beforehand. So if there are only 2 transactions\nwith the same `Transaction Hash`, `count` of the endpoint will be 1\nbut there will be 2 transactions in the list.",
+  "tags": [
+    "transactions"
+  ],
+  "parameters": [
+    {
+      "name": "address",
+      "in": "path",
+      "required": true,
+      "description": "",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "ordering",
+      "in": "query",
+      "required": false,
+      "description": "Which field to use when ordering the results.",
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "description": "Number of results to return per page.",
+      "schema": {
+        "type": "integer"
+      }
+    },
+    {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "description": "The initial index from which to return the results.",
+      "schema": {
+        "type": "integer"
+      }
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "A list with every element with the structure of one of these transactiontypes",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/PaginatedAllTransactionsSchemaList"
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Ordering field is not valid",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Checksum address validation failed",
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/CodeErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}
