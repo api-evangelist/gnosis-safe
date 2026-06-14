@@ -1,0 +1,139 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Safe (Gnosis Safe)
+providerId: gnosis-safe
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - Multisig
+  - Smart Contract
+  - Blockchain
+  - DeFi
+  - Wallet
+  - FinOps
+  - FOCUS
+description: >-
+  FOCUS-aligned FinOps for Safe Transaction Service API. The dominant cost driver
+  is the monthly subscription tier (Builder free, Growth EUR 199/month, Scale EUR
+  499+/month), with the billing unit being one API unit per HTTP request to any Safe
+  Infrastructure endpoint. Webhook slots (Growth: 2, Scale: 10) add operational
+  capability but are included in the subscription with no per-event overage charge.
+  The Safe{Core} SDK (@safe-global/api-kit) and open-source safe-transaction-service
+  are free; cost begins only when using the hosted Safe Infrastructure. Custom plans
+  above Scale thresholds are negotiated directly with Safe. Pricing is denominated
+  in EUR. Charges are assessed monthly with hard quota blocking (HTTP 429) rather
+  than metered overage billing at the published tiers.
+sources:
+  - https://safe.global/api
+  - https://docs.safe.global/core-api/how-to-use-api-keys
+  - https://docs.safe.global/core-api/api-pricing
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Safe Ecosystem Foundation
+serviceCategory: Blockchain Infrastructure
+billingModel:
+  pricingCategory: Subscription (Tiered) + Custom Enterprise
+  billingFrequency: Monthly
+  billingCurrency: EUR
+  chargeCategories:
+    - Purchase
+    - Usage
+    - Adjustment
+    - Tax
+focusColumns:
+  ServiceName: Safe Transaction Service
+  ServiceCategory: Blockchain Infrastructure
+  ProviderName: Safe
+  PublisherName: Safe Ecosystem Foundation
+  InvoiceIssuerName: Safe Ecosystem Foundation
+  BillingCurrency: EUR
+  ChargeCategory: Purchase
+meters:
+  - name: subscription_builder
+    description: >-
+      Monthly Builder plan subscription. Free tier providing 50,000 API units/month
+      and 5 RPS. No monetary charge.
+    unit: month
+    aggregation: sum
+    price: 0
+    currency: EUR
+    dimensions:
+      - account_id
+      - plan_tier
+  - name: subscription_growth
+    description: >-
+      Monthly Growth plan subscription. EUR 199/month providing 1,000,000 API
+      units/month, 15 RPS, and 2 webhook endpoints.
+    unit: month
+    aggregation: sum
+    price: 199
+    currency: EUR
+    dimensions:
+      - account_id
+      - plan_tier
+  - name: subscription_scale
+    description: >-
+      Monthly Scale plan subscription. EUR 499+/month providing 3,000,000 API
+      units/month, 50 RPS, and 10 webhook endpoints. Custom pricing available
+      above standard thresholds.
+    unit: month
+    aggregation: sum
+    price: 499
+    currency: EUR
+    dimensions:
+      - account_id
+      - plan_tier
+  - name: api_units
+    description: >-
+      One API unit = one HTTP request to any Safe Infrastructure endpoint
+      (Transaction Service, Config Service, Client Gateway). Quota is capped per
+      plan; requests above the cap return HTTP 429 with no overage billing at
+      published tiers.
+    unit: api_unit
+    aggregation: sum
+    dimensions:
+      - account_id
+      - plan_tier
+      - chain_id
+      - endpoint_path
+principles:
+  - name: Visibility
+    description: >-
+      Inspect the quota-remaining response headers on every API call to track
+      monthly consumption in real time. Use the developer portal at
+      developer.safe.global to review historical usage and set up alerts before
+      hitting the monthly cap. Separate API keys per environment (dev/staging/prod)
+      to isolate cost attribution.
+  - name: Allocation
+    description: >-
+      Issue distinct API keys per application, team, or business unit to enable
+      fine-grained allocation of API unit consumption to cost centers. Log the
+      chain_id and endpoint_path dimensions with each request to break down costs
+      by network and operation type.
+  - name: Optimization
+    description: >-
+      Cache immutable data (executed transaction details, Safe configuration) locally
+      to reduce read request volume against the Transaction Service. Batch signature
+      confirmations where the signing flow permits it. Use webhooks (Growth/Scale)
+      instead of polling for pending transaction updates to reduce GET request count.
+      Right-size the plan: Builder is suitable for development/staging, Growth for
+      most production apps, Scale only when RPS or monthly volumes approach Growth
+      limits. Self-hosting safe-transaction-service (open-source) eliminates API unit
+      costs for infrastructure-owning teams.
+  - name: Accountability
+    description: >-
+      Assign a platform engineering or DevOps owner to monitor monthly quota burn
+      rate. Set up threshold alerts at 50%, 80%, and 95% of the monthly quota to
+      enable proactive plan upgrades rather than experiencing 429 blocking in
+      production. Evaluate upgrade from Builder to Growth before launching any
+      production workload. Negotiate custom Scale pricing if sustained throughput
+      exceeds 3M calls/month or 50 RPS.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,115 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Safe (Gnosis Safe)
+providerId: gnosis-safe
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - Multisig
+  - Smart Contract
+  - Blockchain
+  - DeFi
+  - Wallet
+  - Rate Limiting
+  - Throttling
+description: >-
+  Safe enforces per-plan rate limits on the Transaction Service API measured in
+  requests per second (RPS) and total monthly API units (one unit = one HTTP
+  request to any Safe Infrastructure endpoint). Unauthenticated callers are capped at
+  2 RPS and 5,000 monthly requests. Authenticated callers on the Builder free tier get
+  5 RPS and 50,000 monthly calls. Growth paid plan raises this to 15 RPS and 1M
+  monthly calls. Scale raises it to 50 RPS and 3M monthly calls. Remaining quota is
+  communicated via response headers on every call. When a plan's monthly quota is
+  exhausted, further requests return HTTP 429. Custom plans above Scale thresholds are
+  available via support@safe.global.
+sources:
+  - https://safe.global/api
+  - https://docs.safe.global/core-api/how-to-use-api-keys
+  - https://docs.safe.global/core-api/api-pricing
+responseCodes:
+  throttled: 429
+  unauthorized: 401
+  serverError: 500
+limits:
+  - name: Unauthenticated RPS
+    scope: global
+    metric: requests_per_second
+    limit: 2
+    timeFrame: second
+    plan: unauthenticated
+    notes: >-
+      No API key required but strictly limited; intended for initial exploration
+      only.
+  - name: Unauthenticated Monthly Quota
+    scope: global
+    metric: api_units
+    limit: 5000
+    timeFrame: month
+    plan: unauthenticated
+  - name: Builder RPS
+    scope: api_key
+    metric: requests_per_second
+    limit: 5
+    timeFrame: second
+    plan: builder
+  - name: Builder Monthly Quota
+    scope: api_key
+    metric: api_units
+    limit: 50000
+    timeFrame: month
+    plan: builder
+  - name: Growth RPS
+    scope: api_key
+    metric: requests_per_second
+    limit: 15
+    timeFrame: second
+    plan: growth
+  - name: Growth Monthly Quota
+    scope: api_key
+    metric: api_units
+    limit: 1000000
+    timeFrame: month
+    plan: growth
+  - name: Scale RPS
+    scope: api_key
+    metric: requests_per_second
+    limit: 50
+    timeFrame: second
+    plan: scale
+  - name: Scale Monthly Quota
+    scope: api_key
+    metric: api_units
+    limit: 3000000
+    timeFrame: month
+    plan: scale
+policies:
+  - name: 429 Throttling
+    description: >-
+      When the monthly quota cap or per-second rate limit is exceeded, the Safe
+      Transaction Service returns HTTP 429 Too Many Requests. Clients should
+      back off before retrying.
+  - name: Quota Headers
+    description: >-
+      Remaining monthly quota and current rate-limit status are communicated via
+      response headers on every API call. Applications should inspect these headers
+      to implement proactive throttling before hitting the hard cap.
+  - name: JWT API Key
+    description: >-
+      API keys are JWTs with configurable expiration. Separate keys are recommended
+      per environment (development, staging, production) to enable fine-grained
+      monitoring and revocation.
+  - name: Backoff Strategy
+    description: >-
+      Implement exponential backoff with jitter when receiving 429 or 5xx responses.
+      Cache Safe and transaction data locally where possible to avoid redundant
+      reads.
+  - name: Webhook Rate Management
+    description: >-
+      Webhook delivery is included with Growth (2 endpoints) and Scale (10 endpoints)
+      plans. Webhook retry logic and backpressure are managed by Safe infrastructure;
+      client webhook handlers should respond promptly (2xx) to avoid retry flooding.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

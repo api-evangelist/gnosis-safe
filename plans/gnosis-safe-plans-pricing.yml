@@ -1,0 +1,174 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Safe (Gnosis Safe)
+providerId: gnosis-safe
+created: '2026-06-13'
+modified: '2026-06-13'
+reconciled: true
+tags:
+  - Multisig
+  - Smart Contract
+  - Blockchain
+  - DeFi
+  - Wallet
+  - Plans
+description: >-
+  Safe publishes three self-serve tiers for access to the Safe Transaction Service API
+  and related infrastructure. All tiers require an API key (JWT) obtained from the
+  developer portal at developer.safe.global. Unauthenticated access is available only
+  for exploration (2 RPS, 5,000 monthly requests). The Builder tier is free for
+  prototyping. Growth and Scale are monthly subscriptions priced in Euros. One API
+  unit equals one HTTP request to any Safe Infrastructure endpoint. Custom pricing is
+  available above Scale thresholds via support@safe.global.
+sources:
+  - https://safe.global/api
+  - https://docs.safe.global/core-api/how-to-use-api-keys
+  - https://docs.safe.global/core-api/api-pricing
+plans:
+  - id: safe-unauthenticated
+    name: Unauthenticated (Exploration)
+    type: free
+    description: >-
+      No API key required. Strictly limited for initial exploration and testing
+      only. Not suitable for any sustained or production usage.
+    entries:
+      - label: Requests Per Second
+        name: rps
+        type: rate
+        metric: requests_per_second
+        limit: 2
+        timeFrame: second
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Monthly Requests
+        name: monthly_requests
+        type: quota
+        metric: api_units
+        limit: 5000
+        timeFrame: month
+        unit: 1
+        price: 0
+        userMultiplied: false
+    elements:
+      - name: Safe Transaction Service API (read/write)
+      - name: No webhooks
+      - name: No support
+  - id: safe-builder
+    name: Builder
+    type: free
+    description: >-
+      Free tier for prototyping and early development. Requires a free API key
+      from developer.safe.global. Suitable for development and testing; not
+      intended for production workloads.
+    entries:
+      - label: Monthly API Calls
+        name: monthly_calls
+        type: quota
+        metric: api_units
+        limit: 50000
+        timeFrame: month
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Requests Per Second
+        name: rps
+        type: rate
+        metric: requests_per_second
+        limit: 5
+        timeFrame: second
+        unit: 1
+        price: 0
+        userMultiplied: false
+    elements:
+      - name: Safe Transaction Service API (read/write)
+      - name: API Key (JWT) via developer portal
+      - name: No webhooks
+      - name: No support
+  - id: safe-growth
+    name: Growth
+    type: paid
+    description: >-
+      Most popular paid tier. Designed for production applications and protocol
+      operations. Includes 2 webhooks and chat support.
+    entries:
+      - label: Monthly Subscription
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        unit: 1
+        price: 199
+        currency: EUR
+        userMultiplied: false
+      - label: Monthly API Calls
+        name: monthly_calls
+        type: quota
+        metric: api_units
+        limit: 1000000
+        timeFrame: month
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Requests Per Second
+        name: rps
+        type: rate
+        metric: requests_per_second
+        limit: 15
+        timeFrame: second
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Safe Transaction Service API (read/write)
+      - name: API Key (JWT) via developer portal
+      - name: 2 Webhooks included
+      - name: Chat support
+  - id: safe-scale
+    name: Scale
+    type: paid
+    description: >-
+      Highest published tier. Designed for mission-critical, high-throughput
+      systems. Includes 10 webhooks, dedicated private chat support, and custom
+      pricing available above standard thresholds.
+    entries:
+      - label: Monthly Subscription (base)
+        name: monthly_subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        unit: 1
+        price: 499
+        currency: EUR
+        notes: Custom pricing available above thresholds; contact support@safe.global
+        userMultiplied: false
+      - label: Monthly API Calls
+        name: monthly_calls
+        type: quota
+        metric: api_units
+        limit: 3000000
+        timeFrame: month
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Requests Per Second
+        name: rps
+        type: rate
+        metric: requests_per_second
+        limit: 50
+        timeFrame: second
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Safe Transaction Service API (read/write)
+      - name: API Key (JWT) via developer portal
+      - name: 10 Webhooks included
+      - name: Dedicated private chat support
+      - name: Custom pricing above standard thresholds
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
