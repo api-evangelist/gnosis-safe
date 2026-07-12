@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gnosis-safe-transaction-service-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - cookie
+  - header
+schemes:
+- name: cookieAuth
+  type: apiKey
+  in: cookie
+  parameter: sessionid
+  sources:
+  - openapi/gnosis-safe-transaction-service-openapi.json
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Token-based authentication with required prefix "Token"
+  sources:
+  - openapi/gnosis-safe-transaction-service-openapi.json
