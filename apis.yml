@@ -118,6 +118,8 @@ apis:
       - type: Repository
         url: https://github.com/safe-global/safe-core-sdk
 common:
+  - type: AgenticAccess
+    url: agentic-access/gnosis-safe-agentic-access.yml
   - type: DomainSecurity
     url: security/gnosis-safe-domain-security.yml
   - type: Authentication

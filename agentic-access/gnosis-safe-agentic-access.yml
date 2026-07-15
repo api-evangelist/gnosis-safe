@@ -1,0 +1,702 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/gnosis-safe-transaction-service-openapi.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 59
+  by_action_class:
+    connected: 43
+    acting: 16
+  by_consequence:
+    read: 43
+    write: 16
+  human_in_the_loop_required: 0
+operations:
+- path: /tx-service/eth/api/v1/about/
+  method: get
+  operationId: about_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/about/deployments/
+  method: get
+  operationId: about_deployments_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/about/ethereum-rpc/
+  method: get
+  operationId: about_ethereum_rpc_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/about/ethereum-tracing-rpc/
+  method: get
+  operationId: about_ethereum_tracing_rpc_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/about/indexing/
+  method: get
+  operationId: about_indexing_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/about/singletons/
+  method: get
+  operationId: about_singletons_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/contracts/
+  method: get
+  operationId: contracts_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/contracts/{address}/
+  method: get
+  operationId: contracts_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/data-decoder/
+  method: post
+  operationId: data_decoder_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/delegates/
+  method: get
+  operationId: delegates_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/delegates/
+  method: post
+  operationId: delegates_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/delegates/{delegate_address}/
+  method: delete
+  operationId: delegates_destroy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/messages/{message_hash}/
+  method: get
+  operationId: messages_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/messages/{message_hash}/signatures/
+  method: post
+  operationId: messages_signatures_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/module-transaction/{module_transaction_id}
+  method: get
+  operationId: module_transaction_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/modules/{address}/safes/
+  method: get
+  operationId: modules_safes_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/
+  method: get
+  operationId: multisig_transactions_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/
+  method: delete
+  operationId: multisig_transactions_destroy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/
+  method: get
+  operationId: multisig_transactions_confirmations_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/
+  method: post
+  operationId: multisig_transactions_confirmations_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/owners/{address}/safes/
+  method: get
+  operationId: owners_safes_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/
+  method: get
+  operationId: safe_operations_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/confirmations/
+  method: get
+  operationId: safe_operations_confirmations_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/confirmations/
+  method: post
+  operationId: safe_operations_confirmations_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/safes/{address}/
+  method: get
+  operationId: safes_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/all-transactions/
+  method: get
+  operationId: safes_all_transactions_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/balances/
+  method: get
+  operationId: safes_balances_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/creation/
+  method: get
+  operationId: safes_creation_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/delegates/{delegate_address}/
+  method: delete
+  operationId: safes_delegates_destroy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/safes/{address}/export/
+  method: get
+  operationId: safes_export_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/incoming-transfers/
+  method: get
+  operationId: safes_incoming_transfers_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/messages/
+  method: get
+  operationId: safes_messages_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/messages/
+  method: post
+  operationId: safes_messages_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/safes/{address}/module-transactions/
+  method: get
+  operationId: safes_module_transactions_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/multisig-transactions/
+  method: get
+  operationId: safes_multisig_transactions_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/multisig-transactions/
+  method: post
+  operationId: safes_multisig_transactions_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/safes/{address}/multisig-transactions/estimations/
+  method: post
+  operationId: safes_multisig_transactions_estimations_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/safes/{address}/safe-operations/
+  method: get
+  operationId: safes_safe_operations_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/safe-operations/
+  method: post
+  operationId: safes_safe_operations_create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v1/safes/{address}/transfers/
+  method: get
+  operationId: safes_transfers_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/safes/{address}/user-operations/
+  method: get
+  operationId: safes_user_operations_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/tokens/
+  method: get
+  operationId: tokens_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/tokens/{address}/
+  method: get
+  operationId: tokens_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/tokens/lists/
+  method: get
+  operationId: tokens_lists_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/transfer/{transfer_id}
+  method: get
+  operationId: transfer_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v1/user-operations/{user_operation_hash}/
+  method: get
+  operationId: user_operations_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/analytics/multisig-transactions/by-origin/
+  method: get
+  operationId: analytics_multisig_transactions_by_origin_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/delegates/
+  method: get
+  operationId: delegates_list_2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/delegates/
+  method: post
+  operationId: delegates_create_2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v2/delegates/{delegate_address}/
+  method: delete
+  operationId: delegates_destroy_2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v2/modules/{address}/safes/
+  method: get
+  operationId: modules_safes_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/multisig-transactions/{safe_tx_hash}/
+  method: get
+  operationId: multisig_transactions_retrieve_2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/multisig-transactions/{safe_tx_hash}/
+  method: delete
+  operationId: multisig_transactions_destroy_2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tx-service/eth/api/v2/owners/{address}/safes/
+  method: get
+  operationId: owners_safes_list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/safes/{address}/all-transactions/
+  method: get
+  operationId: safes_all_transactions_list_2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/safes/{address}/balances/
+  method: get
+  operationId: safes_balances_retrieve_2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/safes/{address}/collectibles/
+  method: get
+  operationId: safes_collectibles_retrieve
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/safes/{address}/multisig-transactions/
+  method: get
+  operationId: safes_multisig_transactions_list_2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tx-service/eth/api/v2/safes/{address}/multisig-transactions/
+  method: post
+  operationId: safes_multisig_transactions_create_2
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
