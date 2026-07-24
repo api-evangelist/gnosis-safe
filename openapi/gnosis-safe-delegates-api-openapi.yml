@@ -1,0 +1,384 @@
+openapi: 3.1.0
+info:
+  title: Safe Transaction Service 4337 delegates API
+  version: 6.3.0
+  description: API to keep track of transactions sent via Safe smart contracts
+tags:
+- name: delegates
+paths:
+  /tx-service/eth/api/v1/delegates/:
+    get:
+      operationId: delegates_list
+      description: Returns a list with all the delegates
+      parameters:
+      - in: query
+        name: safe
+        schema:
+          type:
+          - string
+          - 'null'
+      - in: query
+        name: delegate
+        schema:
+          type: string
+      - in: query
+        name: delegator
+        schema:
+          type: string
+      - in: query
+        name: label
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - delegates
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      deprecated: true
+      responses:
+        '400':
+          description: Invalid data
+      path: /tx-service/eth/api/v1/delegates/
+      title: List Delegates
+      additionalInfo: ''
+    post:
+      operationId: delegates_create
+      description: "Adds a new Safe delegate with a custom label. Calls with same delegate but different label or\nsigner will update the label or delegator if a different one is provided\nFor the signature we are using TOTP with `T0=0` and `Tx=3600`. TOTP is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)\nTo generate the signature, this hash needs to be signed: keccak(checksummed address + str(int(current_epoch //\n3600)))\nAs an example, if the 0x132512f995866CcE1b0092384A6118EDaF4508Ff delegate is added and epoch=1586779140:\n     - `TOTP = epoch // 3600 = 1586779140 // 3600 = 440771`\n     - keccak(\"0x132512f995866CcE1b0092384A6118EDaF4508Ff440771\") would be the hash a Safe owner would\n     need to sign.`"
+      tags:
+      - delegates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Delegate'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      deprecated: true
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Malformed data
+      path: /tx-service/eth/api/v1/delegates/
+      title: Create Delegate
+      additionalInfo: ''
+  /tx-service/eth/api/v1/delegates/{delegate_address}/:
+    delete:
+      operationId: delegates_destroy
+      description: 'Delete every pair delegate/delegator found. Signature is built the same way as for adding a delegate,
+
+        but in this case the signer can be either the `delegator` (owner) or the `delegate` itself.
+
+        Check `POST /delegates/`'
+      parameters:
+      - in: path
+        name: delegate_address
+        schema:
+          type: string
+        required: true
+      tags:
+      - delegates
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      deprecated: true
+      responses:
+        '204':
+          description: Deleted
+        '400':
+          description: Malformed data
+        '404':
+          description: Delegate not found
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeErrorResponse'
+          description: Invalid Ethereum address/Error processing data
+      path: /tx-service/eth/api/v1/delegates/{delegate_address}/
+      title: Delete Delegate
+      additionalInfo: ''
+  /tx-service/eth/api/v1/safes/{address}/delegates/{delegate_address}/:
+    delete:
+      operationId: safes_delegates_destroy
+      description: 'Delete a delegate for a Safe. Signature is built the same way that for adding a delegate.
+
+        Check `POST /delegates/`'
+      parameters:
+      - in: path
+        name: address
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: delegate_address
+        schema:
+          type: string
+        required: true
+      tags:
+      - delegates
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      deprecated: true
+      responses:
+        '204':
+          description: Deleted
+        '400':
+          description: Malformed data
+        '404':
+          description: Delegate not found
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeErrorResponse'
+          description: Invalid Ethereum address | Error processing data
+      path: /tx-service/eth/api/v1/safes/{address}/delegates/{delegate_address}/
+      title: Remove Delegate from Safe
+      additionalInfo: ''
+  /tx-service/eth/api/v2/delegates/:
+    get:
+      operationId: delegates_list_2
+      description: Returns a list with all the delegates
+      parameters:
+      - in: query
+        name: safe
+        schema:
+          type:
+          - string
+          - 'null'
+      - in: query
+        name: delegate
+        schema:
+          type: string
+      - in: query
+        name: delegator
+        schema:
+          type: string
+      - in: query
+        name: label
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - delegates
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSafeDelegateResponseList'
+          description: ''
+        '400':
+          description: Invalid data
+      path: /tx-service/eth/api/v2/delegates/
+      title: List Delegates
+      additionalInfo: ''
+    post:
+      operationId: delegates_create_2
+      description: "Adds a new Safe delegate with a custom label. Calls with same delegate but different label or\nsigner will update the label or delegator if a different one is provided.\nTo generate the signature, the following EIP712 data hash needs to be signed:\n\n```python\n {\n    \"types\": {\n        \"EIP712Domain\": [\n            {\"name\": \"name\", \"type\": \"string\"},\n            {\"name\": \"version\", \"type\": \"string\"},\n            {\"name\": \"chainId\", \"type\": \"uint256\"},\n        ],\n        \"Delegate\": [\n            {\"name\": \"delegateAddress\", \"type\": \"address\"},\n            {\"name\": \"totp\", \"type\": \"uint256\"},\n        ],\n    },\n    \"primaryType\": \"Delegate\",\n    \"domain\": {\n        \"name\": \"Safe Transaction Service\",\n        \"version\": \"1.0\",\n        \"chainId\": chain_id,\n    },\n    \"message\": {\n        \"delegateAddress\": delegate_address,\n        \"totp\": totp,\n    },\n}\n```\n\nFor the signature we use `TOTP` with `T0=0` and `Tx=3600`. `TOTP` is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)."
+      tags:
+      - delegates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DelegateSerializerV2'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Malformed data
+      path: /tx-service/eth/api/v2/delegates/
+      title: Create Delegate
+      additionalInfo: ''
+  /tx-service/eth/api/v2/delegates/{delegate_address}/:
+    delete:
+      operationId: delegates_destroy_2
+      description: 'Removes every delegate/delegator pair found associated with a given delegate address. The
+
+        signature is built the same way as for adding a delegate, but in this case the signer can be
+
+        either the `delegator` (owner) or the `delegate` itself. Check `POST /delegates/` to learn more.'
+      parameters:
+      - in: path
+        name: delegate_address
+        schema:
+          type: string
+        required: true
+      tags:
+      - delegates
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: Deleted
+        '400':
+          description: Malformed data
+        '404':
+          description: Delegate not found
+        '422':
+          description: Invalid Ethereum address/Error processing data
+      path: /tx-service/eth/api/v2/delegates/{delegate_address}/
+      title: Delete Delegate
+      additionalInfo: ''
+components:
+  schemas:
+    CodeErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        arguments:
+          type: array
+          items: {}
+      required:
+      - arguments
+      - code
+      - message
+    DelegateSerializerV2:
+      type: object
+      description: Mixin to validate delegate operations data
+      properties:
+        safe:
+          type:
+          - string
+          - 'null'
+        delegate:
+          type: string
+        delegator:
+          type: string
+        signature:
+          type: string
+        label:
+          type: string
+          maxLength: 50
+        expiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      required:
+      - delegate
+      - delegator
+      - label
+      - signature
+    PaginatedSafeDelegateResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeDelegateResponse'
+    SafeDelegateResponse:
+      type: object
+      properties:
+        safe:
+          type: string
+        delegate:
+          type: string
+        delegator:
+          type: string
+        label:
+          type: string
+          maxLength: 50
+        expiryDate:
+          type: string
+          format: date-time
+      required:
+      - delegate
+      - delegator
+      - expiryDate
+      - label
+      - safe
+    Delegate:
+      type: object
+      description: ".. deprecated:: 4.38.0\n   Deprecated in favour of DelegateSerializerV2"
+      properties:
+        safe:
+          type:
+          - string
+          - 'null'
+        delegate:
+          type: string
+        delegator:
+          type: string
+        signature:
+          type: string
+        label:
+          type: string
+          maxLength: 50
+      required:
+      - delegate
+      - delegator
+      - label
+      - signature
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

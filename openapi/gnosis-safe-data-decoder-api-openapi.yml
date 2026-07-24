@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: Safe Transaction Service 4337 data-decoder API
+  version: 6.3.0
+  description: API to keep track of transactions sent via Safe smart contracts
+tags:
+- name: data-decoder
+paths:
+  /tx-service/eth/api/v1/data-decoder/:
+    post:
+      operationId: data_decoder_create
+      description: Please migrate to the new [safe-decoder-service](https://docs.safe.global/core-api/safe-decoder-service-overview)
+      tags:
+      - data-decoder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataDecoder'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      deprecated: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataDecoder'
+          description: Decoded data
+        '404':
+          description: Cannot find function selector to decode data
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CodeErrorResponse'
+          description: Invalid data
+      path: /tx-service/eth/api/v1/data-decoder/
+      title: Get Decoded Data
+      additionalInfo: ''
+components:
+  schemas:
+    CodeErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        arguments:
+          type: array
+          items: {}
+      required:
+      - arguments
+      - code
+      - message
+    DataDecoder:
+      type: object
+      properties:
+        data:
+          type: string
+        to:
+          type:
+          - string
+          - 'null'
+      required:
+      - data
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

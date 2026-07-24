@@ -1,0 +1,264 @@
+openapi: 3.1.0
+info:
+  title: Safe Transaction Service 4337 messages API
+  version: 6.3.0
+  description: API to keep track of transactions sent via Safe smart contracts
+tags:
+- name: messages
+paths:
+  /tx-service/eth/api/v1/messages/{message_hash}/:
+    get:
+      operationId: messages_retrieve
+      description: Returns detailed information on a message associated with a given message hash
+      parameters:
+      - in: path
+        name: message_hash
+        schema:
+          type: string
+        required: true
+      tags:
+      - messages
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SafeMessageResponse'
+          description: ''
+      path: /tx-service/eth/api/v1/messages/{message_hash}/
+      title: Get Message
+      additionalInfo: ''
+  /tx-service/eth/api/v1/messages/{message_hash}/signatures/:
+    post:
+      operationId: messages_signatures_create
+      description: 'Adds the signature of a message given its message hash
+
+
+        Note: Safe must be v1.4.1 for EIP-1271 signatures to work.'
+      parameters:
+      - in: path
+        name: message_hash
+        schema:
+          type: string
+        required: true
+      tags:
+      - messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SafeMessageSignature'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          description: Created
+      path: /tx-service/eth/api/v1/messages/{message_hash}/signatures/
+      title: Sign Message
+      additionalInfo: ''
+  /tx-service/eth/api/v1/safes/{address}/messages/:
+    get:
+      operationId: safes_messages_list
+      description: Returns the list of messages for a given Safe account
+      parameters:
+      - in: path
+        name: address
+        schema:
+          type: string
+        required: true
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - messages
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSafeMessageResponseList'
+          description: ''
+      path: /tx-service/eth/api/v1/safes/{address}/messages/
+      title: List Messages
+      additionalInfo: ''
+    post:
+      operationId: safes_messages_create
+      description: 'Adds a new message for a given Safe account.
+
+        Message can be:
+
+        - A ``string``, so ``EIP191`` will be used to get the hash.
+
+        - An ``EIP712`` ``object``.
+
+
+        Hash will be calculated from the provided ``message``. Sending a raw ``hash`` will not be accepted,
+
+        service needs to derive it itself.
+
+
+        Note: Safe must be v1.4.1 for EIP-1271 signatures to work.'
+      parameters:
+      - in: path
+        name: address
+        schema:
+          type: string
+        required: true
+      tags:
+      - messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SafeMessage'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          description: Created
+      path: /tx-service/eth/api/v1/safes/{address}/messages/
+      title: Create Signed Message
+      additionalInfo: ''
+components:
+  schemas:
+    SafeMessageSignature:
+      type: object
+      properties:
+        signature:
+          type: string
+      required:
+      - signature
+    PaginatedSafeMessageResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeMessageResponse'
+    SafeMessage:
+      type: object
+      properties:
+        message: {}
+        safeAppId:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+        signature:
+          type: string
+        origin:
+          type:
+          - string
+          - 'null'
+          maxLength: 200
+      required:
+      - message
+      - signature
+    SafeMessageResponse:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        safe:
+          type: string
+        messageHash:
+          type: string
+        message: {}
+        proposedBy:
+          type: string
+        safeAppId:
+          type: integer
+        confirmations:
+          type: object
+          additionalProperties: {}
+          description: 'Filters confirmations queryset
+
+
+            :param obj: SafeMessage instance
+
+            :return: Serialized queryset'
+          readOnly: true
+        preparedSignature:
+          type:
+          - string
+          - 'null'
+          description: 'Prepared signature sorted
+
+
+            :param obj: SafeMessage instance
+
+            :return: Serialized queryset'
+          readOnly: true
+        origin:
+          type: string
+          readOnly: true
+      required:
+      - confirmations
+      - created
+      - message
+      - messageHash
+      - modified
+      - origin
+      - preparedSignature
+      - proposedBy
+      - safe
+      - safeAppId
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"

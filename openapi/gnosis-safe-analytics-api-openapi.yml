@@ -1,0 +1,32 @@
+openapi: 3.1.0
+info:
+  title: Safe Transaction Service 4337 analytics API
+  version: 6.3.0
+  description: API to keep track of transactions sent via Safe smart contracts
+tags:
+- name: analytics
+paths:
+  /tx-service/eth/api/v2/analytics/multisig-transactions/by-origin/:
+    get:
+      operationId: analytics_multisig_transactions_by_origin_retrieve
+      tags:
+      - analytics
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+      path: /tx-service/eth/api/v2/analytics/multisig-transactions/by-origin/
+      title: ''
+      additionalInfo: ''
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
