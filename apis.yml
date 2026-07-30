@@ -12,7 +12,20 @@ description: >-
   Gnosis Chain, zkSync, and testnets. The Safe{Core} SDK (API Kit) provides a
   TypeScript client for the Transaction Service. Authentication uses JWT API keys
   with tiered plans ranging from a free Builder tier to high-throughput Scale plans.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/gnosis-safe.png
 tags:
   - Multisig
   - Smart Contract
@@ -27,96 +40,215 @@ created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.19'
 apis:
-  - aid: gnosis-safe:transaction-service
-    name: Safe Transaction Service API
-    description: >-
-      REST API that tracks Safe multisig transactions on EVM chains. Provides endpoints
-      to propose and retrieve multisig transactions, collect and confirm signatures
-      off-chain, query incoming and outgoing transfers, list module transactions, and
-      decode transaction data. Supports 40+ networks, each with its own service
-      instance accessible via api.safe.global/tx-service/{chain}/api/v1/.
-    humanURL: https://docs.safe.global/core-api/transaction-service-overview
-    baseURL: https://api.safe.global/tx-service/eth/api/v1
-    tags:
-      - Multisig
-      - Transactions
-      - Confirmations
-      - EVM
-      - Blockchain
-    properties:
-      - type: Documentation
-        url: https://docs.safe.global/core-api/transaction-service-overview
-      - type: OpenAPI
-        url: https://safe-transaction-mainnet.safe.global/api/schema/swagger-ui/
-  - aid: gnosis-safe:delegates
-    name: Safe Delegates API
-    description: >-
-      Endpoints for managing delegate relationships on a Safe. Delegates are
-      addresses authorized by Safe owners to propose transactions without being
-      full owners. Supports creating, listing, and deleting delegates for a given
-      Safe or delegator address.
-    humanURL: https://docs.safe.global/core-api/transaction-service-overview
-    baseURL: https://api.safe.global/tx-service/eth/api/v1
-    tags:
-      - Delegates
-      - Multisig
-      - Authorization
-    properties:
-      - type: Documentation
-        url: https://docs.safe.global/core-api/transaction-service-overview
-  - aid: gnosis-safe:messages
-    name: Safe Messages API
-    description: >-
-      Endpoints for off-chain message signing via Safe smart accounts. Allows
-      creating signed messages for a Safe, retrieving existing messages by their
-      hash, and listing all messages associated with a Safe address. Compliant with
-      EIP-191 and EIP-712 typed data signatures.
-    humanURL: https://docs.safe.global/core-api/transaction-service-overview
-    baseURL: https://api.safe.global/tx-service/eth/api/v1
-    tags:
-      - Messages
-      - EIP-712
-      - Signatures
-      - Off-chain
-    properties:
-      - type: Documentation
-        url: https://docs.safe.global/core-api/transaction-service-overview
-  - aid: gnosis-safe:4337
-    name: Safe 4337 User Operations API
-    description: >-
-      Endpoints supporting ERC-4337 account abstraction user operations for Safe
-      smart accounts. Allows listing, retrieving, and managing ERC-4337 user
-      operations associated with a Safe, enabling gas-abstracted and sponsored
-      transactions via bundlers.
-    humanURL: https://docs.safe.global/core-api/transaction-service-overview
-    baseURL: https://api.safe.global/tx-service/eth/api/v1
-    tags:
-      - ERC-4337
-      - Account Abstraction
-      - User Operations
-      - Bundler
-    properties:
-      - type: Documentation
-        url: https://docs.safe.global/core-api/transaction-service-overview
-  - aid: gnosis-safe:api-kit
-    name: Safe API Kit (TypeScript SDK)
-    description: >-
-      Official TypeScript client SDK for the Safe Transaction Service API. Wraps all
-      Transaction Service endpoints with typed methods for proposing transactions,
-      confirming signatures, fetching pending and executed transactions, and managing
-      delegates. Distributed via npm as @safe-global/api-kit.
-    humanURL: https://docs.safe.global/sdk/api-kit
-    baseURL: https://www.npmjs.com/package/@safe-global/api-kit
-    tags:
-      - SDK
-      - TypeScript
-      - JavaScript
-      - npm
-    properties:
-      - type: Documentation
-        url: https://docs.safe.global/sdk/api-kit
-      - type: Repository
-        url: https://github.com/safe-global/safe-core-sdk
+- aid: gnosis-safe:delegates
+  name: Safe Delegates API
+  description: >-
+    Endpoints for managing delegate relationships on a Safe. Delegates are addresses authorized by Safe
+    owners to propose transactions without being full owners. Supports creating, listing, and deleting
+    delegates for a given Safe or delegator address.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - Delegates
+  - Multisig
+  - Authorization
+  properties:
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:messages
+  name: Safe Messages API
+  description: >-
+    Endpoints for off-chain message signing via Safe smart accounts. Allows creating signed messages for
+    a Safe, retrieving existing messages by their hash, and listing all messages associated with a Safe
+    address. Compliant with EIP-191 and EIP-712 typed data signatures.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - Messages
+  - EIP-712
+  - Signatures
+  - Off-chain
+  properties:
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:4337
+  name: Safe 4337 User Operations API
+  description: >-
+    Endpoints supporting ERC-4337 account abstraction user operations for Safe smart accounts. Allows
+    listing, retrieving, and managing ERC-4337 user operations associated with a Safe, enabling gas-abstracted
+    and sponsored transactions via bundlers.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - ERC-4337
+  - Account Abstraction
+  - User Operations
+  - Bundler
+  properties:
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:api-kit
+  name: Safe API Kit (TypeScript SDK)
+  description: >-
+    Official TypeScript client SDK for the Safe Transaction Service API. Wraps all Transaction Service
+    endpoints with typed methods for proposing transactions, confirming signatures, fetching pending and
+    executed transactions, and managing delegates. Distributed via npm as @safe-global/api-kit.
+  humanURL: https://docs.safe.global/sdk/api-kit
+  baseURL: https://www.npmjs.com/package/@safe-global/api-kit
+  tags:
+  - SDK
+  - TypeScript
+  - JavaScript
+  - npm
+  properties:
+  - type: Documentation
+    url: https://docs.safe.global/sdk/api-kit
+  - type: Repository
+    url: https://github.com/safe-global/safe-core-sdk
+- aid: gnosis-safe:gnosis-safe-4337-api
+  name: Safe (Gnosis Safe) 4337 API
+  description: The 4337 API from Safe (Gnosis Safe) — 5 operation(s) for 4337.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - '4337'
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-4337-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-about-api
+  name: Safe (Gnosis Safe) about API
+  description: The about API from Safe (Gnosis Safe) — 6 operation(s) for about.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - about
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-about-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-analytics-api
+  name: Safe (Gnosis Safe) analytics API
+  description: The analytics API from Safe (Gnosis Safe) — 1 operation(s) for analytics.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-analytics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-contracts-api
+  name: Safe (Gnosis Safe) contracts API
+  description: The contracts API from Safe (Gnosis Safe) — 2 operation(s) for contracts.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-data-decoder-api
+  name: Safe (Gnosis Safe) data-decoder API
+  description: The data-decoder API from Safe (Gnosis Safe) — 1 operation(s) for data-decoder.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - data-decoder
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-data-decoder-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-delegates-api
+  name: Safe (Gnosis Safe) delegates API
+  description: The delegates API from Safe (Gnosis Safe) — 5 operation(s) for delegates.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - delegates
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-delegates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-messages-api
+  name: Safe (Gnosis Safe) messages API
+  description: The messages API from Safe (Gnosis Safe) — 3 operation(s) for messages.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - messages
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-messages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-modules-api
+  name: Safe (Gnosis Safe) modules API
+  description: The modules API from Safe (Gnosis Safe) — 2 operation(s) for modules.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - modules
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-modules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-owners-api
+  name: Safe (Gnosis Safe) owners API
+  description: The owners API from Safe (Gnosis Safe) — 2 operation(s) for owners.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - owners
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-owners-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-safes-api
+  name: Safe (Gnosis Safe) safes API
+  description: The safes API from Safe (Gnosis Safe) — 6 operation(s) for safes.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - safes
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-safes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-tokens-api
+  name: Safe (Gnosis Safe) tokens API
+  description: The tokens API from Safe (Gnosis Safe) — 3 operation(s) for tokens.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-transactions-api
+  name: Safe (Gnosis Safe) transactions API
+  description: The transactions API from Safe (Gnosis Safe) — 13 operation(s) for transactions.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
 common:
   - type: AgenticAccess
     url: agentic-access/gnosis-safe-agentic-access.yml
