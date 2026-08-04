@@ -1,0 +1,36 @@
+{
+  "provider": "gnosis-safe",
+  "sources": [
+    "gnosis-safe-4337-api-openapi.yml",
+    "gnosis-safe-about-api-openapi.yml",
+    "gnosis-safe-analytics-api-openapi.yml",
+    "gnosis-safe-contracts-api-openapi.yml",
+    "gnosis-safe-data-decoder-api-openapi.yml",
+    "gnosis-safe-delegates-api-openapi.yml",
+    "gnosis-safe-messages-api-openapi.yml",
+    "gnosis-safe-modules-api-openapi.yml",
+    "gnosis-safe-owners-api-openapi.yml",
+    "gnosis-safe-safes-api-openapi.yml",
+    "gnosis-safe-tokens-api-openapi.yml",
+    "gnosis-safe-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "gnosis-safe-4337-api-openapi.yml",
+    "gnosis-safe-about-api-openapi.yml",
+    "gnosis-safe-analytics-api-openapi.yml",
+    "gnosis-safe-contracts-api-openapi.yml",
+    "gnosis-safe-data-decoder-api-openapi.yml",
+    "gnosis-safe-delegates-api-openapi.yml",
+    "gnosis-safe-messages-api-openapi.yml",
+    "gnosis-safe-modules-api-openapi.yml",
+    "gnosis-safe-owners-api-openapi.yml",
+    "gnosis-safe-safes-api-openapi.yml",
+    "gnosis-safe-tokens-api-openapi.yml",
+    "gnosis-safe-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
