@@ -250,6 +250,15 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 common:
+  - type: IssueTracker
+    url: https://github.com/safe-global/safe-core-sdk/issues
+  - type: Releases
+    url: https://github.com/safe-global/safe-core-sdk/releases
+  - type: ContributionGuide
+    url: https://github.com/safe-global/safe-core-sdk/blob/main/CONTRIBUTING.md
+  - type: License
+    name: MIT
+    url: https://github.com/safe-global/safe-core-sdk/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/gnosis-safe-agentic-access.yml
   - type: DomainSecurity
