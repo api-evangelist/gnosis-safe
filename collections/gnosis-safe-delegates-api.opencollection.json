@@ -1,0 +1,239 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Safe Transaction Service 4337 delegates API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "delegates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "delegates_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/delegates/",
+            "params": [
+              {
+                "name": "safe",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delegate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delegator",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "label",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns a list with all the delegates"
+        },
+        {
+          "info": {
+            "name": "delegates_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/delegates/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Adds a new Safe delegate with a custom label. Calls with same delegate but different label or\nsigner will update the label or delegator if a different one is provided\nFor the signature we are using TOTP with `T0=0` and `Tx=3600`. TOTP is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)\nTo generate the signature, this hash needs to be signed: keccak(checksummed address + str(int(current_epoch //\n3600)))\nAs an example, if the 0x132"
+        },
+        {
+          "info": {
+            "name": "delegates_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/delegates/:delegate_address/",
+            "params": [
+              {
+                "name": "delegate_address",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete every pair delegate/delegator found. Signature is built the same way as for adding a delegate,\nbut in this case the signer can be either the `delegator` (owner) or the `delegate` itself.\nCheck `POST /delegates/`"
+        },
+        {
+          "info": {
+            "name": "safes_delegates_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safes/:address/delegates/:delegate_address/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "delegate_address",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a delegate for a Safe. Signature is built the same way that for adding a delegate.\nCheck `POST /delegates/`"
+        },
+        {
+          "info": {
+            "name": "delegates_list_2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v2/delegates/",
+            "params": [
+              {
+                "name": "safe",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delegate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delegator",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "label",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns a list with all the delegates"
+        },
+        {
+          "info": {
+            "name": "delegates_create_2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tx-service/eth/api/v2/delegates/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Adds a new Safe delegate with a custom label. Calls with same delegate but different label or\nsigner will update the label or delegator if a different one is provided.\nTo generate the signature, the following EIP712 data hash needs to be signed:\n\n```python\n {\n    \"types\": {\n        \"EIP712Domain\": [\n            {\"name\": \"name\", \"type\": \"string\"},\n            {\"name\": \"version\", \"type\": \"string\"},\n            {\"name\": \"chainId\", \"type\": \"uint256\"},\n        ],\n        \"Delegate\": [\n            {\"n"
+        },
+        {
+          "info": {
+            "name": "delegates_destroy_2",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/tx-service/eth/api/v2/delegates/:delegate_address/",
+            "params": [
+              {
+                "name": "delegate_address",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Removes every delegate/delegator pair found associated with a given delegate address. The\nsignature is built the same way as for adding a delegate, but in this case the signer can be\neither the `delegator` (owner) or the `delegate` itself. Check `POST /delegates/` to learn more."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

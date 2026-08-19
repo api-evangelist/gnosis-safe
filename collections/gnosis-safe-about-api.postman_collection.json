@@ -1,0 +1,709 @@
+{
+  "item": [
+    {
+      "id": "f284677c-d7f0-4803-9cca-c892dab1e88e",
+      "name": "about",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "55589cbf-cb0c-4cab-816f-133001efc0e9",
+          "name": "about retrieve",
+          "request": {
+            "name": "about retrieve",
+            "description": {
+              "content": "Returns information and configuration of the service",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "about",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3dddd136-3071-4d6d-93c8-609352ed5109",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "about",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10a97435-52b8-4513-b202-eadca2519a55",
+          "name": "about deployments list",
+          "request": {
+            "name": "about deployments list",
+            "description": {
+              "content": "Returns a list of safe deployments by version",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "about",
+                "deployments",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Filter by Safe version"
+                },
+                {
+                  "disabled": false,
+                  "key": "contract",
+                  "value": "<string>",
+                  "description": "Filter by Safe contract name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "20a755be-2166-481a-b395-199c60617485",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "about",
+                    "deployments",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contract",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"contracts\": [\n      {\n        \"address\": \"string\",\n        \"contractName\": \"string\"\n      },\n      {\n        \"address\": \"string\",\n        \"contractName\": \"string\"\n      }\n    ],\n    \"version\": \"string\"\n  },\n  {\n    \"contracts\": [\n      {\n        \"address\": \"string\",\n        \"contractName\": \"string\"\n      },\n      {\n        \"address\": \"string\",\n        \"contractName\": \"string\"\n      }\n    ],\n    \"version\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca804160-865d-475c-ae4c-b16af678ef6d",
+              "name": "Provided version does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "about",
+                    "deployments",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contract",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2f9eb43-2813-4f33-bab6-d45f9cc3c079",
+          "name": "about ethereum rpc retrieve",
+          "request": {
+            "name": "about ethereum rpc retrieve",
+            "description": {
+              "content": "Get information about the Ethereum RPC node used by the service",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "about",
+                "ethereum-rpc",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b667b87-8b05-46af-8f73-39d2774402df",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "about",
+                    "ethereum-rpc",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f35f5e89-1dcd-4620-979e-b1593d55907f",
+          "name": "about ethereum tracing rpc retrieve",
+          "request": {
+            "name": "about ethereum tracing rpc retrieve",
+            "description": {
+              "content": "Get information about the Ethereum Tracing RPC node used by the service (if any configured)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "about",
+                "ethereum-tracing-rpc",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ee7a7d00-c3a7-4893-a935-03544ce3e3b8",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "about",
+                    "ethereum-tracing-rpc",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "346ca747-bf62-44e5-93c7-d3dbb4a75c24",
+          "name": "about indexing retrieve",
+          "request": {
+            "name": "about indexing retrieve",
+            "description": {
+              "content": "Get current indexing status for ERC20/721 events",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "about",
+                "indexing",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8a65e844-a1dc-4a13-a89d-5811e574ab01",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "about",
+                    "indexing",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentBlockNumber\": 8536,\n  \"currentBlockTimestamp\": \"2004-09-04T18:51:53.696Z\",\n  \"erc20BlockNumber\": 6889,\n  \"erc20BlockTimestamp\": \"1981-03-21T18:32:22.901Z\",\n  \"erc20Synced\": true,\n  \"masterCopiesBlockNumber\": 4070,\n  \"masterCopiesBlockTimestamp\": \"2003-01-24T00:05:44.900Z\",\n  \"masterCopiesSynced\": true,\n  \"synced\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4fff7b3-c58c-40e0-9a1f-012a5d9ff1e1",
+          "name": "about singletons list",
+          "request": {
+            "name": "about singletons list",
+            "description": {
+              "content": "Returns a list of Master Copies configured in the service",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "about",
+                "singletons",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "505829f9-444c-475b-804f-43654c8aac77",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "about",
+                    "singletons",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"string\",\n    \"deployedBlockNumber\": 4131,\n    \"deployer\": \"string\",\n    \"l2\": true,\n    \"lastIndexedBlockNumber\": 3697,\n    \"version\": \"string\"\n  },\n  {\n    \"address\": \"string\",\n    \"deployedBlockNumber\": 8080,\n    \"deployer\": \"string\",\n    \"l2\": false,\n    \"lastIndexedBlockNumber\": 7397,\n    \"version\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c7d2499c-72ad-4552-b696-9285907132a4",
+    "name": "Safe Transaction Service 4337 about API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to keep track of transactions sent via Safe smart contracts",
+      "type": "text/plain"
+    }
+  }
+}

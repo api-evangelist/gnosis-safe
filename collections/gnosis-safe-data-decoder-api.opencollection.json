@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Safe Transaction Service 4337 data-decoder API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "data-decoder",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "data_decoder_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/data-decoder/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Please migrate to the new [safe-decoder-service](https://docs.safe.global/core-api/safe-decoder-service-overview)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

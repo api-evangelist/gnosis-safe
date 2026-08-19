@@ -1,0 +1,582 @@
+{
+  "item": [
+    {
+      "id": "2c356f68-6ceb-41d4-bf92-7fcb330b3e3b",
+      "name": "messages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "33033b65-7fdc-46b7-95d2-9076be7a7a48",
+          "name": "messages retrieve",
+          "request": {
+            "name": "messages retrieve",
+            "description": {
+              "content": "Returns detailed information on a message associated with a given message hash",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "messages",
+                ":message_hash",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "message_hash",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d3b96c4f-86e6-451e-82cf-140f1c9572f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "messages",
+                    ":message_hash",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "message_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"confirmations\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created\": \"1964-04-04T15:31:38.803Z\",\n  \"message\": \"\",\n  \"messageHash\": \"string\",\n  \"modified\": \"1981-12-04T07:49:03.557Z\",\n  \"origin\": \"string\",\n  \"preparedSignature\": \"string\",\n  \"proposedBy\": \"string\",\n  \"safe\": \"string\",\n  \"safeAppId\": 1763\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9276a6f-fc9c-4e01-bfb8-be3ed8ab72a2",
+          "name": "messages signatures create",
+          "request": {
+            "name": "messages signatures create",
+            "description": {
+              "content": "Adds the signature of a message given its message hash\n\nNote: Safe must be v1.4.1 for EIP-1271 signatures to work.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "messages",
+                ":message_hash",
+                "signatures",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "message_hash",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"signature\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e62f8c2c-cfd7-4c43-9884-77d23cf69935",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "messages",
+                    ":message_hash",
+                    "signatures",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "message_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9710648-e37a-4e41-a6bb-3d7c97d2141d",
+          "name": "safes messages list",
+          "request": {
+            "name": "safes messages list",
+            "description": {
+              "content": "Returns the list of messages for a given Safe account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "safes",
+                ":address",
+                "messages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Which field to use when ordering the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bee9df9f-24bd-40e6-8bfc-256abc1e129a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safes",
+                    ":address",
+                    "messages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"confirmations\": {\n        \"key_0\": {}\n      },\n      \"created\": \"1957-03-08T12:23:12.453Z\",\n      \"message\": \"\",\n      \"messageHash\": \"string\",\n      \"modified\": \"2001-01-13T22:37:56.872Z\",\n      \"origin\": \"string\",\n      \"preparedSignature\": \"string\",\n      \"proposedBy\": \"string\",\n      \"safe\": \"string\",\n      \"safeAppId\": 9164\n    },\n    {\n      \"confirmations\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"created\": \"1979-10-19T22:44:45.753Z\",\n      \"message\": \"\",\n      \"messageHash\": \"string\",\n      \"modified\": \"1983-11-01T08:47:50.389Z\",\n      \"origin\": \"string\",\n      \"preparedSignature\": \"string\",\n      \"proposedBy\": \"string\",\n      \"safe\": \"string\",\n      \"safeAppId\": 7761\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "015f8902-8b94-4d27-bed0-57db33ab5d5e",
+          "name": "safes messages create",
+          "request": {
+            "name": "safes messages create",
+            "description": {
+              "content": "Adds a new message for a given Safe account.\nMessage can be:\n- A ``string``, so ``EIP191`` will be used to get the hash.\n- An ``EIP712`` ``object``.\n\nHash will be calculated from the provided ``message``. Sending a raw ``hash`` will not be accepted,\nservice needs to derive it itself.\n\nNote: Safe must be v1.4.1 for EIP-1271 signatures to work.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "safes",
+                ":address",
+                "messages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"\",\n  \"signature\": \"<string>\",\n  \"safeAppId\": \"<integer,null>\",\n  \"origin\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2bbb769-82e1-407c-a6a7-c9dab01b0f77",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safes",
+                    ":address",
+                    "messages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"\",\n  \"signature\": \"<string>\",\n  \"safeAppId\": \"<integer,null>\",\n  \"origin\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f166a1d3-f2dc-4344-ad27-814f3682e97c",
+    "name": "Safe Transaction Service 4337 messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to keep track of transactions sent via Safe smart contracts",
+      "type": "text/plain"
+    }
+  }
+}

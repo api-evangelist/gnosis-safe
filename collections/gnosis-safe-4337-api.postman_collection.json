@@ -1,0 +1,1377 @@
+{
+  "item": [
+    {
+      "id": "05a60726-5355-4a20-832d-df62ed524de3",
+      "name": "4337",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "59b565d3-d80a-4edf-982a-c51569e17ae2",
+          "name": "safe operations retrieve",
+          "request": {
+            "name": "safe operations retrieve",
+            "description": {
+              "content": "Returns a SafeOperation given its Safe operation hash",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "safe-operations",
+                ":safe_operation_hash",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "safe_operation_hash",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a6daff48-cfa8-4e8a-be54-1b4d0db35ade",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safe-operations",
+                    ":safe_operation_hash",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "safe_operation_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"confirmations\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"created\": \"1997-11-20T21:17:48.503Z\",\n  \"modified\": \"2023-01-05T11:38:07.587Z\",\n  \"moduleAddress\": \"string\",\n  \"preparedSignature\": \"string\",\n  \"safeOperationHash\": \"string\",\n  \"userOperation\": {\n    \"callData\": \"string\",\n    \"callGasLimit\": \"string\",\n    \"entryPoint\": \"string\",\n    \"ethereumTxHash\": \"string\",\n    \"initCode\": \"string\",\n    \"maxFeePerGas\": \"string\",\n    \"maxPriorityFeePerGas\": \"string\",\n    \"nonce\": \"string\",\n    \"paymaster\": \"string\",\n    \"paymasterData\": \"string\",\n    \"preVerificationGas\": \"string\",\n    \"sender\": \"string\",\n    \"signature\": \"string\",\n    \"userOperationHash\": \"string\",\n    \"verificationGasLimit\": \"string\"\n  },\n  \"validAfter\": \"1948-06-11T06:09:47.085Z\",\n  \"validUntil\": \"2025-11-22T23:53:39.053Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a1a18d0-2453-4cc6-9681-fc7187454163",
+          "name": "safe operations confirmations list",
+          "request": {
+            "name": "safe operations confirmations list",
+            "description": {
+              "content": "Get the list of confirmations for a multisig transaction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "safe-operations",
+                ":safe_operation_hash",
+                "confirmations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "safe_operation_hash",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6cd4ae1a-cf9a-4574-9545-217ee82c9e3f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safe-operations",
+                    ":safe_operation_hash",
+                    "confirmations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "safe_operation_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"created\": \"1962-07-19T16:05:52.444Z\",\n      \"modified\": \"1954-07-04T04:42:26.865Z\",\n      \"owner\": \"string\",\n      \"signature\": \"string\",\n      \"signatureType\": \"string\"\n    },\n    {\n      \"created\": \"2014-08-20T01:26:22.958Z\",\n      \"modified\": \"1970-06-28T09:07:48.208Z\",\n      \"owner\": \"string\",\n      \"signature\": \"string\",\n      \"signatureType\": \"string\"\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91c568c2-8674-4954-8989-cd51231d591c",
+              "name": "Invalid data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safe-operations",
+                    ":safe_operation_hash",
+                    "confirmations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "safe_operation_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de6bbe4d-ef2c-4688-b96d-2c55a9f60a48",
+          "name": "safe operations confirmations create",
+          "request": {
+            "name": "safe operations confirmations create",
+            "description": {
+              "content": "Add a confirmation for a transaction. More than one signature can be used. This endpoint does not support\nthe use of delegates to make a transaction trusted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "safe-operations",
+                ":safe_operation_hash",
+                "confirmations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "safe_operation_hash",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"signature\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8601bb4-72aa-4053-b6bb-4fca6a7e7826",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safe-operations",
+                    ":safe_operation_hash",
+                    "confirmations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "safe_operation_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd72be63-a22d-4ccf-88d4-68fcb7d412d7",
+              "name": "Malformed data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safe-operations",
+                    ":safe_operation_hash",
+                    "confirmations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "safe_operation_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db25f805-3a9b-4706-9797-d52fecc9c09a",
+              "name": "Error processing data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safe-operations",
+                    ":safe_operation_hash",
+                    "confirmations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "safe_operation_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"signature\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35bbe356-b42a-4c92-8097-627201a8be33",
+          "name": "safes safe operations list",
+          "request": {
+            "name": "safes safe operations list",
+            "description": {
+              "content": "Returns the list of SafeOperations for a given Safe account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "safes",
+                ":address",
+                "safe-operations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "modified__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "modified__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "modified__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "modified__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valid_after__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valid_after__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valid_after__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valid_after__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valid_until__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valid_until__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valid_until__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valid_until__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "module_address",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "executed",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "has_confirmations",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "execution_date__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "execution_date__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "submission_date__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "submission_date__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "transaction_hash",
+                  "value": "<string,null-byte>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Which field to use when ordering the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5a02bc0e-32b0-49a5-94fb-2e0bd3583b6c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safes",
+                    ":address",
+                    "safe-operations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "modified__lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "modified__gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "modified__lte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "modified__gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "valid_after__lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "valid_after__gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "valid_after__lte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "valid_after__gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "valid_until__lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "valid_until__gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "valid_until__lte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "valid_until__gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "module_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "executed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "has_confirmations",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "execution_date__gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "execution_date__lte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "submission_date__gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "submission_date__lte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "transaction_hash",
+                      "value": "<string,null-byte>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"confirmations\": {\n        \"key_0\": {}\n      },\n      \"created\": \"2002-04-21T23:54:31.853Z\",\n      \"modified\": \"1977-05-11T02:26:21.177Z\",\n      \"moduleAddress\": \"string\",\n      \"preparedSignature\": \"string\",\n      \"safeOperationHash\": \"string\",\n      \"userOperation\": {\n        \"callData\": \"string\",\n        \"callGasLimit\": \"string\",\n        \"entryPoint\": \"string\",\n        \"ethereumTxHash\": \"string\",\n        \"initCode\": \"string\",\n        \"maxFeePerGas\": \"string\",\n        \"maxPriorityFeePerGas\": \"string\",\n        \"nonce\": \"string\",\n        \"paymaster\": \"string\",\n        \"paymasterData\": \"string\",\n        \"preVerificationGas\": \"string\",\n        \"sender\": \"string\",\n        \"signature\": \"string\",\n        \"userOperationHash\": \"string\",\n        \"verificationGasLimit\": \"string\"\n      },\n      \"validAfter\": \"1995-01-31T00:08:55.986Z\",\n      \"validUntil\": \"1960-08-10T17:10:58.412Z\"\n    },\n    {\n      \"confirmations\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"created\": \"1949-12-17T14:58:17.106Z\",\n      \"modified\": \"1980-11-08T12:01:23.969Z\",\n      \"moduleAddress\": \"string\",\n      \"preparedSignature\": \"string\",\n      \"safeOperationHash\": \"string\",\n      \"userOperation\": {\n        \"callData\": \"string\",\n        \"callGasLimit\": \"string\",\n        \"entryPoint\": \"string\",\n        \"ethereumTxHash\": \"string\",\n        \"initCode\": \"string\",\n        \"maxFeePerGas\": \"string\",\n        \"maxPriorityFeePerGas\": \"string\",\n        \"nonce\": \"string\",\n        \"paymaster\": \"string\",\n        \"paymasterData\": \"string\",\n        \"preVerificationGas\": \"string\",\n        \"sender\": \"string\",\n        \"signature\": \"string\",\n        \"userOperationHash\": \"string\",\n        \"verificationGasLimit\": \"string\"\n      },\n      \"validAfter\": \"1980-03-14T18:31:24.233Z\",\n      \"validUntil\": \"1977-03-26T07:53:39.308Z\"\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af98dc43-d321-4b96-8ac2-228061d50f2b",
+          "name": "safes safe operations create",
+          "request": {
+            "name": "safes safe operations create",
+            "description": {
+              "content": "Adds a new SafeOperation for a given Safe account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "safes",
+                ":address",
+                "safe-operations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callData\": \"<string,null>\",\n  \"callGasLimit\": \"<integer>\",\n  \"entryPoint\": \"<string>\",\n  \"initCode\": \"<string,null>\",\n  \"maxFeePerGas\": \"<integer>\",\n  \"maxPriorityFeePerGas\": \"<integer>\",\n  \"moduleAddress\": \"<string>\",\n  \"nonce\": \"<integer>\",\n  \"paymasterAndData\": \"<string,null>\",\n  \"preVerificationGas\": \"<integer>\",\n  \"signature\": \"<string>\",\n  \"validAfter\": \"<string,null-date-time>\",\n  \"validUntil\": \"<string,null-date-time>\",\n  \"verificationGasLimit\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8e1bc8b-432e-45ad-924e-f4604d84a126",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safes",
+                    ":address",
+                    "safe-operations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callData\": \"<string,null>\",\n  \"callGasLimit\": \"<integer>\",\n  \"entryPoint\": \"<string>\",\n  \"initCode\": \"<string,null>\",\n  \"maxFeePerGas\": \"<integer>\",\n  \"maxPriorityFeePerGas\": \"<integer>\",\n  \"moduleAddress\": \"<string>\",\n  \"nonce\": \"<integer>\",\n  \"paymasterAndData\": \"<string,null>\",\n  \"preVerificationGas\": \"<integer>\",\n  \"signature\": \"<string>\",\n  \"validAfter\": \"<string,null-date-time>\",\n  \"validUntil\": \"<string,null-date-time>\",\n  \"verificationGasLimit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30138048-ee1a-418e-ad08-aff212380b42",
+          "name": "safes user operations list",
+          "request": {
+            "name": "safes user operations list",
+            "description": {
+              "content": "Returns the list of UserOperations for a given Safe account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "safes",
+                ":address",
+                "user-operations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Which field to use when ordering the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "004c1f39-c2a6-4b83-99fe-44da5e23a48e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "safes",
+                    ":address",
+                    "user-operations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"callData\": \"string\",\n      \"callGasLimit\": \"string\",\n      \"entryPoint\": \"string\",\n      \"ethereumTxHash\": \"string\",\n      \"initCode\": \"string\",\n      \"maxFeePerGas\": \"string\",\n      \"maxPriorityFeePerGas\": \"string\",\n      \"nonce\": \"string\",\n      \"paymaster\": \"string\",\n      \"paymasterData\": \"string\",\n      \"preVerificationGas\": \"string\",\n      \"safeOperation\": {\n        \"confirmations\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"created\": \"1985-02-21T08:30:38.148Z\",\n        \"modified\": \"1977-02-01T20:19:31.875Z\",\n        \"moduleAddress\": \"string\",\n        \"preparedSignature\": \"string\",\n        \"safeOperationHash\": \"string\",\n        \"validAfter\": \"1974-05-17T08:28:18.444Z\",\n        \"validUntil\": \"1968-09-12T05:23:00.431Z\"\n      },\n      \"sender\": \"string\",\n      \"signature\": \"string\",\n      \"userOperationHash\": \"string\",\n      \"verificationGasLimit\": \"string\"\n    },\n    {\n      \"callData\": \"string\",\n      \"callGasLimit\": \"string\",\n      \"entryPoint\": \"string\",\n      \"ethereumTxHash\": \"string\",\n      \"initCode\": \"string\",\n      \"maxFeePerGas\": \"string\",\n      \"maxPriorityFeePerGas\": \"string\",\n      \"nonce\": \"string\",\n      \"paymaster\": \"string\",\n      \"paymasterData\": \"string\",\n      \"preVerificationGas\": \"string\",\n      \"safeOperation\": {\n        \"confirmations\": {\n          \"key_0\": {}\n        },\n        \"created\": \"2016-01-19T00:41:47.564Z\",\n        \"modified\": \"2004-12-26T01:21:34.500Z\",\n        \"moduleAddress\": \"string\",\n        \"preparedSignature\": \"string\",\n        \"safeOperationHash\": \"string\",\n        \"validAfter\": \"1986-11-30T19:31:56.531Z\",\n        \"validUntil\": \"1984-11-01T07:51:09.236Z\"\n      },\n      \"sender\": \"string\",\n      \"signature\": \"string\",\n      \"userOperationHash\": \"string\",\n      \"verificationGasLimit\": \"string\"\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "660ec17b-4a34-4e76-9471-2f4d27ba6f90",
+          "name": "user operations retrieve",
+          "request": {
+            "name": "user operations retrieve",
+            "description": {
+              "content": "Returns a UserOperation given its user operation hash",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "user-operations",
+                ":user_operation_hash",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_operation_hash",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d339f085-81d0-472d-b2d9-1476b8917aeb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "user-operations",
+                    ":user_operation_hash",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_operation_hash",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"callData\": \"string\",\n  \"callGasLimit\": \"string\",\n  \"entryPoint\": \"string\",\n  \"ethereumTxHash\": \"string\",\n  \"initCode\": \"string\",\n  \"maxFeePerGas\": \"string\",\n  \"maxPriorityFeePerGas\": \"string\",\n  \"nonce\": \"string\",\n  \"paymaster\": \"string\",\n  \"paymasterData\": \"string\",\n  \"preVerificationGas\": \"string\",\n  \"safeOperation\": {\n    \"confirmations\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"created\": \"1961-03-28T02:23:27.049Z\",\n    \"modified\": \"2004-05-27T23:09:50.849Z\",\n    \"moduleAddress\": \"string\",\n    \"preparedSignature\": \"string\",\n    \"safeOperationHash\": \"string\",\n    \"validAfter\": \"1963-05-29T04:49:06.566Z\",\n    \"validUntil\": \"2019-01-07T01:59:11.877Z\"\n  },\n  \"sender\": \"string\",\n  \"signature\": \"string\",\n  \"userOperationHash\": \"string\",\n  \"verificationGasLimit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f0dc266a-6cfd-4712-8d3b-66688275291c",
+    "name": "Safe Transaction Service 4337 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to keep track of transactions sent via Safe smart contracts",
+      "type": "text/plain"
+    }
+  }
+}

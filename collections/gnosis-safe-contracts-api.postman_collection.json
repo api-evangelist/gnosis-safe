@@ -1,0 +1,297 @@
+{
+  "item": [
+    {
+      "id": "34321bef-44b2-41d0-a7fb-6f4f70701f7f",
+      "name": "contracts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cb66f977-51c9-4342-8e0d-eb55093c63e5",
+          "name": "contracts list",
+          "request": {
+            "name": "contracts list",
+            "description": {
+              "content": "Please migrate to the new [safe-decoder-service](https://docs.safe.global/core-api/safe-decoder-service-overview)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "contracts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "trusted_for_delegate_call",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Which field to use when ordering the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The initial index from which to return the results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6f64764f-35aa-4a78-ad84-66df84256ba0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "contracts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "trusted_for_delegate_call",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"address\": \"string\",\n      \"contractAbi\": {\n        \"abi\": [\n          {\n            \"key_0\": {},\n            \"key_1\": {}\n          },\n          {\n            \"key_0\": {}\n          }\n        ],\n        \"description\": \"string\",\n        \"relevance\": 1120\n      },\n      \"displayName\": \"string\",\n      \"logoUri\": \"http://UuBwmviZQZHhQCtwzvWwSoWjctixFBSJ.mtbmbPOTZ\",\n      \"name\": \"string\",\n      \"trustedForDelegateCall\": true\n    },\n    {\n      \"address\": \"string\",\n      \"contractAbi\": {\n        \"abi\": [\n          {\n            \"key_0\": {},\n            \"key_1\": {}\n          },\n          {\n            \"key_0\": {},\n            \"key_1\": {}\n          }\n        ],\n        \"description\": \"string\",\n        \"relevance\": 5980\n      },\n      \"displayName\": \"string\",\n      \"logoUri\": \"https://FPR.sqeE7Qe43dzYtgn2BTwfa+nNgLo,Ei8dv16KZnuZoI5Cde6tbGSxBLDtA6r-DWoarRsx1tE2B,j\",\n      \"name\": \"string\",\n      \"trustedForDelegateCall\": false\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?offset=400&limit=100\",\n  \"previous\": \"http://api.example.org/accounts/?offset=200&limit=100\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8447b51-4060-46ff-bc50-56e8614f704c",
+          "name": "contracts retrieve",
+          "request": {
+            "name": "contracts retrieve",
+            "description": {
+              "content": "Please migrate to the new [safe-decoder-service](https://docs.safe.global/core-api/safe-decoder-service-overview)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tx-service",
+                "eth",
+                "api",
+                "v1",
+                "contracts",
+                ":address",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "sessionid"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b096b3d-ed56-4c5a-85a6-de01a8a177fb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tx-service",
+                    "eth",
+                    "api",
+                    "v1",
+                    "contracts",
+                    ":address",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "sessionid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"string\",\n  \"contractAbi\": {\n    \"abi\": [\n      {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      }\n    ],\n    \"description\": \"string\",\n    \"relevance\": 5920\n  },\n  \"displayName\": \"string\",\n  \"logoUri\": \"http://JalpUruZnLBCwDMkGPOTNeFs.sjPMYlBqErsW5uucv2JH47wJurqYu4bN2\",\n  \"name\": \"string\",\n  \"trustedForDelegateCall\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bed3067b-3853-4b53-8822-c1ee5eca951e",
+    "name": "Safe Transaction Service 4337 contracts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to keep track of transactions sent via Safe smart contracts",
+      "type": "text/plain"
+    }
+  }
+}

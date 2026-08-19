@@ -1,0 +1,342 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Safe Transaction Service 4337 API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "4337",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "safe_operations_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safe-operations/:safe_operation_hash/",
+            "params": [
+              {
+                "name": "safe_operation_hash",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns a SafeOperation given its Safe operation hash"
+        },
+        {
+          "info": {
+            "name": "safe_operations_confirmations_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safe-operations/:safe_operation_hash/confirmations/",
+            "params": [
+              {
+                "name": "safe_operation_hash",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the list of confirmations for a multisig transaction"
+        },
+        {
+          "info": {
+            "name": "safe_operations_confirmations_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safe-operations/:safe_operation_hash/confirmations/",
+            "params": [
+              {
+                "name": "safe_operation_hash",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Add a confirmation for a transaction. More than one signature can be used. This endpoint does not support\nthe use of delegates to make a transaction trusted."
+        },
+        {
+          "info": {
+            "name": "safes_safe_operations_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safes/:address/safe-operations/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "modified__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modified__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modified__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "modified__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "valid_after__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "valid_after__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "valid_after__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "valid_after__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "valid_until__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "valid_until__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "valid_until__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "valid_until__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "module_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "executed",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "has_confirmations",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "execution_date__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "execution_date__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "submission_date__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "submission_date__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "transaction_hash",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns the list of SafeOperations for a given Safe account"
+        },
+        {
+          "info": {
+            "name": "safes_safe_operations_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safes/:address/safe-operations/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Adds a new SafeOperation for a given Safe account"
+        },
+        {
+          "info": {
+            "name": "safes_user_operations_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safes/:address/user-operations/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns the list of UserOperations for a given Safe account"
+        },
+        {
+          "info": {
+            "name": "user_operations_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/user-operations/:user_operation_hash/",
+            "params": [
+              {
+                "name": "user_operation_hash",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns a UserOperation given its user operation hash"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

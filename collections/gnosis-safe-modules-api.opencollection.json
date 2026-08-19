@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Safe Transaction Service 4337 modules API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "modules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "modules_safes_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/modules/:address/safes/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns the list of Safes that have the provided module enabled"
+        },
+        {
+          "info": {
+            "name": "modules_safes_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v2/modules/:address/safes/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns a paginated list of Safe accounts that have the provided module enabled."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

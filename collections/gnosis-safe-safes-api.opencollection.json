@@ -1,0 +1,246 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Safe Transaction Service 4337 safes API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "safes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "safes_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safes/:address/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns detailed information of a given Safe account"
+        },
+        {
+          "info": {
+            "name": "safes_balances_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safes/:address/balances/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trusted",
+                "value": "",
+                "type": "query",
+                "description": "If `True` just trusted tokens will be returned"
+              },
+              {
+                "name": "exclude_spam",
+                "value": "",
+                "type": "query",
+                "description": "If `True` spam tokens will not be returned"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get balance for Ether and ERC20 tokens of a given Safe account"
+        },
+        {
+          "info": {
+            "name": "safes_creation_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safes/:address/creation/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns detailed information on the Safe creation transaction of a given Safe.\n\nNote: When event indexing is being used and multiple Safes are deployed in the same transaction\nthe result might not be accurate due to the indexer not knowing which events belong to which Safe\ndeployment."
+        },
+        {
+          "info": {
+            "name": "safes_export_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v1/safes/:address/export/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "execution_date__gte",
+                "value": "",
+                "type": "query",
+                "description": "Filter transactions executed after this date (ISO format)"
+              },
+              {
+                "name": "execution_date__lte",
+                "value": "",
+                "type": "query",
+                "description": "Filter transactions executed before this date (ISO format)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of transactions to return (max 1000)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions to skip"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get transactions optimized for CSV export with transfer information.\nThe maximum limit allowed is 1000."
+        },
+        {
+          "info": {
+            "name": "safes_balances_retrieve_2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v2/safes/:address/balances/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trusted",
+                "value": "",
+                "type": "query",
+                "description": "If `True` just trusted tokens will be returned"
+              },
+              {
+                "name": "exclude_spam",
+                "value": "",
+                "type": "query",
+                "description": "If `True` spam tokens will not be returned"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get paginated balances for Ether and ERC20 tokens.\nThe maximum limit allowed is 200."
+        },
+        {
+          "info": {
+            "name": "safes_collectibles_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/tx-service/eth/api/v2/safes/:address/collectibles/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trusted",
+                "value": "",
+                "type": "query",
+                "description": "If `True` just trusted tokens will be returned"
+              },
+              {
+                "name": "exclude_spam",
+                "value": "",
+                "type": "query",
+                "description": "If `True` spam tokens will not be returned"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The initial index from which to return the results."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "sessionid",
+              "value": "{{sessionid}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get paginated collectibles (ERC721 tokens) and information about them of a given Safe account.\nThe maximum limit allowed is 10."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
