@@ -33,6 +33,16 @@ tags:
   - Web3
   - Blockchain
   - DeFi
+  - SAFe
+  - Gnosis
+  - Wallets
+tags_raw:
+  - Multisig
+  - Smart Contract
+  - Ethereum
+  - Web3
+  - Blockchain
+  - DeFi
   - Safe
   - Gnosis
   - Wallet
@@ -64,6 +74,11 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Message
+  - EIP-712
+  - Signatures
+  - Off-chain
+  tags_raw:
   - Messages
   - EIP-712
   - Signatures
@@ -123,6 +138,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - About
+  tags_raw:
   - about
   properties:
   - type: OpenAPI
@@ -135,6 +152,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Analytics
+  tags_raw:
   - analytics
   properties:
   - type: OpenAPI
@@ -147,6 +166,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Contracts
+  tags_raw:
   - contracts
   properties:
   - type: OpenAPI
@@ -171,6 +192,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Delegates
+  tags_raw:
   - delegates
   properties:
   - type: OpenAPI
@@ -183,6 +206,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Message
+  tags_raw:
   - messages
   properties:
   - type: OpenAPI
@@ -195,6 +220,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Modules
+  tags_raw:
   - modules
   properties:
   - type: OpenAPI
@@ -207,6 +234,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Owners
+  tags_raw:
   - owners
   properties:
   - type: OpenAPI
@@ -219,6 +248,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - SAFEs
+  tags_raw:
   - safes
   properties:
   - type: OpenAPI
@@ -231,6 +262,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Tokens
+  tags_raw:
   - tokens
   properties:
   - type: OpenAPI
@@ -243,6 +276,8 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
+  - Transaction
+  tags_raw:
   - transactions
   properties:
   - type: OpenAPI
