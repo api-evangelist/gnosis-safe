@@ -47,7 +47,7 @@ tags:
   - Web3
   - Blockchain
   - DeFi
-  - SAFe
+  - Safe
   - Gnosis
   - Wallets
 tags_raw:
@@ -180,7 +180,7 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
-  - Contracts
+  - contracts
   tags_raw:
   - contracts
   properties:
