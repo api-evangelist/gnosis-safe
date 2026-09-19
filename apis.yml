@@ -263,7 +263,7 @@ apis:
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
   tags:
-  - SAFEs
+  - SAFe
   tags_raw:
   - safes
   properties:
