@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Safe Transaction Service 4337 safes API
+  title: Safe Transaction Service Safes API
   version: 6.3.0
   description: API to keep track of transactions sent via Safe smart contracts
 tags:
@@ -38,6 +38,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/
       title: Get Safe Status
       additionalInfo: ''
+      summary: Safes retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/balances/:
     get:
       operationId: safes_balances_retrieve
@@ -82,6 +84,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/balances/
       title: List a Safe's Balances (Deprecated)
       additionalInfo: ''
+      summary: Safes balances retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/creation/:
     get:
       operationId: safes_creation_retrieve
@@ -121,6 +125,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/creation/
       title: Get Safe Creation Status
       additionalInfo: ''
+      summary: Safes creation retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/export/:
     get:
       operationId: safes_export_retrieve
@@ -179,6 +185,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/export/
       title: Get Transactions for CSV Export
       additionalInfo: ''
+      summary: Safes export retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v2/safes/{address}/balances/:
     get:
       operationId: safes_balances_retrieve_2
@@ -237,6 +245,8 @@ paths:
       path: /tx-service/eth/api/v2/safes/{address}/balances/
       title: Get Safe Balances
       additionalInfo: ''
+      summary: Safes balances retrieve 2
+      x-summary-source: derived
   /tx-service/eth/api/v2/safes/{address}/collectibles/:
     get:
       operationId: safes_collectibles_retrieve
@@ -295,173 +305,50 @@ paths:
       path: /tx-service/eth/api/v2/safes/{address}/collectibles/
       title: List Collectibles
       additionalInfo: ''
+      summary: Safes collectibles retrieve
+      x-summary-source: derived
 components:
   schemas:
-    PaginatedSafeCollectibleResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeCollectibleResponse'
-    SafeCreationInfoResponse:
+    SafeInfoResponse:
       type: object
       properties:
-        created:
-          type: string
-          format: date-time
-        creator:
-          type: string
-        transactionHash:
-          type: string
-        factoryAddress:
-          type: string
-        masterCopy:
-          type:
-          - string
-          - 'null'
-        setupData:
-          type:
-          - string
-          - 'null'
-        saltNonce:
-          type:
-          - string
-          - 'null'
-        dataDecoded:
-          type: object
-          additionalProperties: {}
-          readOnly: true
-        userOperation:
-          oneOf:
-          - $ref: '#/components/schemas/UserOperationWithSafeOperationResponse'
-          - type: 'null'
-      required:
-      - created
-      - creator
-      - dataDecoded
-      - factoryAddress
-      - masterCopy
-      - saltNonce
-      - setupData
-      - transactionHash
-      - userOperation
-    PaginatedSafeExportTransactionList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeExportTransaction'
-    CodeErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        arguments:
-          type: array
-          items: {}
-      required:
-      - arguments
-      - code
-      - message
-    UserOperationWithSafeOperationResponse:
-      type: object
-      properties:
-        ethereumTxHash:
-          type: string
-        sender:
-          type: string
-        userOperationHash:
+        address:
           type: string
         nonce:
           type: string
-        initCode:
+        threshold:
+          type: integer
+        owners:
+          type: array
+          items:
+            type: string
+        masterCopy:
+          type: string
+        modules:
+          type: array
+          items:
+            type: string
+        fallbackHandler:
+          type: string
+        guard:
+          type: string
+        moduleGuard:
+          type: string
+        version:
           type:
           - string
           - 'null'
-        callData:
-          type:
-          - string
-          - 'null'
-        callGasLimit:
-          type: string
-        verificationGasLimit:
-          type: string
-        preVerificationGas:
-          type: string
-        maxFeePerGas:
-          type: string
-        maxPriorityFeePerGas:
-          type: string
-        paymaster:
-          type:
-          - string
-          - 'null'
-        paymasterData:
-          type:
-          - string
-          - 'null'
-        signature:
-          type: string
-        entryPoint:
-          type: string
-        safeOperation:
-          oneOf:
-          - $ref: '#/components/schemas/SafeOperationResponse'
-          - type: 'null'
-          readOnly: true
       required:
-      - callData
-      - callGasLimit
-      - entryPoint
-      - ethereumTxHash
-      - initCode
-      - maxFeePerGas
-      - maxPriorityFeePerGas
+      - address
+      - fallbackHandler
+      - guard
+      - masterCopy
+      - moduleGuard
+      - modules
       - nonce
-      - paymaster
-      - paymasterData
-      - preVerificationGas
-      - safeOperation
-      - sender
-      - signature
-      - userOperationHash
-      - verificationGasLimit
+      - owners
+      - threshold
+      - version
     SafeExportTransaction:
       type: object
       description: Serializer for the export endpoint that returns transaction data optimized for CSV export
@@ -538,19 +425,71 @@ components:
       - safe
       - to
       - transactionHash
-    SafeBalanceResponse:
+    SafeCreationInfoResponse:
       type: object
       properties:
-        tokenAddress:
+        created:
           type: string
-        token:
-          $ref: '#/components/schemas/Erc20Info'
-        balance:
+          format: date-time
+        creator:
           type: string
+        transactionHash:
+          type: string
+        factoryAddress:
+          type: string
+        masterCopy:
+          type:
+          - string
+          - 'null'
+        setupData:
+          type:
+          - string
+          - 'null'
+        saltNonce:
+          type:
+          - string
+          - 'null'
+        dataDecoded:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        userOperation:
+          oneOf:
+          - $ref: '#/components/schemas/UserOperationWithSafeOperationResponse'
+          - type: 'null'
       required:
-      - balance
-      - token
-      - tokenAddress
+      - created
+      - creator
+      - dataDecoded
+      - factoryAddress
+      - masterCopy
+      - saltNonce
+      - setupData
+      - transactionHash
+      - userOperation
+    PaginatedSafeExportTransactionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeExportTransaction'
     SafeCollectibleResponse:
       type: object
       properties:
@@ -643,46 +582,119 @@ components:
       - safeOperationHash
       - validAfter
       - validUntil
-    SafeInfoResponse:
+    UserOperationWithSafeOperationResponse:
       type: object
       properties:
-        address:
+        ethereumTxHash:
+          type: string
+        sender:
+          type: string
+        userOperationHash:
           type: string
         nonce:
           type: string
-        threshold:
-          type: integer
-        owners:
-          type: array
-          items:
-            type: string
-        masterCopy:
-          type: string
-        modules:
-          type: array
-          items:
-            type: string
-        fallbackHandler:
-          type: string
-        guard:
-          type: string
-        moduleGuard:
-          type: string
-        version:
+        initCode:
           type:
           - string
           - 'null'
+        callData:
+          type:
+          - string
+          - 'null'
+        callGasLimit:
+          type: string
+        verificationGasLimit:
+          type: string
+        preVerificationGas:
+          type: string
+        maxFeePerGas:
+          type: string
+        maxPriorityFeePerGas:
+          type: string
+        paymaster:
+          type:
+          - string
+          - 'null'
+        paymasterData:
+          type:
+          - string
+          - 'null'
+        signature:
+          type: string
+        entryPoint:
+          type: string
+        safeOperation:
+          oneOf:
+          - $ref: '#/components/schemas/SafeOperationResponse'
+          - type: 'null'
+          readOnly: true
       required:
-      - address
-      - fallbackHandler
-      - guard
-      - masterCopy
-      - moduleGuard
-      - modules
+      - callData
+      - callGasLimit
+      - entryPoint
+      - ethereumTxHash
+      - initCode
+      - maxFeePerGas
+      - maxPriorityFeePerGas
       - nonce
-      - owners
-      - threshold
-      - version
+      - paymaster
+      - paymasterData
+      - preVerificationGas
+      - safeOperation
+      - sender
+      - signature
+      - userOperationHash
+      - verificationGasLimit
+    PaginatedSafeCollectibleResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeCollectibleResponse'
+    SafeBalanceResponse:
+      type: object
+      properties:
+        tokenAddress:
+          type: string
+        token:
+          $ref: '#/components/schemas/Erc20Info'
+        balance:
+          type: string
+      required:
+      - balance
+      - token
+      - tokenAddress
+    CodeErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        arguments:
+          type: array
+          items: {}
+      required:
+      - arguments
+      - code
+      - message
   securitySchemes:
     cookieAuth:
       type: apiKey

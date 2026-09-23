@@ -1,10 +1,10 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Safe Transaction Service 4337 modules API
+  title: Safe Transaction Service Modules API
   version: 6.3.0
   description: API to keep track of transactions sent via Safe smart contracts
 tags:
-- name: modules
+- name: Modules
 paths:
   /tx-service/eth/api/v1/modules/{address}/safes/:
     get:
@@ -17,7 +17,7 @@ paths:
           type: string
         required: true
       tags:
-      - modules
+      - Modules
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -39,6 +39,8 @@ paths:
       path: /tx-service/eth/api/v1/modules/{address}/safes/
       title: ''
       additionalInfo: ''
+      summary: Modules safes retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v2/modules/{address}/safes/:
     get:
       operationId: modules_safes_list
@@ -62,7 +64,7 @@ paths:
         schema:
           type: integer
       tags:
-      - modules
+      - Modules
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -83,8 +85,33 @@ paths:
       path: /tx-service/eth/api/v2/modules/{address}/safes/
       title: List Safes that use a Specific Module
       additionalInfo: ''
+      summary: Modules safes list
+      x-summary-source: derived
 components:
   schemas:
+    PaginatedSafeLastStatusList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeLastStatus'
     SafeLastStatus:
       type: object
       properties:
@@ -124,29 +151,15 @@ components:
       - nonce
       - owners
       - threshold
-    PaginatedSafeLastStatusList:
+    ModulesResponse:
       type: object
-      required:
-      - count
-      - results
       properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
+        safes:
           type: array
           items:
-            $ref: '#/components/schemas/SafeLastStatus'
+            type: string
+      required:
+      - safes
     CodeErrorResponse:
       type: object
       properties:
@@ -161,15 +174,6 @@ components:
       - arguments
       - code
       - message
-    ModulesResponse:
-      type: object
-      properties:
-        safes:
-          type: array
-          items:
-            type: string
-      required:
-      - safes
   securitySchemes:
     cookieAuth:
       type: apiKey

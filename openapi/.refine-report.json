@@ -1,18 +1,7 @@
 {
   "provider": "gnosis-safe",
   "sources": [
-    "gnosis-safe-4337-api-openapi.yml",
-    "gnosis-safe-about-api-openapi.yml",
-    "gnosis-safe-analytics-api-openapi.yml",
-    "gnosis-safe-contracts-api-openapi.yml",
-    "gnosis-safe-data-decoder-api-openapi.yml",
-    "gnosis-safe-delegates-api-openapi.yml",
-    "gnosis-safe-messages-api-openapi.yml",
-    "gnosis-safe-modules-api-openapi.yml",
-    "gnosis-safe-owners-api-openapi.yml",
-    "gnosis-safe-safes-api-openapi.yml",
-    "gnosis-safe-tokens-api-openapi.yml",
-    "gnosis-safe-transactions-api-openapi.yml"
+    "_original/gnosis-safe-transaction-service-openapi.json"
   ],
   "outputs": [
     "gnosis-safe-4337-api-openapi.yml",
@@ -31,6 +20,35 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gnosis-safe-transaction-service-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: 4337",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: about",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: analytics",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: contracts",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: data-decoder",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: delegates",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: messages",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: modules",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: owners",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: safes",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: tokens",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: transactions",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "gnosis-safe-4337-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-about-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-contracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-data-decoder-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-delegates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-messages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-modules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-owners-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-safes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

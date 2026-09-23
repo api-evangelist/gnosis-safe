@@ -1,10 +1,10 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Safe Transaction Service 4337 transactions API
+  title: Safe Transaction Service Transactions API
   version: 6.3.0
   description: API to keep track of transactions sent via Safe smart contracts
 tags:
-- name: transactions
+- name: Transactions
 paths:
   /tx-service/eth/api/v1/module-transaction/{module_transaction_id}:
     get:
@@ -17,7 +17,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -40,6 +40,8 @@ paths:
       path: /tx-service/eth/api/v1/module-transaction/{module_transaction_id}
       title: Get Module Transaction
       additionalInfo: ''
+      summary: Module transaction retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/:
     get:
       operationId: multisig_transactions_retrieve
@@ -51,7 +53,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -67,9 +69,77 @@ paths:
       path: /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/
       title: ''
       additionalInfo: ''
+      summary: Multisig transactions retrieve
+      x-summary-source: derived
     delete:
       operationId: multisig_transactions_destroy
-      description: "Removes the queued but not executed multi-signature transaction associated with the given Safe transaction hash.\nOnly the proposer or the delegate who proposed the transaction can delete it.\nIf the transaction was proposed by a delegate, it must still be a valid delegate for the transaction proposer.\nAn EOA is required to sign the following EIP-712 data:\n\n```python\n {\n    \"types\": {\n        \"EIP712Domain\": [\n            {\"name\": \"name\", \"type\": \"string\"},\n            {\"name\": \"version\", \"type\": \"string\"},\n            {\"name\": \"chainId\", \"type\": \"uint256\"},\n            {\"name\": \"verifyingContract\", \"type\": \"address\"},\n        ],\n        \"DeleteRequest\": [\n            {\"name\": \"safeTxHash\", \"type\": \"bytes32\"},\n            {\"name\": \"totp\", \"type\": \"uint256\"},\n        ],\n    },\n    \"primaryType\": \"DeleteRequest\",\n    \"domain\": {\n        \"name\": \"Safe Transaction Service\",\n        \"version\": \"1.0\",\n        \"chainId\": chain_id,\n        \"verifyingContract\": safe_address,\n    },\n    \"message\": {\n        \"safeTxHash\": safe_tx_hash,\n        \"totp\": totp,\n    },\n}\n```\n\n`totp` parameter is calculated with `T0=0` and `Tx=3600`. `totp` is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)"
+      description: 'Removes the queued but not executed multi-signature transaction associated with the given Safe transaction hash.
+
+        Only the proposer or the delegate who proposed the transaction can delete it.
+
+        If the transaction was proposed by a delegate, it must still be a valid delegate for the transaction proposer.
+
+        An EOA is required to sign the following EIP-712 data:
+
+
+        ```python
+
+        {
+
+        "types": {
+
+        "EIP712Domain": [
+
+        {"name": "name", "type": "string"},
+
+        {"name": "version", "type": "string"},
+
+        {"name": "chainId", "type": "uint256"},
+
+        {"name": "verifyingContract", "type": "address"},
+
+        ],
+
+        "DeleteRequest": [
+
+        {"name": "safeTxHash", "type": "bytes32"},
+
+        {"name": "totp", "type": "uint256"},
+
+        ],
+
+        },
+
+        "primaryType": "DeleteRequest",
+
+        "domain": {
+
+        "name": "Safe Transaction Service",
+
+        "version": "1.0",
+
+        "chainId": chain_id,
+
+        "verifyingContract": safe_address,
+
+        },
+
+        "message": {
+
+        "safeTxHash": safe_tx_hash,
+
+        "totp": totp,
+
+        },
+
+        }
+
+        ```
+
+
+        `totp` parameter is calculated with `T0=0` and `Tx=3600`. `totp` is calculated by taking the
+
+        Unix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)'
       parameters:
       - in: path
         name: safe_tx_hash
@@ -77,7 +147,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -93,6 +163,8 @@ paths:
       path: /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/
       title: ''
       additionalInfo: ''
+      summary: Multisig transactions destroy
+      x-summary-source: derived
   /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/:
     get:
       operationId: multisig_transactions_confirmations_list
@@ -118,7 +190,7 @@ paths:
         schema:
           type: integer
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -135,6 +207,8 @@ paths:
       path: /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/
       title: List Multisig Confirmations
       additionalInfo: ''
+      summary: Multisig transactions confirmations list
+      x-summary-source: derived
     post:
       operationId: multisig_transactions_confirmations_create
       description: 'Adds a new confirmation to the pending multi-signature transaction associated with the
@@ -149,7 +223,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       requestBody:
         content:
           application/json:
@@ -170,6 +244,8 @@ paths:
       path: /tx-service/eth/api/v1/multisig-transactions/{safe_tx_hash}/confirmations/
       title: Confirm Multisig Transaction
       additionalInfo: ''
+      summary: Multisig transactions confirmations create
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/all-transactions/:
     get:
       operationId: safes_all_transactions_list
@@ -220,7 +296,7 @@ paths:
         schema:
           type: integer
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -248,6 +324,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/all-transactions/
       title: ''
       additionalInfo: ''
+      summary: Safes all transactions list
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/incoming-transfers/:
     get:
       operationId: safes_incoming_transfers_list
@@ -345,7 +423,7 @@ paths:
         schema:
           type: integer
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -366,6 +444,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/incoming-transfers/
       title: List Incoming Transfers
       additionalInfo: ''
+      summary: Safes incoming transfers list
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/module-transactions/:
     get:
       operationId: safes_module_transactions_list
@@ -442,7 +522,7 @@ paths:
         schema:
           type: integer
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -463,6 +543,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/module-transactions/
       title: List a Safe's Module Transactions
       additionalInfo: ''
+      summary: Safes module transactions list
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/multisig-transactions/:
     get:
       operationId: safes_multisig_transactions_list
@@ -598,7 +680,7 @@ paths:
         schema:
           type: integer
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -622,6 +704,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/multisig-transactions/
       title: ''
       additionalInfo: ''
+      summary: Safes multisig transactions list
+      x-summary-source: derived
     post:
       operationId: safes_multisig_transactions_create
       description: 'Creates a multi-signature transaction for a given Safe account with its confirmations and
@@ -634,7 +718,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       requestBody:
         content:
           application/json:
@@ -660,6 +744,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/multisig-transactions/
       title: ''
       additionalInfo: ''
+      summary: Safes multisig transactions create
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/multisig-transactions/estimations/:
     post:
       operationId: safes_multisig_transactions_estimations_create
@@ -675,7 +761,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       requestBody:
         content:
           application/json:
@@ -706,6 +792,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/multisig-transactions/estimations/
       title: Estimate Gas Costs for a Multisig Transaction
       additionalInfo: ''
+      summary: Safes multisig transactions estimations create
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/transfers/:
     get:
       operationId: safes_transfers_list
@@ -803,7 +891,7 @@ paths:
         schema:
           type: integer
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -824,6 +912,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/transfers/
       title: List Transfers
       additionalInfo: ''
+      summary: Safes transfers list
+      x-summary-source: derived
   /tx-service/eth/api/v1/transfer/{transfer_id}:
     get:
       operationId: transfer_retrieve
@@ -835,7 +925,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -854,6 +944,8 @@ paths:
       path: /tx-service/eth/api/v1/transfer/{transfer_id}
       title: Get Transfer
       additionalInfo: ''
+      summary: Transfer retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v2/multisig-transactions/{safe_tx_hash}/:
     get:
       operationId: multisig_transactions_retrieve_2
@@ -865,7 +957,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -880,9 +972,77 @@ paths:
       path: /tx-service/eth/api/v2/multisig-transactions/{safe_tx_hash}/
       title: Get Multisig Transaction
       additionalInfo: ''
+      summary: Multisig transactions retrieve 2
+      x-summary-source: derived
     delete:
       operationId: multisig_transactions_destroy_2
-      description: "Removes the queued but not executed multi-signature transaction associated with the given Safe transaction hash.\nOnly the proposer or the delegate who proposed the transaction can delete it.\nIf the transaction was proposed by a delegate, it must still be a valid delegate for the transaction proposer.\nAn EOA is required to sign the following EIP-712 data:\n\n```python\n {\n    \"types\": {\n        \"EIP712Domain\": [\n            {\"name\": \"name\", \"type\": \"string\"},\n            {\"name\": \"version\", \"type\": \"string\"},\n            {\"name\": \"chainId\", \"type\": \"uint256\"},\n            {\"name\": \"verifyingContract\", \"type\": \"address\"},\n        ],\n        \"DeleteRequest\": [\n            {\"name\": \"safeTxHash\", \"type\": \"bytes32\"},\n            {\"name\": \"totp\", \"type\": \"uint256\"},\n        ],\n    },\n    \"primaryType\": \"DeleteRequest\",\n    \"domain\": {\n        \"name\": \"Safe Transaction Service\",\n        \"version\": \"1.0\",\n        \"chainId\": chain_id,\n        \"verifyingContract\": safe_address,\n    },\n    \"message\": {\n        \"safeTxHash\": safe_tx_hash,\n        \"totp\": totp,\n    },\n}\n```\n\n`totp` parameter is calculated with `T0=0` and `Tx=3600`. `totp` is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)"
+      description: 'Removes the queued but not executed multi-signature transaction associated with the given Safe transaction hash.
+
+        Only the proposer or the delegate who proposed the transaction can delete it.
+
+        If the transaction was proposed by a delegate, it must still be a valid delegate for the transaction proposer.
+
+        An EOA is required to sign the following EIP-712 data:
+
+
+        ```python
+
+        {
+
+        "types": {
+
+        "EIP712Domain": [
+
+        {"name": "name", "type": "string"},
+
+        {"name": "version", "type": "string"},
+
+        {"name": "chainId", "type": "uint256"},
+
+        {"name": "verifyingContract", "type": "address"},
+
+        ],
+
+        "DeleteRequest": [
+
+        {"name": "safeTxHash", "type": "bytes32"},
+
+        {"name": "totp", "type": "uint256"},
+
+        ],
+
+        },
+
+        "primaryType": "DeleteRequest",
+
+        "domain": {
+
+        "name": "Safe Transaction Service",
+
+        "version": "1.0",
+
+        "chainId": chain_id,
+
+        "verifyingContract": safe_address,
+
+        },
+
+        "message": {
+
+        "safeTxHash": safe_tx_hash,
+
+        "totp": totp,
+
+        },
+
+        }
+
+        ```
+
+
+        `totp` parameter is calculated with `T0=0` and `Tx=3600`. `totp` is calculated by taking the
+
+        Unix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)'
       parameters:
       - in: path
         name: safe_tx_hash
@@ -890,7 +1050,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -901,6 +1061,8 @@ paths:
       path: /tx-service/eth/api/v2/multisig-transactions/{safe_tx_hash}/
       title: Delete Queued Multisig Transaction
       additionalInfo: ''
+      summary: Multisig transactions destroy 2
+      x-summary-source: derived
   /tx-service/eth/api/v2/safes/{address}/all-transactions/:
     get:
       operationId: safes_all_transactions_list_2
@@ -951,7 +1113,7 @@ paths:
         schema:
           type: integer
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -966,6 +1128,8 @@ paths:
       path: /tx-service/eth/api/v2/safes/{address}/all-transactions/
       title: List Transactions
       additionalInfo: ''
+      summary: Safes all transactions list 2
+      x-summary-source: derived
   /tx-service/eth/api/v2/safes/{address}/multisig-transactions/:
     get:
       operationId: safes_multisig_transactions_list_2
@@ -1101,7 +1265,7 @@ paths:
         schema:
           type: integer
       tags:
-      - transactions
+      - Transactions
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -1124,6 +1288,8 @@ paths:
       path: /tx-service/eth/api/v2/safes/{address}/multisig-transactions/
       title: List a Safe's Multisig Transactions
       additionalInfo: ''
+      summary: Safes multisig transactions list 2
+      x-summary-source: derived
     post:
       operationId: safes_multisig_transactions_create_2
       description: 'Creates a multi-signature transaction for a given Safe account with its confirmations and
@@ -1136,7 +1302,7 @@ paths:
           type: string
         required: true
       tags:
-      - transactions
+      - Transactions
       requestBody:
         content:
           application/json:
@@ -1161,17 +1327,18 @@ paths:
       path: /tx-service/eth/api/v2/safes/{address}/multisig-transactions/
       title: Create Multisig Transaction
       additionalInfo: ''
+      summary: Safes multisig transactions create 2
+      x-summary-source: derived
 components:
   schemas:
-    SafeMultisigTransactionResponse:
+    SafeMultisigTransactionEstimate:
       type: object
       properties:
-        safe:
-          type: string
         to:
           type: string
         value:
-          type: string
+          type: integer
+          minimum: 0
         data:
           type:
           - string
@@ -1179,331 +1346,10 @@ components:
         operation:
           type: integer
           minimum: 0
-        gasToken:
-          type:
-          - string
-          - 'null'
-        safeTxGas:
-          type: integer
-          minimum: 0
-        baseGas:
-          type: integer
-          minimum: 0
-        gasPrice:
-          type: string
-        refundReceiver:
-          type:
-          - string
-          - 'null'
-        nonce:
-          type: integer
-          minimum: 0
-        executionDate:
-          type: string
-          format: date-time
-        submissionDate:
-          type: string
-          format: date-time
-        modified:
-          type: string
-          format: date-time
-        blockNumber:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        transactionHash:
-          type: string
-        safeTxHash:
-          type: string
-        proposer:
-          type: string
-        proposedByDelegate:
-          type:
-          - string
-          - 'null'
-        executor:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        isExecuted:
-          type: boolean
-        isSuccessful:
-          type:
-          - boolean
-          - 'null'
-          readOnly: true
-        ethGasPrice:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        maxFeePerGas:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        maxPriorityFeePerGas:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        gasUsed:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        fee:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        payment:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        origin:
-          type: string
-          readOnly: true
-        dataDecoded:
-          type: string
-          deprecated: true
-          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
-          readOnly: true
-        confirmationsRequired:
-          type: integer
-        confirmations:
-          type: object
-          additionalProperties: {}
-          description: 'Validate and check integrity of confirmations queryset
-
-
-            :param obj: MultisigConfirmation instance
-
-            :return: Serialized queryset
-
-            :raises InternalValidationError: If any inconsistency is detected'
-          readOnly: true
-        trusted:
-          type: boolean
-        signatures:
-          type:
-          - string
-          - 'null'
-          readOnly: true
       required:
-      - baseGas
-      - blockNumber
-      - confirmations
-      - confirmationsRequired
-      - dataDecoded
-      - ethGasPrice
-      - executionDate
-      - executor
-      - fee
-      - gasPrice
-      - gasUsed
-      - isExecuted
-      - isSuccessful
-      - maxFeePerGas
-      - maxPriorityFeePerGas
-      - modified
-      - nonce
       - operation
-      - origin
-      - payment
-      - proposedByDelegate
-      - proposer
-      - safe
-      - safeTxGas
-      - safeTxHash
-      - signatures
-      - submissionDate
       - to
-      - transactionHash
-      - trusted
       - value
-    TransferWithTokenInfoResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          description: 'Sometimes ERC20/721 `Transfer` events look the same, if token info is available better use that information
-
-            to check
-
-
-            :param obj:
-
-            :return: `TransferType` as a string'
-          readOnly: true
-        executionDate:
-          type: string
-          format: date-time
-        blockNumber:
-          type: integer
-        transactionHash:
-          type: string
-        to:
-          type: string
-        value:
-          type:
-          - string
-          - 'null'
-        tokenId:
-          type:
-          - string
-          - 'null'
-        tokenAddress:
-          type:
-          - string
-          - 'null'
-        transferId:
-          type: string
-          readOnly: true
-          description: "Internally calculated parameter to uniquely identify a transfer \nToken transfers are calculated as `transferId = e+tx_hash+log_index` \nEther transfers are calculated as `transferId = i+tx_hash+trace_address`"
-        tokenInfo:
-          $ref: '#/components/schemas/TokenInfoResponse'
-        from:
-          type: string
-      required:
-      - blockNumber
-      - executionDate
-      - from
-      - to
-      - tokenId
-      - tokenInfo
-      - transactionHash
-      - transferId
-      - type
-      - value
-    AllTransactionsSchemaSerializerV2:
-      type: object
-      description: Just for the purpose of documenting, don't use it
-      properties:
-        txType1:
-          $ref: '#/components/schemas/SafeModuleTransactionWithTransfersResponse'
-        txType2:
-          $ref: '#/components/schemas/SafeMultisigTransactionWithTransfersResponseSerializerV2'
-        txType3:
-          $ref: '#/components/schemas/EthereumTxWithTransfersResponse'
-      required:
-      - txType1
-      - txType2
-      - txType3
-    EthereumTxWithTransfersResponse:
-      type: object
-      properties:
-        executionDate:
-          type: string
-          format: date-time
-        to:
-          type:
-          - string
-          - 'null'
-        data:
-          type: string
-        txHash:
-          type: string
-        blockNumber:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        transfers:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
-        txType:
-          type: string
-          readOnly: true
-        from:
-          type: string
-      required:
-      - blockNumber
-      - data
-      - executionDate
-      - from
-      - to
-      - transfers
-      - txHash
-      - txType
-    PaginatedAllTransactionsSchemaList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/AllTransactionsSchema'
-    PaginatedSafeMultisigConfirmationResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeMultisigConfirmationResponse'
-    AllTransactionsSchema:
-      type: object
-      description: Just for the purpose of documenting, don't use it
-      properties:
-        txType1:
-          $ref: '#/components/schemas/SafeModuleTransactionWithTransfersResponse'
-        txType2:
-          $ref: '#/components/schemas/SafeMultisigTransactionWithTransfersResponse'
-        txType3:
-          $ref: '#/components/schemas/EthereumTxWithTransfersResponse'
-      required:
-      - txType1
-      - txType2
-      - txType3
-    SafeMultisigTransactionEstimateResponse:
-      type: object
-      properties:
-        safeTxGas:
-          type: string
-      required:
-      - safeTxGas
-    SafeMultisigConfirmation:
-      type: object
-      properties:
-        signature:
-          type: string
-      required:
-      - signature
     SafeMultisigTransactionResponseSerializerV2:
       type: object
       properties:
@@ -1663,241 +1509,6 @@ components:
       - transactionHash
       - trusted
       - value
-    SafeModuleTransactionResponse:
-      type: object
-      properties:
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        executionDate:
-          type: string
-          format: date-time
-        blockNumber:
-          type: integer
-        isSuccessful:
-          type: boolean
-          readOnly: true
-        transactionHash:
-          type: string
-        safe:
-          type: string
-        module:
-          type: string
-        to:
-          type: string
-        value:
-          type: string
-          format: decimal
-          pattern: ^-?\d{0,78}(?:\.\d{0,0})?$
-        data:
-          type:
-          - string
-          - 'null'
-        operation:
-          enum:
-          - 0
-          - 1
-          - 2
-          type: integer
-          description: '* `0` - CALL
-
-            * `1` - DELEGATE_CALL
-
-            * `2` - CREATE'
-          x-spec-enum-id: 73baf6048b75e41c
-          minimum: 0
-          maximum: 32767
-        dataDecoded:
-          type: string
-          deprecated: true
-          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
-          readOnly: true
-        moduleTransactionId:
-          type: string
-          description: "Internally calculated parameter to uniquely identify a moduleTransaction \n`ModuleTransactionId = i+tx_hash+trace_address`"
-      required:
-      - blockNumber
-      - created
-      - data
-      - dataDecoded
-      - executionDate
-      - isSuccessful
-      - module
-      - moduleTransactionId
-      - operation
-      - safe
-      - to
-      - transactionHash
-      - value
-    SafeMultisigTransactionWithTransfersResponseSerializerV2:
-      type: object
-      properties:
-        safe:
-          type: string
-        to:
-          type: string
-        value:
-          type: string
-        data:
-          type:
-          - string
-          - 'null'
-        operation:
-          type: integer
-          minimum: 0
-        gasToken:
-          type:
-          - string
-          - 'null'
-        safeTxGas:
-          type: string
-        baseGas:
-          type: string
-        gasPrice:
-          type: string
-        refundReceiver:
-          type:
-          - string
-          - 'null'
-        nonce:
-          type: string
-        executionDate:
-          type: string
-          format: date-time
-        submissionDate:
-          type: string
-          format: date-time
-        modified:
-          type: string
-          format: date-time
-        blockNumber:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        transactionHash:
-          type: string
-        safeTxHash:
-          type: string
-        proposer:
-          type: string
-        proposedByDelegate:
-          type:
-          - string
-          - 'null'
-        executor:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        isExecuted:
-          type: boolean
-        isSuccessful:
-          type:
-          - boolean
-          - 'null'
-          readOnly: true
-        ethGasPrice:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        maxFeePerGas:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        maxPriorityFeePerGas:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        gasUsed:
-          type:
-          - integer
-          - 'null'
-          readOnly: true
-        fee:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        payment:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        origin:
-          type: string
-          readOnly: true
-        dataDecoded:
-          type: string
-          deprecated: true
-          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
-          readOnly: true
-        confirmationsRequired:
-          type: integer
-        confirmations:
-          type: object
-          additionalProperties: {}
-          description: 'Validate and check integrity of confirmations queryset
-
-
-            :param obj: MultisigConfirmation instance
-
-            :return: Serialized queryset
-
-            :raises InternalValidationError: If any inconsistency is detected'
-          readOnly: true
-        trusted:
-          type: boolean
-        signatures:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        transfers:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
-        txType:
-          type: string
-          readOnly: true
-      required:
-      - baseGas
-      - blockNumber
-      - confirmations
-      - confirmationsRequired
-      - dataDecoded
-      - ethGasPrice
-      - executionDate
-      - executor
-      - fee
-      - gasPrice
-      - gasUsed
-      - isExecuted
-      - isSuccessful
-      - maxFeePerGas
-      - maxPriorityFeePerGas
-      - modified
-      - nonce
-      - operation
-      - origin
-      - payment
-      - proposedByDelegate
-      - proposer
-      - safe
-      - safeTxGas
-      - safeTxHash
-      - signatures
-      - submissionDate
-      - to
-      - transactionHash
-      - transfers
-      - trusted
-      - txType
-      - value
     PaginatedSafeMultisigTransactionResponseSerializerV2List:
       type: object
       required:
@@ -1921,127 +1532,40 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SafeMultisigTransactionResponseSerializerV2'
-    PaginatedSafeModuleTransactionResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeModuleTransactionResponse'
-    SafeModuleTransactionWithTransfersResponse:
+    SafeMultisigConfirmation:
       type: object
       properties:
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        executionDate:
-          type: string
-          format: date-time
-        blockNumber:
-          type: integer
-        isSuccessful:
-          type: boolean
-          readOnly: true
-        transactionHash:
-          type: string
-        safe:
-          type: string
-        module:
-          type: string
-        to:
-          type: string
-        value:
-          type: string
-          format: decimal
-          pattern: ^-?\d{0,78}(?:\.\d{0,0})?$
-        data:
-          type:
-          - string
-          - 'null'
-        operation:
-          enum:
-          - 0
-          - 1
-          - 2
-          type: integer
-          description: '* `0` - CALL
-
-            * `1` - DELEGATE_CALL
-
-            * `2` - CREATE'
-          x-spec-enum-id: 73baf6048b75e41c
-          minimum: 0
-          maximum: 32767
-        dataDecoded:
-          type: string
-          deprecated: true
-          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
-          readOnly: true
-        moduleTransactionId:
-          type: string
-          description: "Internally calculated parameter to uniquely identify a moduleTransaction \n`ModuleTransactionId = i+tx_hash+trace_address`"
-        transfers:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
-        txType:
-          type: string
-          readOnly: true
-      required:
-      - blockNumber
-      - created
-      - data
-      - dataDecoded
-      - executionDate
-      - isSuccessful
-      - module
-      - moduleTransactionId
-      - operation
-      - safe
-      - to
-      - transactionHash
-      - transfers
-      - txType
-      - value
-    SafeMultisigConfirmationResponse:
-      type: object
-      properties:
-        owner:
-          type: string
-        submissionDate:
-          type: string
-          format: date-time
-        transactionHash:
-          type: string
-          readOnly: true
         signature:
           type: string
-        signatureType:
+      required:
+      - signature
+    TokenInfoResponse:
+      type: object
+      properties:
+        type:
           type: string
           readOnly: true
+        address:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+        decimals:
+          type: integer
+        logoUri:
+          type: string
+          readOnly: true
+        trusted:
+          type: boolean
       required:
-      - owner
-      - signature
-      - signatureType
-      - submissionDate
-      - transactionHash
+      - address
+      - decimals
+      - logoUri
+      - name
+      - symbol
+      - trusted
+      - type
     SafeMultisigTransactionWithTransfersResponse:
       type: object
       properties:
@@ -2213,7 +1737,7 @@ components:
       - trusted
       - txType
       - value
-    PaginatedSafeMultisigTransactionResponseList:
+    PaginatedSafeModuleTransactionResponseList:
       type: object
       required:
       - count
@@ -2235,72 +1759,30 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/SafeMultisigTransactionResponse'
-    PaginatedTransferWithTokenInfoResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
-    TokenInfoResponse:
+            $ref: '#/components/schemas/SafeModuleTransactionResponse'
+    SafeMultisigConfirmationResponse:
       type: object
       properties:
-        type:
+        owner:
+          type: string
+        submissionDate:
+          type: string
+          format: date-time
+        transactionHash:
           type: string
           readOnly: true
-        address:
+        signature:
           type: string
-        name:
-          type: string
-        symbol:
-          type: string
-        decimals:
-          type: integer
-        logoUri:
+        signatureType:
           type: string
           readOnly: true
-        trusted:
-          type: boolean
       required:
-      - address
-      - decimals
-      - logoUri
-      - name
-      - symbol
-      - trusted
-      - type
-    CodeErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        arguments:
-          type: array
-          items: {}
-      required:
-      - arguments
-      - code
-      - message
-    PaginatedAllTransactionsSchemaSerializerV2List:
+      - owner
+      - signature
+      - signatureType
+      - submissionDate
+      - transactionHash
+    PaginatedAllTransactionsSchemaList:
       type: object
       required:
       - count
@@ -2322,7 +1804,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/AllTransactionsSchemaSerializerV2'
+            $ref: '#/components/schemas/AllTransactionsSchema'
     SafeMultisigTransaction:
       type: object
       properties:
@@ -2384,14 +1866,295 @@ components:
       - sender
       - to
       - value
-    SafeMultisigTransactionEstimate:
+    PaginatedAllTransactionsSchemaSerializerV2List:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AllTransactionsSchemaSerializerV2'
+    TransferWithTokenInfoResponse:
       type: object
       properties:
+        type:
+          type: string
+          description: 'Sometimes ERC20/721 `Transfer` events look the same, if token info is available better use that information
+
+            to check
+
+
+            :param obj:
+
+            :return: `TransferType` as a string'
+          readOnly: true
+        executionDate:
+          type: string
+          format: date-time
+        blockNumber:
+          type: integer
+        transactionHash:
+          type: string
         to:
           type: string
         value:
+          type:
+          - string
+          - 'null'
+        tokenId:
+          type:
+          - string
+          - 'null'
+        tokenAddress:
+          type:
+          - string
+          - 'null'
+        transferId:
+          type: string
+          readOnly: true
+          description: "Internally calculated parameter to uniquely identify a transfer \nToken transfers are calculated as `transferId = e+tx_hash+log_index` \nEther transfers are calculated as `transferId = i+tx_hash+trace_address`"
+        tokenInfo:
+          $ref: '#/components/schemas/TokenInfoResponse'
+        from:
+          type: string
+      required:
+      - blockNumber
+      - executionDate
+      - from
+      - to
+      - tokenId
+      - tokenInfo
+      - transactionHash
+      - transferId
+      - type
+      - value
+    PaginatedTransferWithTokenInfoResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
           type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
+    SafeModuleTransactionResponse:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        executionDate:
+          type: string
+          format: date-time
+        blockNumber:
+          type: integer
+        isSuccessful:
+          type: boolean
+          readOnly: true
+        transactionHash:
+          type: string
+        safe:
+          type: string
+        module:
+          type: string
+        to:
+          type: string
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,78}(?:\.\d{0,0})?$
+        data:
+          type:
+          - string
+          - 'null'
+        operation:
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          description: '* `0` - CALL
+
+            * `1` - DELEGATE_CALL
+
+            * `2` - CREATE'
+          x-spec-enum-id: 73baf6048b75e41c
           minimum: 0
+          maximum: 32767
+        dataDecoded:
+          type: string
+          deprecated: true
+          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
+          readOnly: true
+        moduleTransactionId:
+          type: string
+          description: "Internally calculated parameter to uniquely identify a moduleTransaction \n`ModuleTransactionId = i+tx_hash+trace_address`"
+      required:
+      - blockNumber
+      - created
+      - data
+      - dataDecoded
+      - executionDate
+      - isSuccessful
+      - module
+      - moduleTransactionId
+      - operation
+      - safe
+      - to
+      - transactionHash
+      - value
+    PaginatedSafeMultisigTransactionResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeMultisigTransactionResponse'
+    SafeModuleTransactionWithTransfersResponse:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        executionDate:
+          type: string
+          format: date-time
+        blockNumber:
+          type: integer
+        isSuccessful:
+          type: boolean
+          readOnly: true
+        transactionHash:
+          type: string
+        safe:
+          type: string
+        module:
+          type: string
+        to:
+          type: string
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,78}(?:\.\d{0,0})?$
+        data:
+          type:
+          - string
+          - 'null'
+        operation:
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          description: '* `0` - CALL
+
+            * `1` - DELEGATE_CALL
+
+            * `2` - CREATE'
+          x-spec-enum-id: 73baf6048b75e41c
+          minimum: 0
+          maximum: 32767
+        dataDecoded:
+          type: string
+          deprecated: true
+          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
+          readOnly: true
+        moduleTransactionId:
+          type: string
+          description: "Internally calculated parameter to uniquely identify a moduleTransaction \n`ModuleTransactionId = i+tx_hash+trace_address`"
+        transfers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
+        txType:
+          type: string
+          readOnly: true
+      required:
+      - blockNumber
+      - created
+      - data
+      - dataDecoded
+      - executionDate
+      - isSuccessful
+      - module
+      - moduleTransactionId
+      - operation
+      - safe
+      - to
+      - transactionHash
+      - transfers
+      - txType
+      - value
+    AllTransactionsSchemaSerializerV2:
+      type: object
+      description: Just for the purpose of documenting, don't use it
+      properties:
+        txType1:
+          $ref: '#/components/schemas/SafeModuleTransactionWithTransfersResponse'
+        txType2:
+          $ref: '#/components/schemas/SafeMultisigTransactionWithTransfersResponseSerializerV2'
+        txType3:
+          $ref: '#/components/schemas/EthereumTxWithTransfersResponse'
+      required:
+      - txType1
+      - txType2
+      - txType3
+    SafeMultisigTransactionWithTransfersResponseSerializerV2:
+      type: object
+      properties:
+        safe:
+          type: string
+        to:
+          type: string
+        value:
+          type: string
         data:
           type:
           - string
@@ -2399,10 +2162,415 @@ components:
         operation:
           type: integer
           minimum: 0
+        gasToken:
+          type:
+          - string
+          - 'null'
+        safeTxGas:
+          type: string
+        baseGas:
+          type: string
+        gasPrice:
+          type: string
+        refundReceiver:
+          type:
+          - string
+          - 'null'
+        nonce:
+          type: string
+        executionDate:
+          type: string
+          format: date-time
+        submissionDate:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        blockNumber:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        transactionHash:
+          type: string
+        safeTxHash:
+          type: string
+        proposer:
+          type: string
+        proposedByDelegate:
+          type:
+          - string
+          - 'null'
+        executor:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        isExecuted:
+          type: boolean
+        isSuccessful:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+        ethGasPrice:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        maxFeePerGas:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        maxPriorityFeePerGas:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        gasUsed:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        fee:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        payment:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        origin:
+          type: string
+          readOnly: true
+        dataDecoded:
+          type: string
+          deprecated: true
+          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
+          readOnly: true
+        confirmationsRequired:
+          type: integer
+        confirmations:
+          type: object
+          additionalProperties: {}
+          description: 'Validate and check integrity of confirmations queryset
+
+
+            :param obj: MultisigConfirmation instance
+
+            :return: Serialized queryset
+
+            :raises InternalValidationError: If any inconsistency is detected'
+          readOnly: true
+        trusted:
+          type: boolean
+        signatures:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        transfers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
+        txType:
+          type: string
+          readOnly: true
       required:
+      - baseGas
+      - blockNumber
+      - confirmations
+      - confirmationsRequired
+      - dataDecoded
+      - ethGasPrice
+      - executionDate
+      - executor
+      - fee
+      - gasPrice
+      - gasUsed
+      - isExecuted
+      - isSuccessful
+      - maxFeePerGas
+      - maxPriorityFeePerGas
+      - modified
+      - nonce
       - operation
+      - origin
+      - payment
+      - proposedByDelegate
+      - proposer
+      - safe
+      - safeTxGas
+      - safeTxHash
+      - signatures
+      - submissionDate
       - to
+      - transactionHash
+      - transfers
+      - trusted
+      - txType
       - value
+    SafeMultisigTransactionEstimateResponse:
+      type: object
+      properties:
+        safeTxGas:
+          type: string
+      required:
+      - safeTxGas
+    AllTransactionsSchema:
+      type: object
+      description: Just for the purpose of documenting, don't use it
+      properties:
+        txType1:
+          $ref: '#/components/schemas/SafeModuleTransactionWithTransfersResponse'
+        txType2:
+          $ref: '#/components/schemas/SafeMultisigTransactionWithTransfersResponse'
+        txType3:
+          $ref: '#/components/schemas/EthereumTxWithTransfersResponse'
+      required:
+      - txType1
+      - txType2
+      - txType3
+    SafeMultisigTransactionResponse:
+      type: object
+      properties:
+        safe:
+          type: string
+        to:
+          type: string
+        value:
+          type: string
+        data:
+          type:
+          - string
+          - 'null'
+        operation:
+          type: integer
+          minimum: 0
+        gasToken:
+          type:
+          - string
+          - 'null'
+        safeTxGas:
+          type: integer
+          minimum: 0
+        baseGas:
+          type: integer
+          minimum: 0
+        gasPrice:
+          type: string
+        refundReceiver:
+          type:
+          - string
+          - 'null'
+        nonce:
+          type: integer
+          minimum: 0
+        executionDate:
+          type: string
+          format: date-time
+        submissionDate:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        blockNumber:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        transactionHash:
+          type: string
+        safeTxHash:
+          type: string
+        proposer:
+          type: string
+        proposedByDelegate:
+          type:
+          - string
+          - 'null'
+        executor:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        isExecuted:
+          type: boolean
+        isSuccessful:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+        ethGasPrice:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        maxFeePerGas:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        maxPriorityFeePerGas:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        gasUsed:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        fee:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        payment:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        origin:
+          type: string
+          readOnly: true
+        dataDecoded:
+          type: string
+          deprecated: true
+          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
+          readOnly: true
+        confirmationsRequired:
+          type: integer
+        confirmations:
+          type: object
+          additionalProperties: {}
+          description: 'Validate and check integrity of confirmations queryset
+
+
+            :param obj: MultisigConfirmation instance
+
+            :return: Serialized queryset
+
+            :raises InternalValidationError: If any inconsistency is detected'
+          readOnly: true
+        trusted:
+          type: boolean
+        signatures:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      required:
+      - baseGas
+      - blockNumber
+      - confirmations
+      - confirmationsRequired
+      - dataDecoded
+      - ethGasPrice
+      - executionDate
+      - executor
+      - fee
+      - gasPrice
+      - gasUsed
+      - isExecuted
+      - isSuccessful
+      - maxFeePerGas
+      - maxPriorityFeePerGas
+      - modified
+      - nonce
+      - operation
+      - origin
+      - payment
+      - proposedByDelegate
+      - proposer
+      - safe
+      - safeTxGas
+      - safeTxHash
+      - signatures
+      - submissionDate
+      - to
+      - transactionHash
+      - trusted
+      - value
+    PaginatedSafeMultisigConfirmationResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeMultisigConfirmationResponse'
+    EthereumTxWithTransfersResponse:
+      type: object
+      properties:
+        executionDate:
+          type: string
+          format: date-time
+        to:
+          type:
+          - string
+          - 'null'
+        data:
+          type: string
+        txHash:
+          type: string
+        blockNumber:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        transfers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
+        txType:
+          type: string
+          readOnly: true
+        from:
+          type: string
+      required:
+      - blockNumber
+      - data
+      - executionDate
+      - from
+      - to
+      - transfers
+      - txHash
+      - txType
+    CodeErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        arguments:
+          type: array
+          items: {}
+      required:
+      - arguments
+      - code
+      - message
   securitySchemes:
     cookieAuth:
       type: apiKey

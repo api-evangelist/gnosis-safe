@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Safe Transaction Service 4337 about API
+  title: Safe Transaction Service About API
   version: 6.3.0
   description: API to keep track of transactions sent via Safe smart contracts
 tags:
-- name: about
+- name: About
 paths:
   /tx-service/eth/api/v1/about/:
     get:
       operationId: about_retrieve
       description: Returns information and configuration of the service
       tags:
-      - about
+      - About
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -22,6 +22,8 @@ paths:
       path: /tx-service/eth/api/v1/about/
       title: General Information
       additionalInfo: ''
+      summary: About retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v1/about/deployments/:
     get:
       operationId: about_deployments_list
@@ -38,7 +40,7 @@ paths:
           type: string
         description: Filter by Safe contract name
       tags:
-      - about
+      - About
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -57,12 +59,14 @@ paths:
       path: /tx-service/eth/api/v1/about/deployments/
       title: List deployments
       additionalInfo: ''
+      summary: About deployments list
+      x-summary-source: derived
   /tx-service/eth/api/v1/about/ethereum-rpc/:
     get:
       operationId: about_ethereum_rpc_retrieve
       description: Get information about the Ethereum RPC node used by the service
       tags:
-      - about
+      - About
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -73,12 +77,14 @@ paths:
       path: /tx-service/eth/api/v1/about/ethereum-rpc/
       title: Ethereum RPC
       additionalInfo: This is an example of more detailed information about Ethereum RPC endpoint. This should support MDX.
+      summary: About ethereum rpc retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v1/about/ethereum-tracing-rpc/:
     get:
       operationId: about_ethereum_tracing_rpc_retrieve
       description: Get information about the Ethereum Tracing RPC node used by the service (if any configured)
       tags:
-      - about
+      - About
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -89,12 +95,14 @@ paths:
       path: /tx-service/eth/api/v1/about/ethereum-tracing-rpc/
       title: Ethereum Tracing RPC
       additionalInfo: ''
+      summary: About ethereum tracing rpc retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v1/about/indexing/:
     get:
       operationId: about_indexing_retrieve
       description: Get current indexing status for ERC20/721 events
       tags:
-      - about
+      - About
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -109,12 +117,14 @@ paths:
       path: /tx-service/eth/api/v1/about/indexing/
       title: Indexing
       additionalInfo: ''
+      summary: About indexing retrieve
+      x-summary-source: derived
   /tx-service/eth/api/v1/about/singletons/:
     get:
       operationId: about_singletons_list
       description: Returns a list of Master Copies configured in the service
       tags:
-      - about
+      - About
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -131,6 +141,8 @@ paths:
       path: /tx-service/eth/api/v1/about/singletons/
       title: Singletons
       additionalInfo: ''
+      summary: About singletons list
+      x-summary-source: derived
 components:
   schemas:
     MasterCopyResponse:
@@ -154,31 +166,6 @@ components:
       - deployer
       - l2
       - lastIndexedBlockNumber
-      - version
-    SafeDeploymentContract:
-      type: object
-      properties:
-        contractName:
-          type: string
-        address:
-          type:
-          - string
-          - 'null'
-      required:
-      - address
-      - contractName
-    SafeDeployment:
-      type: object
-      properties:
-        version:
-          type: string
-          maxLength: 10
-        contracts:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeDeploymentContract'
-      required:
-      - contracts
       - version
     IndexingStatus:
       type: object
@@ -214,6 +201,31 @@ components:
       - masterCopiesBlockTimestamp
       - masterCopiesSynced
       - synced
+    SafeDeploymentContract:
+      type: object
+      properties:
+        contractName:
+          type: string
+        address:
+          type:
+          - string
+          - 'null'
+      required:
+      - address
+      - contractName
+    SafeDeployment:
+      type: object
+      properties:
+        version:
+          type: string
+          maxLength: 10
+        contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeDeploymentContract'
+      required:
+      - contracts
+      - version
   securitySchemes:
     cookieAuth:
       type: apiKey

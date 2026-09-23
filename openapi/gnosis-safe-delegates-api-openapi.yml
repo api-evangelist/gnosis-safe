@@ -1,10 +1,10 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Safe Transaction Service 4337 delegates API
+  title: Safe Transaction Service Delegates API
   version: 6.3.0
   description: API to keep track of transactions sent via Safe smart contracts
 tags:
-- name: delegates
+- name: Delegates
 paths:
   /tx-service/eth/api/v1/delegates/:
     get:
@@ -42,7 +42,7 @@ paths:
         schema:
           type: integer
       tags:
-      - delegates
+      - Delegates
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -54,11 +54,31 @@ paths:
       path: /tx-service/eth/api/v1/delegates/
       title: List Delegates
       additionalInfo: ''
+      summary: Delegates list
+      x-summary-source: derived
     post:
       operationId: delegates_create
-      description: "Adds a new Safe delegate with a custom label. Calls with same delegate but different label or\nsigner will update the label or delegator if a different one is provided\nFor the signature we are using TOTP with `T0=0` and `Tx=3600`. TOTP is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)\nTo generate the signature, this hash needs to be signed: keccak(checksummed address + str(int(current_epoch //\n3600)))\nAs an example, if the 0x132512f995866CcE1b0092384A6118EDaF4508Ff delegate is added and epoch=1586779140:\n     - `TOTP = epoch // 3600 = 1586779140 // 3600 = 440771`\n     - keccak(\"0x132512f995866CcE1b0092384A6118EDaF4508Ff440771\") would be the hash a Safe owner would\n     need to sign.`"
+      description: 'Adds a new Safe delegate with a custom label. Calls with same delegate but different label or
+
+        signer will update the label or delegator if a different one is provided
+
+        For the signature we are using TOTP with `T0=0` and `Tx=3600`. TOTP is calculated by taking the
+
+        Unix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)
+
+        To generate the signature, this hash needs to be signed: keccak(checksummed address + str(int(current_epoch //
+
+        3600)))
+
+        As an example, if the 0x132512f995866CcE1b0092384A6118EDaF4508Ff delegate is added and epoch=1586779140:
+
+        - `TOTP = epoch // 3600 = 1586779140 // 3600 = 440771`
+
+        - keccak("0x132512f995866CcE1b0092384A6118EDaF4508Ff440771") would be the hash a Safe owner would
+
+        need to sign.`'
       tags:
-      - delegates
+      - Delegates
       requestBody:
         content:
           application/json:
@@ -78,6 +98,8 @@ paths:
       path: /tx-service/eth/api/v1/delegates/
       title: Create Delegate
       additionalInfo: ''
+      summary: Delegates create
+      x-summary-source: derived
   /tx-service/eth/api/v1/delegates/{delegate_address}/:
     delete:
       operationId: delegates_destroy
@@ -93,7 +115,7 @@ paths:
           type: string
         required: true
       tags:
-      - delegates
+      - Delegates
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -115,6 +137,8 @@ paths:
       path: /tx-service/eth/api/v1/delegates/{delegate_address}/
       title: Delete Delegate
       additionalInfo: ''
+      summary: Delegates destroy
+      x-summary-source: derived
   /tx-service/eth/api/v1/safes/{address}/delegates/{delegate_address}/:
     delete:
       operationId: safes_delegates_destroy
@@ -133,7 +157,7 @@ paths:
           type: string
         required: true
       tags:
-      - delegates
+      - Delegates
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -155,6 +179,8 @@ paths:
       path: /tx-service/eth/api/v1/safes/{address}/delegates/{delegate_address}/
       title: Remove Delegate from Safe
       additionalInfo: ''
+      summary: Safes delegates destroy
+      x-summary-source: derived
   /tx-service/eth/api/v2/delegates/:
     get:
       operationId: delegates_list_2
@@ -191,7 +217,7 @@ paths:
         schema:
           type: integer
       tags:
-      - delegates
+      - Delegates
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -208,11 +234,73 @@ paths:
       path: /tx-service/eth/api/v2/delegates/
       title: List Delegates
       additionalInfo: ''
+      summary: Delegates list 2
+      x-summary-source: derived
     post:
       operationId: delegates_create_2
-      description: "Adds a new Safe delegate with a custom label. Calls with same delegate but different label or\nsigner will update the label or delegator if a different one is provided.\nTo generate the signature, the following EIP712 data hash needs to be signed:\n\n```python\n {\n    \"types\": {\n        \"EIP712Domain\": [\n            {\"name\": \"name\", \"type\": \"string\"},\n            {\"name\": \"version\", \"type\": \"string\"},\n            {\"name\": \"chainId\", \"type\": \"uint256\"},\n        ],\n        \"Delegate\": [\n            {\"name\": \"delegateAddress\", \"type\": \"address\"},\n            {\"name\": \"totp\", \"type\": \"uint256\"},\n        ],\n    },\n    \"primaryType\": \"Delegate\",\n    \"domain\": {\n        \"name\": \"Safe Transaction Service\",\n        \"version\": \"1.0\",\n        \"chainId\": chain_id,\n    },\n    \"message\": {\n        \"delegateAddress\": delegate_address,\n        \"totp\": totp,\n    },\n}\n```\n\nFor the signature we use `TOTP` with `T0=0` and `Tx=3600`. `TOTP` is calculated by taking the\nUnix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals)."
+      description: 'Adds a new Safe delegate with a custom label. Calls with same delegate but different label or
+
+        signer will update the label or delegator if a different one is provided.
+
+        To generate the signature, the following EIP712 data hash needs to be signed:
+
+
+        ```python
+
+        {
+
+        "types": {
+
+        "EIP712Domain": [
+
+        {"name": "name", "type": "string"},
+
+        {"name": "version", "type": "string"},
+
+        {"name": "chainId", "type": "uint256"},
+
+        ],
+
+        "Delegate": [
+
+        {"name": "delegateAddress", "type": "address"},
+
+        {"name": "totp", "type": "uint256"},
+
+        ],
+
+        },
+
+        "primaryType": "Delegate",
+
+        "domain": {
+
+        "name": "Safe Transaction Service",
+
+        "version": "1.0",
+
+        "chainId": chain_id,
+
+        },
+
+        "message": {
+
+        "delegateAddress": delegate_address,
+
+        "totp": totp,
+
+        },
+
+        }
+
+        ```
+
+
+        For the signature we use `TOTP` with `T0=0` and `Tx=3600`. `TOTP` is calculated by taking the
+
+        Unix UTC epoch time (no milliseconds) and dividing by 3600 (natural division, no decimals).'
       tags:
-      - delegates
+      - Delegates
       requestBody:
         content:
           application/json:
@@ -231,6 +319,8 @@ paths:
       path: /tx-service/eth/api/v2/delegates/
       title: Create Delegate
       additionalInfo: ''
+      summary: Delegates create 2
+      x-summary-source: derived
   /tx-service/eth/api/v2/delegates/{delegate_address}/:
     delete:
       operationId: delegates_destroy_2
@@ -246,7 +336,7 @@ paths:
           type: string
         required: true
       tags:
-      - delegates
+      - Delegates
       security:
       - cookieAuth: []
       - tokenAuth: []
@@ -263,8 +353,54 @@ paths:
       path: /tx-service/eth/api/v2/delegates/{delegate_address}/
       title: Delete Delegate
       additionalInfo: ''
+      summary: Delegates destroy 2
+      x-summary-source: derived
 components:
   schemas:
+    SafeDelegateResponse:
+      type: object
+      properties:
+        safe:
+          type: string
+        delegate:
+          type: string
+        delegator:
+          type: string
+        label:
+          type: string
+          maxLength: 50
+        expiryDate:
+          type: string
+          format: date-time
+      required:
+      - delegate
+      - delegator
+      - expiryDate
+      - label
+      - safe
+    PaginatedSafeDelegateResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeDelegateResponse'
     CodeErrorResponse:
       type: object
       properties:
@@ -306,50 +442,6 @@ components:
       - delegator
       - label
       - signature
-    PaginatedSafeDelegateResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeDelegateResponse'
-    SafeDelegateResponse:
-      type: object
-      properties:
-        safe:
-          type: string
-        delegate:
-          type: string
-        delegator:
-          type: string
-        label:
-          type: string
-          maxLength: 50
-        expiryDate:
-          type: string
-          format: date-time
-      required:
-      - delegate
-      - delegator
-      - expiryDate
-      - label
-      - safe
     Delegate:
       type: object
       description: ".. deprecated:: 4.38.0\n   Deprecated in favour of DelegateSerializerV2"

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Safe Transaction Service 4337 data-decoder API
+  title: Safe Transaction Service Data Decoder API
   version: 6.3.0
   description: API to keep track of transactions sent via Safe smart contracts
 tags:
@@ -9,7 +9,7 @@ paths:
   /tx-service/eth/api/v1/data-decoder/:
     post:
       operationId: data_decoder_create
-      description: Please migrate to the new [safe-decoder-service](https://docs.safe.global/core-api/safe-decoder-service-overview)
+      description: Please migrate to the new safe-decoder-service
       tags:
       - data-decoder
       requestBody:
@@ -41,8 +41,21 @@ paths:
       path: /tx-service/eth/api/v1/data-decoder/
       title: Get Decoded Data
       additionalInfo: ''
+      summary: Data decoder create
+      x-summary-source: derived
 components:
   schemas:
+    DataDecoder:
+      type: object
+      properties:
+        data:
+          type: string
+        to:
+          type:
+          - string
+          - 'null'
+      required:
+      - data
     CodeErrorResponse:
       type: object
       properties:
@@ -57,17 +70,6 @@ components:
       - arguments
       - code
       - message
-    DataDecoder:
-      type: object
-      properties:
-        data:
-          type: string
-        to:
-          type:
-          - string
-          - 'null'
-      required:
-      - data
   securitySchemes:
     cookieAuth:
       type: apiKey
