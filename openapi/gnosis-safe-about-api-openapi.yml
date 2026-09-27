@@ -145,28 +145,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MasterCopyResponse:
+    SafeDeploymentContract:
       type: object
       properties:
+        contractName:
+          type: string
         address:
-          type: string
-        version:
-          type: string
-        deployer:
-          type: string
-        deployedBlockNumber:
-          type: integer
-        lastIndexedBlockNumber:
-          type: integer
-        l2:
-          type: boolean
+          type:
+          - string
+          - 'null'
       required:
       - address
-      - deployedBlockNumber
-      - deployer
-      - l2
-      - lastIndexedBlockNumber
-      - version
+      - contractName
     IndexingStatus:
       type: object
       properties:
@@ -201,18 +191,28 @@ components:
       - masterCopiesBlockTimestamp
       - masterCopiesSynced
       - synced
-    SafeDeploymentContract:
+    MasterCopyResponse:
       type: object
       properties:
-        contractName:
-          type: string
         address:
-          type:
-          - string
-          - 'null'
+          type: string
+        version:
+          type: string
+        deployer:
+          type: string
+        deployedBlockNumber:
+          type: integer
+        lastIndexedBlockNumber:
+          type: integer
+        l2:
+          type: boolean
       required:
       - address
-      - contractName
+      - deployedBlockNumber
+      - deployer
+      - l2
+      - lastIndexedBlockNumber
+      - version
     SafeDeployment:
       type: object
       properties:

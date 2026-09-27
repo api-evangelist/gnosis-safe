@@ -135,18 +135,6 @@ apis:
     url: https://docs.safe.global/sdk/api-kit
   - type: Repository
     url: https://github.com/safe-global/safe-core-sdk
-- aid: gnosis-safe:gnosis-safe-4337-api
-  name: Safe (Gnosis Safe) 4337 API
-  description: The 4337 API from Safe (Gnosis Safe) — 5 operation(s) for 4337.
-  humanURL: https://docs.safe.global/core-api/transaction-service-overview
-  baseURL: https://api.safe.global/tx-service/eth/api/v1
-  tags:
-  - '4337'
-  properties:
-  - type: OpenAPI
-    url: openapi/gnosis-safe-4337-api-openapi.yml
-  - type: Documentation
-    url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-about-api
   name: Safe (Gnosis Safe) about API
   description: The about API from Safe (Gnosis Safe) — 6 operation(s) for about.
@@ -176,7 +164,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-contracts-api
-  name: Safe (Gnosis Safe) contracts API
+  name: Safe (Gnosis Safe) Contracts API
   description: The contracts API from Safe (Gnosis Safe) — 2 operation(s) for contracts.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -190,7 +178,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-data-decoder-api
-  name: Safe (Gnosis Safe) data-decoder API
+  name: Safe (Gnosis Safe) Data Decoder API
   description: The data-decoder API from Safe (Gnosis Safe) — 1 operation(s) for data-decoder.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -202,7 +190,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-delegates-api
-  name: Safe (Gnosis Safe) delegates API
+  name: Safe (Gnosis Safe) Delegates API
   description: The delegates API from Safe (Gnosis Safe) — 5 operation(s) for delegates.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -216,7 +204,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-messages-api
-  name: Safe (Gnosis Safe) messages API
+  name: Safe (Gnosis Safe) Messages API
   description: The messages API from Safe (Gnosis Safe) — 3 operation(s) for messages.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -230,7 +218,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-modules-api
-  name: Safe (Gnosis Safe) modules API
+  name: Safe (Gnosis Safe) Modules API
   description: The modules API from Safe (Gnosis Safe) — 2 operation(s) for modules.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -244,7 +232,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-owners-api
-  name: Safe (Gnosis Safe) owners API
+  name: Safe (Gnosis Safe) Owners API
   description: The owners API from Safe (Gnosis Safe) — 2 operation(s) for owners.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -258,7 +246,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-safes-api
-  name: Safe (Gnosis Safe) safes API
+  name: Safe (Gnosis Safe) Safes API
   description: The safes API from Safe (Gnosis Safe) — 6 operation(s) for safes.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -272,7 +260,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-tokens-api
-  name: Safe (Gnosis Safe) tokens API
+  name: Safe (Gnosis Safe) Tokens API
   description: The tokens API from Safe (Gnosis Safe) — 3 operation(s) for tokens.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -286,7 +274,7 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 - aid: gnosis-safe:gnosis-safe-transactions-api
-  name: Safe (Gnosis Safe) transactions API
+  name: Safe (Gnosis Safe) Transactions API
   description: The transactions API from Safe (Gnosis Safe) — 13 operation(s) for transactions.
   humanURL: https://docs.safe.global/core-api/transaction-service-overview
   baseURL: https://api.safe.global/tx-service/eth/api/v1
@@ -297,6 +285,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/gnosis-safe-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.safe.global/core-api/transaction-service-overview
+- aid: gnosis-safe:gnosis-safe-tx-service-api
+  name: Safe (Gnosis Safe) Tx Service API
+  description: The Tx Service API from Safe (Gnosis Safe) — 5 operation(s) for tx service.
+  humanURL: https://docs.safe.global/core-api/transaction-service-overview
+  baseURL: https://api.safe.global/tx-service/eth/api/v1
+  tags:
+  - Tx Service
+  properties:
+  - type: OpenAPI
+    url: openapi/gnosis-safe-tx-service-api-openapi.yml
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 common:

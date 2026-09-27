@@ -230,6 +230,13 @@ components:
       required:
       - message
       - signature
+    SafeMessageSignature:
+      type: object
+      properties:
+        signature:
+          type: string
+      required:
+      - signature
     PaginatedSafeMessageResponseList:
       type: object
       required:
@@ -253,13 +260,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SafeMessageResponse'
-    SafeMessageSignature:
-      type: object
-      properties:
-        signature:
-          type: string
-      required:
-      - signature
   securitySchemes:
     cookieAuth:
       type: apiKey

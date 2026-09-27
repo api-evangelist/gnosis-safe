@@ -1350,7 +1350,248 @@ components:
       - operation
       - to
       - value
-    SafeMultisigTransactionResponseSerializerV2:
+    PaginatedAllTransactionsSchemaList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AllTransactionsSchema'
+    SafeMultisigTransactionEstimateResponse:
+      type: object
+      properties:
+        safeTxGas:
+          type: string
+      required:
+      - safeTxGas
+    PaginatedSafeMultisigTransactionResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeMultisigTransactionResponse'
+    PaginatedTransferWithTokenInfoResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
+    PaginatedAllTransactionsSchemaSerializerV2List:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AllTransactionsSchemaSerializerV2'
+    PaginatedSafeModuleTransactionResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeModuleTransactionResponse'
+    SafeMultisigTransaction:
+      type: object
+      properties:
+        safe:
+          type: string
+        to:
+          type: string
+        value:
+          type: integer
+          minimum: 0
+        data:
+          type:
+          - string
+          - 'null'
+        operation:
+          type: integer
+          minimum: 0
+        gasToken:
+          type:
+          - string
+          - 'null'
+        safeTxGas:
+          type: integer
+          minimum: 0
+        baseGas:
+          type: integer
+          minimum: 0
+        gasPrice:
+          type: integer
+          minimum: 0
+        refundReceiver:
+          type:
+          - string
+          - 'null'
+        nonce:
+          type: integer
+          minimum: 0
+        contractTransactionHash:
+          type: string
+        sender:
+          type: string
+        signature:
+          type:
+          - string
+          - 'null'
+        origin:
+          type:
+          - string
+          - 'null'
+          maxLength: 200
+      required:
+      - baseGas
+      - contractTransactionHash
+      - gasPrice
+      - nonce
+      - operation
+      - safe
+      - safeTxGas
+      - sender
+      - to
+      - value
+    SafeMultisigConfirmation:
+      type: object
+      properties:
+        signature:
+          type: string
+      required:
+      - signature
+    AllTransactionsSchemaSerializerV2:
+      type: object
+      description: Just for the purpose of documenting, don't use it
+      properties:
+        txType1:
+          $ref: '#/components/schemas/SafeModuleTransactionWithTransfersResponse'
+        txType2:
+          $ref: '#/components/schemas/SafeMultisigTransactionWithTransfersResponseSerializerV2'
+        txType3:
+          $ref: '#/components/schemas/EthereumTxWithTransfersResponse'
+      required:
+      - txType1
+      - txType2
+      - txType3
+    EthereumTxWithTransfersResponse:
+      type: object
+      properties:
+        executionDate:
+          type: string
+          format: date-time
+        to:
+          type:
+          - string
+          - 'null'
+        data:
+          type: string
+        txHash:
+          type: string
+        blockNumber:
+          type:
+          - integer
+          - 'null'
+          readOnly: true
+        transfers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
+        txType:
+          type: string
+          readOnly: true
+        from:
+          type: string
+      required:
+      - blockNumber
+      - data
+      - executionDate
+      - from
+      - to
+      - transfers
+      - txHash
+      - txType
+    SafeMultisigTransactionWithTransfersResponseSerializerV2:
       type: object
       properties:
         safe:
@@ -1477,6 +1718,13 @@ components:
           - string
           - 'null'
           readOnly: true
+        transfers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
+        txType:
+          type: string
+          readOnly: true
       required:
       - baseGas
       - blockNumber
@@ -1507,65 +1755,32 @@ components:
       - submissionDate
       - to
       - transactionHash
+      - transfers
       - trusted
+      - txType
       - value
-    PaginatedSafeMultisigTransactionResponseSerializerV2List:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeMultisigTransactionResponseSerializerV2'
-    SafeMultisigConfirmation:
+    SafeMultisigConfirmationResponse:
       type: object
       properties:
+        owner:
+          type: string
+        submissionDate:
+          type: string
+          format: date-time
+        transactionHash:
+          type: string
+          readOnly: true
         signature:
           type: string
+        signatureType:
+          type: string
+          readOnly: true
       required:
+      - owner
       - signature
-    TokenInfoResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          readOnly: true
-        address:
-          type: string
-        name:
-          type: string
-        symbol:
-          type: string
-        decimals:
-          type: integer
-        logoUri:
-          type: string
-          readOnly: true
-        trusted:
-          type: boolean
-      required:
-      - address
-      - decimals
-      - logoUri
-      - name
-      - symbol
-      - trusted
-      - type
+      - signatureType
+      - submissionDate
+      - transactionHash
     SafeMultisigTransactionWithTransfersResponse:
       type: object
       properties:
@@ -1737,325 +1952,6 @@ components:
       - trusted
       - txType
       - value
-    PaginatedSafeModuleTransactionResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeModuleTransactionResponse'
-    SafeMultisigConfirmationResponse:
-      type: object
-      properties:
-        owner:
-          type: string
-        submissionDate:
-          type: string
-          format: date-time
-        transactionHash:
-          type: string
-          readOnly: true
-        signature:
-          type: string
-        signatureType:
-          type: string
-          readOnly: true
-      required:
-      - owner
-      - signature
-      - signatureType
-      - submissionDate
-      - transactionHash
-    PaginatedAllTransactionsSchemaList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/AllTransactionsSchema'
-    SafeMultisigTransaction:
-      type: object
-      properties:
-        safe:
-          type: string
-        to:
-          type: string
-        value:
-          type: integer
-          minimum: 0
-        data:
-          type:
-          - string
-          - 'null'
-        operation:
-          type: integer
-          minimum: 0
-        gasToken:
-          type:
-          - string
-          - 'null'
-        safeTxGas:
-          type: integer
-          minimum: 0
-        baseGas:
-          type: integer
-          minimum: 0
-        gasPrice:
-          type: integer
-          minimum: 0
-        refundReceiver:
-          type:
-          - string
-          - 'null'
-        nonce:
-          type: integer
-          minimum: 0
-        contractTransactionHash:
-          type: string
-        sender:
-          type: string
-        signature:
-          type:
-          - string
-          - 'null'
-        origin:
-          type:
-          - string
-          - 'null'
-          maxLength: 200
-      required:
-      - baseGas
-      - contractTransactionHash
-      - gasPrice
-      - nonce
-      - operation
-      - safe
-      - safeTxGas
-      - sender
-      - to
-      - value
-    PaginatedAllTransactionsSchemaSerializerV2List:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/AllTransactionsSchemaSerializerV2'
-    TransferWithTokenInfoResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          description: 'Sometimes ERC20/721 `Transfer` events look the same, if token info is available better use that information
-
-            to check
-
-
-            :param obj:
-
-            :return: `TransferType` as a string'
-          readOnly: true
-        executionDate:
-          type: string
-          format: date-time
-        blockNumber:
-          type: integer
-        transactionHash:
-          type: string
-        to:
-          type: string
-        value:
-          type:
-          - string
-          - 'null'
-        tokenId:
-          type:
-          - string
-          - 'null'
-        tokenAddress:
-          type:
-          - string
-          - 'null'
-        transferId:
-          type: string
-          readOnly: true
-          description: "Internally calculated parameter to uniquely identify a transfer \nToken transfers are calculated as `transferId = e+tx_hash+log_index` \nEther transfers are calculated as `transferId = i+tx_hash+trace_address`"
-        tokenInfo:
-          $ref: '#/components/schemas/TokenInfoResponse'
-        from:
-          type: string
-      required:
-      - blockNumber
-      - executionDate
-      - from
-      - to
-      - tokenId
-      - tokenInfo
-      - transactionHash
-      - transferId
-      - type
-      - value
-    PaginatedTransferWithTokenInfoResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
-    SafeModuleTransactionResponse:
-      type: object
-      properties:
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        executionDate:
-          type: string
-          format: date-time
-        blockNumber:
-          type: integer
-        isSuccessful:
-          type: boolean
-          readOnly: true
-        transactionHash:
-          type: string
-        safe:
-          type: string
-        module:
-          type: string
-        to:
-          type: string
-        value:
-          type: string
-          format: decimal
-          pattern: ^-?\d{0,78}(?:\.\d{0,0})?$
-        data:
-          type:
-          - string
-          - 'null'
-        operation:
-          enum:
-          - 0
-          - 1
-          - 2
-          type: integer
-          description: '* `0` - CALL
-
-            * `1` - DELEGATE_CALL
-
-            * `2` - CREATE'
-          x-spec-enum-id: 73baf6048b75e41c
-          minimum: 0
-          maximum: 32767
-        dataDecoded:
-          type: string
-          deprecated: true
-          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
-          readOnly: true
-        moduleTransactionId:
-          type: string
-          description: "Internally calculated parameter to uniquely identify a moduleTransaction \n`ModuleTransactionId = i+tx_hash+trace_address`"
-      required:
-      - blockNumber
-      - created
-      - data
-      - dataDecoded
-      - executionDate
-      - isSuccessful
-      - module
-      - moduleTransactionId
-      - operation
-      - safe
-      - to
-      - transactionHash
-      - value
-    PaginatedSafeMultisigTransactionResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeMultisigTransactionResponse'
     SafeModuleTransactionWithTransfersResponse:
       type: object
       properties:
@@ -2132,21 +2028,97 @@ components:
       - transfers
       - txType
       - value
-    AllTransactionsSchemaSerializerV2:
+    SafeModuleTransactionResponse:
       type: object
-      description: Just for the purpose of documenting, don't use it
       properties:
-        txType1:
-          $ref: '#/components/schemas/SafeModuleTransactionWithTransfersResponse'
-        txType2:
-          $ref: '#/components/schemas/SafeMultisigTransactionWithTransfersResponseSerializerV2'
-        txType3:
-          $ref: '#/components/schemas/EthereumTxWithTransfersResponse'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        executionDate:
+          type: string
+          format: date-time
+        blockNumber:
+          type: integer
+        isSuccessful:
+          type: boolean
+          readOnly: true
+        transactionHash:
+          type: string
+        safe:
+          type: string
+        module:
+          type: string
+        to:
+          type: string
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,78}(?:\.\d{0,0})?$
+        data:
+          type:
+          - string
+          - 'null'
+        operation:
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+          description: '* `0` - CALL
+
+            * `1` - DELEGATE_CALL
+
+            * `2` - CREATE'
+          x-spec-enum-id: 73baf6048b75e41c
+          minimum: 0
+          maximum: 32767
+        dataDecoded:
+          type: string
+          deprecated: true
+          description: This field is deprecated and will be removed in future versions. Refer to decoder service [documentation](https://docs.safe.global/core-api/safe-decoder-service-reference#Data-decoder) for decoding guidance.
+          readOnly: true
+        moduleTransactionId:
+          type: string
+          description: "Internally calculated parameter to uniquely identify a moduleTransaction \n`ModuleTransactionId = i+tx_hash+trace_address`"
       required:
-      - txType1
-      - txType2
-      - txType3
-    SafeMultisigTransactionWithTransfersResponseSerializerV2:
+      - blockNumber
+      - created
+      - data
+      - dataDecoded
+      - executionDate
+      - isSuccessful
+      - module
+      - moduleTransactionId
+      - operation
+      - safe
+      - to
+      - transactionHash
+      - value
+    PaginatedSafeMultisigConfirmationResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeMultisigConfirmationResponse'
+    SafeMultisigTransactionResponseSerializerV2:
       type: object
       properties:
         safe:
@@ -2273,13 +2245,6 @@ components:
           - string
           - 'null'
           readOnly: true
-        transfers:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
-        txType:
-          type: string
-          readOnly: true
       required:
       - baseGas
       - blockNumber
@@ -2310,31 +2275,35 @@ components:
       - submissionDate
       - to
       - transactionHash
-      - transfers
       - trusted
-      - txType
       - value
-    SafeMultisigTransactionEstimateResponse:
+    TokenInfoResponse:
       type: object
       properties:
-        safeTxGas:
+        type:
           type: string
+          readOnly: true
+        address:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+        decimals:
+          type: integer
+        logoUri:
+          type: string
+          readOnly: true
+        trusted:
+          type: boolean
       required:
-      - safeTxGas
-    AllTransactionsSchema:
-      type: object
-      description: Just for the purpose of documenting, don't use it
-      properties:
-        txType1:
-          $ref: '#/components/schemas/SafeModuleTransactionWithTransfersResponse'
-        txType2:
-          $ref: '#/components/schemas/SafeMultisigTransactionWithTransfersResponse'
-        txType3:
-          $ref: '#/components/schemas/EthereumTxWithTransfersResponse'
-      required:
-      - txType1
-      - txType2
-      - txType3
+      - address
+      - decimals
+      - logoUri
+      - name
+      - symbol
+      - trusted
+      - type
     SafeMultisigTransactionResponse:
       type: object
       properties:
@@ -2497,7 +2466,7 @@ components:
       - transactionHash
       - trusted
       - value
-    PaginatedSafeMultisigConfirmationResponseList:
+    PaginatedSafeMultisigTransactionResponseSerializerV2List:
       type: object
       required:
       - count
@@ -2519,44 +2488,61 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/SafeMultisigConfirmationResponse'
-    EthereumTxWithTransfersResponse:
+            $ref: '#/components/schemas/SafeMultisigTransactionResponseSerializerV2'
+    TransferWithTokenInfoResponse:
       type: object
       properties:
+        type:
+          type: string
+          description: 'Sometimes ERC20/721 `Transfer` events look the same, if token info is available better use that information
+
+            to check
+
+
+            :param obj:
+
+            :return: `TransferType` as a string'
+          readOnly: true
         executionDate:
           type: string
           format: date-time
+        blockNumber:
+          type: integer
+        transactionHash:
+          type: string
         to:
+          type: string
+        value:
           type:
           - string
           - 'null'
-        data:
-          type: string
-        txHash:
-          type: string
-        blockNumber:
+        tokenId:
           type:
-          - integer
+          - string
           - 'null'
-          readOnly: true
-        transfers:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransferWithTokenInfoResponse'
-        txType:
+        tokenAddress:
+          type:
+          - string
+          - 'null'
+        transferId:
           type: string
           readOnly: true
+          description: "Internally calculated parameter to uniquely identify a transfer \nToken transfers are calculated as `transferId = e+tx_hash+log_index` \nEther transfers are calculated as `transferId = i+tx_hash+trace_address`"
+        tokenInfo:
+          $ref: '#/components/schemas/TokenInfoResponse'
         from:
           type: string
       required:
       - blockNumber
-      - data
       - executionDate
       - from
       - to
-      - transfers
-      - txHash
-      - txType
+      - tokenId
+      - tokenInfo
+      - transactionHash
+      - transferId
+      - type
+      - value
     CodeErrorResponse:
       type: object
       properties:
@@ -2571,6 +2557,20 @@ components:
       - arguments
       - code
       - message
+    AllTransactionsSchema:
+      type: object
+      description: Just for the purpose of documenting, don't use it
+      properties:
+        txType1:
+          $ref: '#/components/schemas/SafeModuleTransactionWithTransfersResponse'
+        txType2:
+          $ref: '#/components/schemas/SafeMultisigTransactionWithTransfersResponse'
+        txType3:
+          $ref: '#/components/schemas/EthereumTxWithTransfersResponse'
+      required:
+      - txType1
+      - txType2
+      - txType3
   securitySchemes:
     cookieAuth:
       type: apiKey

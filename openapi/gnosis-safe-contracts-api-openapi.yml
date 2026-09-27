@@ -83,22 +83,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ContractAbi:
-      type: object
-      properties:
-        abi:
-          type: array
-          items:
-            type: object
-            additionalProperties: {}
-        description:
-          type: string
-        relevance:
-          type: integer
-      required:
-      - abi
-      - description
-      - relevance
     PaginatedContractList:
       type: object
       required:
@@ -145,6 +129,22 @@ components:
       - logoUri
       - name
       - trustedForDelegateCall
+    ContractAbi:
+      type: object
+      properties:
+        abi:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        description:
+          type: string
+        relevance:
+          type: integer
+      required:
+      - abi
+      - description
+      - relevance
   securitySchemes:
     cookieAuth:
       type: apiKey

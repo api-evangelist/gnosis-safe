@@ -4,7 +4,7 @@
     "_original/gnosis-safe-transaction-service-openapi.json"
   ],
   "outputs": [
-    "gnosis-safe-4337-api-openapi.yml",
+    "gnosis-safe-tx-service-api-openapi.yml",
     "gnosis-safe-about-api-openapi.yml",
     "gnosis-safe-analytics-api-openapi.yml",
     "gnosis-safe-contracts-api-openapi.yml",
@@ -17,13 +17,22 @@
     "gnosis-safe-tokens-api-openapi.yml",
     "gnosis-safe-transactions-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "gnosis-safe-transaction-service-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "gnosis-safe-transaction-service-openapi.json: declared missing tag: 4337",
+    "gnosis-safe-transaction-service-openapi.json: tagged paths GET /tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/ -> Tx Service",
+    "gnosis-safe-transaction-service-openapi.json: tagged paths GET /tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/confirmations/ -> Tx Service",
+    "gnosis-safe-transaction-service-openapi.json: tagged paths POST /tx-service/eth/api/v1/safe-operations/{safe_operation_hash}/confirmations/ -> Tx Service",
+    "gnosis-safe-transaction-service-openapi.json: tagged paths GET /tx-service/eth/api/v1/safes/{address}/safe-operations/ -> Tx Service",
+    "gnosis-safe-transaction-service-openapi.json: tagged paths POST /tx-service/eth/api/v1/safes/{address}/safe-operations/ -> Tx Service",
+    "gnosis-safe-transaction-service-openapi.json: tagged paths GET /tx-service/eth/api/v1/safes/{address}/user-operations/ -> Tx Service",
+    "gnosis-safe-transaction-service-openapi.json: tagged paths GET /tx-service/eth/api/v1/user-operations/{user_operation_hash}/ -> Tx Service",
+    "gnosis-safe-transaction-service-openapi.json: declared missing tag: Tx Service",
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: about",
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: analytics",
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: contracts",
@@ -35,7 +44,8 @@
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: safes",
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: tokens",
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: transactions",
-    "apis.yml register: already-registered"
+    "superseded outputs removed: gnosis-safe-4337-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 16 total)"
   ],
   "skipped": [
     "gnosis-safe-4337-api-openapi.yml: previously refined output, superseded by openapi/_original/",

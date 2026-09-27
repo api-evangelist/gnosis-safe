@@ -357,64 +357,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SafeDelegateResponse:
-      type: object
-      properties:
-        safe:
-          type: string
-        delegate:
-          type: string
-        delegator:
-          type: string
-        label:
-          type: string
-          maxLength: 50
-        expiryDate:
-          type: string
-          format: date-time
-      required:
-      - delegate
-      - delegator
-      - expiryDate
-      - label
-      - safe
-    PaginatedSafeDelegateResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeDelegateResponse'
-    CodeErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        arguments:
-          type: array
-          items: {}
-      required:
-      - arguments
-      - code
-      - message
     DelegateSerializerV2:
       type: object
       description: Mixin to validate delegate operations data
@@ -442,6 +384,50 @@ components:
       - delegator
       - label
       - signature
+    PaginatedSafeDelegateResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeDelegateResponse'
+    SafeDelegateResponse:
+      type: object
+      properties:
+        safe:
+          type: string
+        delegate:
+          type: string
+        delegator:
+          type: string
+        label:
+          type: string
+          maxLength: 50
+        expiryDate:
+          type: string
+          format: date-time
+      required:
+      - delegate
+      - delegator
+      - expiryDate
+      - label
+      - safe
     Delegate:
       type: object
       description: ".. deprecated:: 4.38.0\n   Deprecated in favour of DelegateSerializerV2"
@@ -464,6 +450,20 @@ components:
       - delegator
       - label
       - signature
+    CodeErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        arguments:
+          type: array
+          items: {}
+      required:
+      - arguments
+      - code
+      - message
   securitySchemes:
     cookieAuth:
       type: apiKey
