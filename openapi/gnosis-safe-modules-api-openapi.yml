@@ -89,6 +89,29 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    PaginatedSafeLastStatusList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeLastStatus'
     SafeLastStatus:
       type: object
       properties:
@@ -128,6 +151,15 @@ components:
       - nonce
       - owners
       - threshold
+    ModulesResponse:
+      type: object
+      properties:
+        safes:
+          type: array
+          items:
+            type: string
+      required:
+      - safes
     CodeErrorResponse:
       type: object
       properties:
@@ -142,38 +174,6 @@ components:
       - arguments
       - code
       - message
-    ModulesResponse:
-      type: object
-      properties:
-        safes:
-          type: array
-          items:
-            type: string
-      required:
-      - safes
-    PaginatedSafeLastStatusList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeLastStatus'
   securitySchemes:
     cookieAuth:
       type: apiKey

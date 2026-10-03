@@ -157,40 +157,6 @@ components:
       required:
       - address
       - contractName
-    IndexingStatus:
-      type: object
-      properties:
-        currentBlockNumber:
-          type: integer
-        currentBlockTimestamp:
-          type: string
-          format: date-time
-        erc20BlockNumber:
-          type: integer
-        erc20BlockTimestamp:
-          type: string
-          format: date-time
-        erc20Synced:
-          type: boolean
-        masterCopiesBlockNumber:
-          type: integer
-        masterCopiesBlockTimestamp:
-          type: string
-          format: date-time
-        masterCopiesSynced:
-          type: boolean
-        synced:
-          type: boolean
-      required:
-      - currentBlockNumber
-      - currentBlockTimestamp
-      - erc20BlockNumber
-      - erc20BlockTimestamp
-      - erc20Synced
-      - masterCopiesBlockNumber
-      - masterCopiesBlockTimestamp
-      - masterCopiesSynced
-      - synced
     MasterCopyResponse:
       type: object
       properties:
@@ -226,6 +192,40 @@ components:
       required:
       - contracts
       - version
+    IndexingStatus:
+      type: object
+      properties:
+        currentBlockNumber:
+          type: integer
+        currentBlockTimestamp:
+          type: string
+          format: date-time
+        erc20BlockNumber:
+          type: integer
+        erc20BlockTimestamp:
+          type: string
+          format: date-time
+        erc20Synced:
+          type: boolean
+        masterCopiesBlockNumber:
+          type: integer
+        masterCopiesBlockTimestamp:
+          type: string
+          format: date-time
+        masterCopiesSynced:
+          type: boolean
+        synced:
+          type: boolean
+      required:
+      - currentBlockNumber
+      - currentBlockTimestamp
+      - erc20BlockNumber
+      - erc20BlockTimestamp
+      - erc20Synced
+      - masterCopiesBlockNumber
+      - masterCopiesBlockTimestamp
+      - masterCopiesSynced
+      - synced
   securitySchemes:
     cookieAuth:
       type: apiKey

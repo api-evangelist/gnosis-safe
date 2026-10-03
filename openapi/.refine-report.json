@@ -17,9 +17,7 @@
     "gnosis-safe-tokens-api-openapi.yml",
     "gnosis-safe-transactions-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -44,11 +42,9 @@
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: safes",
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: tokens",
     "gnosis-safe-transaction-service-openapi.json: declared missing tag: transactions",
-    "superseded outputs removed: gnosis-safe-4337-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 16 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "gnosis-safe-4337-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gnosis-safe-about-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gnosis-safe-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gnosis-safe-contracts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -59,6 +55,7 @@
     "gnosis-safe-owners-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gnosis-safe-safes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "gnosis-safe-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "gnosis-safe-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "gnosis-safe-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gnosis-safe-tx-service-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
