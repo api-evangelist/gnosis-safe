@@ -158,29 +158,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PaginatedSafeMessageResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeMessageResponse'
     SafeMessageResponse:
       type: object
       properties:
@@ -234,13 +211,6 @@ components:
       - proposedBy
       - safe
       - safeAppId
-    SafeMessageSignature:
-      type: object
-      properties:
-        signature:
-          type: string
-      required:
-      - signature
     SafeMessage:
       type: object
       properties:
@@ -260,6 +230,36 @@ components:
       required:
       - message
       - signature
+    SafeMessageSignature:
+      type: object
+      properties:
+        signature:
+          type: string
+      required:
+      - signature
+    PaginatedSafeMessageResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeMessageResponse'
   securitySchemes:
     cookieAuth:
       type: apiKey

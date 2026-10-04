@@ -45,6 +45,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    DataDecoder:
+      type: object
+      properties:
+        data:
+          type: string
+        to:
+          type:
+          - string
+          - 'null'
+      required:
+      - data
     CodeErrorResponse:
       type: object
       properties:
@@ -59,17 +70,6 @@ components:
       - arguments
       - code
       - message
-    DataDecoder:
-      type: object
-      properties:
-        data:
-          type: string
-        to:
-          type:
-          - string
-          - 'null'
-      required:
-      - data
   securitySchemes:
     cookieAuth:
       type: apiKey

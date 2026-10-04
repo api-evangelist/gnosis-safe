@@ -148,6 +148,33 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    TokenList:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 200
+      required:
+      - description
+      - url
+    CodeErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        arguments:
+          type: array
+          items: {}
+      required:
+      - arguments
+      - code
+      - message
     PaginatedTokenInfoResponseList:
       type: object
       required:
@@ -171,33 +198,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TokenInfoResponse'
-    CodeErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        arguments:
-          type: array
-          items: {}
-      required:
-      - arguments
-      - code
-      - message
-    TokenList:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          maxLength: 200
-        description:
-          type: string
-          maxLength: 200
-      required:
-      - description
-      - url
     TokenInfoResponse:
       type: object
       properties:

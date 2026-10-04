@@ -83,29 +83,22 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PaginatedContractList:
+    ContractAbi:
       type: object
-      required:
-      - count
-      - results
       properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
+        abi:
           type: array
           items:
-            $ref: '#/components/schemas/Contract'
+            type: object
+            additionalProperties: {}
+        description:
+          type: string
+        relevance:
+          type: integer
+      required:
+      - abi
+      - description
+      - relevance
     Contract:
       type: object
       properties:
@@ -129,22 +122,29 @@ components:
       - logoUri
       - name
       - trustedForDelegateCall
-    ContractAbi:
+    PaginatedContractList:
       type: object
+      required:
+      - count
+      - results
       properties:
-        abi:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
           type: array
           items:
-            type: object
-            additionalProperties: {}
-        description:
-          type: string
-        relevance:
-          type: integer
-      required:
-      - abi
-      - description
-      - relevance
+            $ref: '#/components/schemas/Contract'
   securitySchemes:
     cookieAuth:
       type: apiKey
