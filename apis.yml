@@ -62,7 +62,7 @@ tags_raw:
   - Gnosis
   - Wallet
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: gnosis-safe:delegates
@@ -300,6 +300,8 @@ apis:
   - type: Documentation
     url: https://docs.safe.global/core-api/transaction-service-overview
 common:
+  - url: https://safe.global/blog
+    type: Blog
   - type: IssueTracker
     url: https://github.com/safe-global/safe-core-sdk/issues
   - type: Releases
