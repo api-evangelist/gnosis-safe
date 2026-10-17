@@ -128,20 +128,6 @@ components:
       - nonce
       - owners
       - threshold
-    CodeErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        arguments:
-          type: array
-          items: {}
-      required:
-      - arguments
-      - code
-      - message
     PaginatedSafeLastStatusList:
       type: object
       required:
@@ -174,6 +160,20 @@ components:
             type: string
       required:
       - safes
+    CodeErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        arguments:
+          type: array
+          items: {}
+      required:
+      - arguments
+      - code
+      - message
   securitySchemes:
     cookieAuth:
       type: apiKey

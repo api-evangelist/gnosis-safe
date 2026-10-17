@@ -145,6 +145,31 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SafeDeploymentContract:
+      type: object
+      properties:
+        contractName:
+          type: string
+        address:
+          type:
+          - string
+          - 'null'
+      required:
+      - address
+      - contractName
+    SafeDeployment:
+      type: object
+      properties:
+        version:
+          type: string
+          maxLength: 10
+        contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeDeploymentContract'
+      required:
+      - contracts
+      - version
     IndexingStatus:
       type: object
       properties:
@@ -179,18 +204,6 @@ components:
       - masterCopiesBlockTimestamp
       - masterCopiesSynced
       - synced
-    SafeDeploymentContract:
-      type: object
-      properties:
-        contractName:
-          type: string
-        address:
-          type:
-          - string
-          - 'null'
-      required:
-      - address
-      - contractName
     MasterCopyResponse:
       type: object
       properties:
@@ -212,19 +225,6 @@ components:
       - deployer
       - l2
       - lastIndexedBlockNumber
-      - version
-    SafeDeployment:
-      type: object
-      properties:
-        version:
-          type: string
-          maxLength: 10
-        contracts:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeDeploymentContract'
-      required:
-      - contracts
       - version
   securitySchemes:
     cookieAuth:

@@ -367,29 +367,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PaginatedSafeOperationConfirmationResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeOperationConfirmationResponse'
     UserOperationWithSafeOperationResponse:
       type: object
       properties:
@@ -453,6 +430,70 @@ components:
       - signature
       - userOperationHash
       - verificationGasLimit
+    SafeOperationResponse:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        safeOperationHash:
+          type: string
+        validAfter:
+          type: string
+          format: date-time
+        validUntil:
+          type: string
+          format: date-time
+        moduleAddress:
+          type: string
+        confirmations:
+          type: object
+          additionalProperties: {}
+          description: 'Filters confirmations queryset
+
+
+            :param obj: SafeOperation instance
+
+            :return: Serialized queryset'
+          readOnly: true
+        preparedSignature:
+          type: string
+          readOnly: true
+      required:
+      - confirmations
+      - created
+      - modified
+      - moduleAddress
+      - preparedSignature
+      - safeOperationHash
+      - validAfter
+      - validUntil
+    PaginatedSafeOperationConfirmationResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeOperationConfirmationResponse'
     SafeOperationConfirmationResponse:
       type: object
       properties:
@@ -550,6 +591,29 @@ components:
           type: string
       required:
       - signature
+    PaginatedUserOperationWithSafeOperationResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserOperationWithSafeOperationResponse'
     SafeOperationWithUserOperationResponse:
       type: object
       properties:
@@ -596,29 +660,6 @@ components:
       - userOperation
       - validAfter
       - validUntil
-    PaginatedSafeOperationWithUserOperationResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeOperationWithUserOperationResponse'
     UserOperationResponse:
       type: object
       properties:
@@ -676,48 +717,7 @@ components:
       - signature
       - userOperationHash
       - verificationGasLimit
-    SafeOperationResponse:
-      type: object
-      properties:
-        created:
-          type: string
-          format: date-time
-        modified:
-          type: string
-          format: date-time
-        safeOperationHash:
-          type: string
-        validAfter:
-          type: string
-          format: date-time
-        validUntil:
-          type: string
-          format: date-time
-        moduleAddress:
-          type: string
-        confirmations:
-          type: object
-          additionalProperties: {}
-          description: 'Filters confirmations queryset
-
-
-            :param obj: SafeOperation instance
-
-            :return: Serialized queryset'
-          readOnly: true
-        preparedSignature:
-          type: string
-          readOnly: true
-      required:
-      - confirmations
-      - created
-      - modified
-      - moduleAddress
-      - preparedSignature
-      - safeOperationHash
-      - validAfter
-      - validUntil
-    PaginatedUserOperationWithSafeOperationResponseList:
+    PaginatedSafeOperationWithUserOperationResponseList:
       type: object
       required:
       - count
@@ -739,7 +739,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/UserOperationWithSafeOperationResponse'
+            $ref: '#/components/schemas/SafeOperationWithUserOperationResponse'
   securitySchemes:
     cookieAuth:
       type: apiKey

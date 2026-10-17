@@ -99,29 +99,6 @@ components:
       - abi
       - description
       - relevance
-    Contract:
-      type: object
-      properties:
-        address:
-          type: string
-        name:
-          type: string
-        displayName:
-          type: string
-        logoUri:
-          type: string
-          format: uri
-        contractAbi:
-          $ref: '#/components/schemas/ContractAbi'
-        trustedForDelegateCall:
-          type: boolean
-      required:
-      - address
-      - contractAbi
-      - displayName
-      - logoUri
-      - name
-      - trustedForDelegateCall
     PaginatedContractList:
       type: object
       required:
@@ -145,6 +122,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Contract'
+    Contract:
+      type: object
+      properties:
+        address:
+          type: string
+        name:
+          type: string
+        displayName:
+          type: string
+        logoUri:
+          type: string
+          format: uri
+        contractAbi:
+          $ref: '#/components/schemas/ContractAbi'
+        trustedForDelegateCall:
+          type: boolean
+      required:
+      - address
+      - contractAbi
+      - displayName
+      - logoUri
+      - name
+      - trustedForDelegateCall
   securitySchemes:
     cookieAuth:
       type: apiKey

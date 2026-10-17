@@ -158,6 +158,55 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SafeMessage:
+      type: object
+      properties:
+        message: {}
+        safeAppId:
+          type:
+          - integer
+          - 'null'
+          minimum: 0
+        signature:
+          type: string
+        origin:
+          type:
+          - string
+          - 'null'
+          maxLength: 200
+      required:
+      - message
+      - signature
+    PaginatedSafeMessageResponseList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeMessageResponse'
+    SafeMessageSignature:
+      type: object
+      properties:
+        signature:
+          type: string
+      required:
+      - signature
     SafeMessageResponse:
       type: object
       properties:
@@ -211,55 +260,6 @@ components:
       - proposedBy
       - safe
       - safeAppId
-    SafeMessage:
-      type: object
-      properties:
-        message: {}
-        safeAppId:
-          type:
-          - integer
-          - 'null'
-          minimum: 0
-        signature:
-          type: string
-        origin:
-          type:
-          - string
-          - 'null'
-          maxLength: 200
-      required:
-      - message
-      - signature
-    SafeMessageSignature:
-      type: object
-      properties:
-        signature:
-          type: string
-      required:
-      - signature
-    PaginatedSafeMessageResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeMessageResponse'
   securitySchemes:
     cookieAuth:
       type: apiKey

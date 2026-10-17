@@ -309,29 +309,54 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PaginatedSafeExportTransactionList:
+    SafeBalanceResponse:
       type: object
-      required:
-      - count
-      - results
       properties:
-        count:
-          type: integer
-          example: 123
-        next:
+        tokenAddress:
           type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
+        token:
+          $ref: '#/components/schemas/Erc20Info'
+        balance:
           type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeExportTransaction'
+      required:
+      - balance
+      - token
+      - tokenAddress
+    SafeCollectibleResponse:
+      type: object
+      properties:
+        address:
+          type: string
+        tokenName:
+          type: string
+        tokenSymbol:
+          type: string
+        logoUri:
+          type: string
+        id:
+          type: string
+        uri:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        imageUri:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: {}
+      required:
+      - address
+      - description
+      - id
+      - imageUri
+      - logoUri
+      - metadata
+      - name
+      - tokenName
+      - tokenSymbol
+      - uri
     UserOperationWithSafeOperationResponse:
       type: object
       properties:
@@ -395,6 +420,70 @@ components:
       - signature
       - userOperationHash
       - verificationGasLimit
+    SafeOperationResponse:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+        modified:
+          type: string
+          format: date-time
+        safeOperationHash:
+          type: string
+        validAfter:
+          type: string
+          format: date-time
+        validUntil:
+          type: string
+          format: date-time
+        moduleAddress:
+          type: string
+        confirmations:
+          type: object
+          additionalProperties: {}
+          description: 'Filters confirmations queryset
+
+
+            :param obj: SafeOperation instance
+
+            :return: Serialized queryset'
+          readOnly: true
+        preparedSignature:
+          type: string
+          readOnly: true
+      required:
+      - confirmations
+      - created
+      - modified
+      - moduleAddress
+      - preparedSignature
+      - safeOperationHash
+      - validAfter
+      - validUntil
+    PaginatedSafeExportTransactionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeExportTransaction'
     SafeExportTransaction:
       type: object
       description: Serializer for the export endpoint that returns transaction data optimized for CSV export
@@ -471,20 +560,22 @@ components:
       - safe
       - to
       - transactionHash
-    CodeErrorResponse:
+    Erc20Info:
       type: object
       properties:
-        code:
-          type: integer
-        message:
+        name:
           type: string
-        arguments:
-          type: array
-          items: {}
+        symbol:
+          type: string
+        decimals:
+          type: integer
+        logoUri:
+          type: string
       required:
-      - arguments
-      - code
-      - message
+      - decimals
+      - logoUri
+      - name
+      - symbol
     SafeInfoResponse:
       type: object
       properties:
@@ -525,80 +616,6 @@ components:
       - owners
       - threshold
       - version
-    PaginatedSafeCollectibleResponseList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type: string
-          nullable: true
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SafeCollectibleResponse'
-    SafeCollectibleResponse:
-      type: object
-      properties:
-        address:
-          type: string
-        tokenName:
-          type: string
-        tokenSymbol:
-          type: string
-        logoUri:
-          type: string
-        id:
-          type: string
-        uri:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        imageUri:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: {}
-      required:
-      - address
-      - description
-      - id
-      - imageUri
-      - logoUri
-      - metadata
-      - name
-      - tokenName
-      - tokenSymbol
-      - uri
-    Erc20Info:
-      type: object
-      properties:
-        name:
-          type: string
-        symbol:
-          type: string
-        decimals:
-          type: integer
-        logoUri:
-          type: string
-      required:
-      - decimals
-      - logoUri
-      - name
-      - symbol
     SafeCreationInfoResponse:
       type: object
       properties:
@@ -641,60 +658,43 @@ components:
       - setupData
       - transactionHash
       - userOperation
-    SafeOperationResponse:
+    CodeErrorResponse:
       type: object
       properties:
-        created:
+        code:
+          type: integer
+        message:
           type: string
-          format: date-time
-        modified:
-          type: string
-          format: date-time
-        safeOperationHash:
-          type: string
-        validAfter:
-          type: string
-          format: date-time
-        validUntil:
-          type: string
-          format: date-time
-        moduleAddress:
-          type: string
-        confirmations:
-          type: object
-          additionalProperties: {}
-          description: 'Filters confirmations queryset
-
-
-            :param obj: SafeOperation instance
-
-            :return: Serialized queryset'
-          readOnly: true
-        preparedSignature:
-          type: string
-          readOnly: true
+        arguments:
+          type: array
+          items: {}
       required:
-      - confirmations
-      - created
-      - modified
-      - moduleAddress
-      - preparedSignature
-      - safeOperationHash
-      - validAfter
-      - validUntil
-    SafeBalanceResponse:
+      - arguments
+      - code
+      - message
+    PaginatedSafeCollectibleResponseList:
       type: object
-      properties:
-        tokenAddress:
-          type: string
-        token:
-          $ref: '#/components/schemas/Erc20Info'
-        balance:
-          type: string
       required:
-      - balance
-      - token
-      - tokenAddress
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SafeCollectibleResponse'
   securitySchemes:
     cookieAuth:
       type: apiKey
